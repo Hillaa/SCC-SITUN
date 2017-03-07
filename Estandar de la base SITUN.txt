@@ -1,0 +1,43 @@
+BD_SITUN // Nombre de la base de datos
+TC // Tabla de Correspondencia
+TA // Tabla de Alarmas
+TU // Tabla de Usuarios
+TP // Tabla de Personas
+TE // Tabla de Enlace
+
+---- Table TP ------
+  TP_1 // Nombre 
+  TP_2 // Apellido1
+  TP_3 // Apellido2
+  TP_4 // ID
+
+---- Table TU -----
+  TU_1 // ID Asociado a TP
+  TU_2 // Contraseña
+  TU_3 // Tipo
+
+
+-- Table TC-------  
+  TC_1 =  CODIGO         
+  TC_2 =  FECHA RECIBIDO 
+  TC_3 =  NUMERO OFICIO  
+  TC_4 =  FECHA OFICIO   
+  TC_5 =  DESTINATARIO   
+  TC_6 = COPIA           
+  TC_7 =  REMITENTE      
+  TC_8 =  ASUNTO         
+  TC_9 =  RECIBIDO       
+  TC_10 =  ESTADO 	
+  TC_11 =  OBSERVACION	
+
+---- Table TE ------
+  TE_1 // CODIGO correspondencia 1
+  TE_2 // CODIGO correspondencia 2
+
+--------- TA --------
+  
+   TA_1 // Codigo de correspondencia (genera sistema)
+   TA_2 // Fecha Maxima
+   TA_3 // Fehcha de aviso
+   TA_4 // Si se realizo seria un numero (0,1) = Sin atender, atendida
+   

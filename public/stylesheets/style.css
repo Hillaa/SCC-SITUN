@@ -1,0 +1,17 @@
+
+
+a {
+  color: #00B7FF;
+}
+
+.selected{
+	color:red;
+}
+
+.error{
+	box-shadow: 0 0 5px 1px red;
+}
+
+.ok2{
+	box-shadow: none;
+}
