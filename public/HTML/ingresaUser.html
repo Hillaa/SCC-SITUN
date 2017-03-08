@@ -34,7 +34,7 @@
         <span class="icon-bar"></span>
     </button>
 
-   <IMG SRC="../images/situn2.png" WIDTH=100 HEIGHT=100  class="nav navbar-nav navbar-right">
+   <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=90  class="nav navbar-nav navbar-right">
     </div>
 	
     <!-- Menu -->
@@ -48,10 +48,11 @@
 		<!--li><a href="#"style="color:#FFFFFF;">Escanear</a></li-->
 		<li><a href="../HTML/ingresaUser"style="color:#FFFFFF;">Agregar Usuario</a></li>
 		<li><a href="../HTML/BusquedaUsuarios"style="color:#FFFFFF;">Buscar Usuarios</a></li>
-	    <li><a href="#" style="color:#FFFFFF;">Ayuda</a></li>
+	    <li><a href="../logout"style="color:#FFFFFF;">Cerrar sesion</a></li>
+		<li><a href="#" style="color:#FFFFFF;">Ayuda</a></li>
       </ul>
     
-        <IMG SRC="../images/situn2.png" WIDTH=100 HEIGHT=100  class="nav navbar-nav navbar-right">
+        <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=90  class="nav navbar-nav navbar-right">
 		
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -135,7 +136,7 @@
 						
  function MIU_08(){//Realiza la consulta si un usuario existe
  
-	let d = $('#IU1').val().toUpperCase();
+	let d = $('#IU4').val().toUpperCase();
 	 fetch( 'http://localhost:3000/api/TP/B', {  
     method: 'POST', 
     datatype:'json',
@@ -147,12 +148,15 @@
 	)	 .then(res => res.json())
      	
 		.then(obj =>{
-		if(obj.data[0]==null)
+		if(obj.data[0]==null){
+		setTimeout('MIU_05()', 1500);
 		MIU_01();
+		}
 		else	
 		$("#mensaje").text("Fallo al realizar la acción,\n el usuario a ingresar ya existe"); 
 		
 		}) 
+	//	.then( _ => setTimeout('MIU_05()', 2000))
 		.catch(err => console.log('Request failed', err));
 		
 	
@@ -243,16 +247,19 @@ function MIU_02(){	 //Valida los campos
 	I4 = true;
 	I5 = true;
 	I6= true;
+	I7= true;
 
-	if($("#IU1").val().length == 0){
+	if($("#IU1").val().length == 0 ){
 		$("#div1").attr('class','form-group has-error') ;
 		$("#IU1").attr('title','Campo Obligatorio') ;
+		
 		I1 = false;
 	}
 	else{
 	$("#div1").attr('class','form-group') ;
 	$("#IU1").attr('title','');
 	}
+		
 	if($("#IU2").val().length == 0){
 		$("#div2").attr('class','form-group has-error') ;
 		$("#IU2").attr('title','Campo Obligatorio') ;
@@ -275,6 +282,17 @@ function MIU_02(){	 //Valida los campos
 		$("#div4").attr('class','form-group has-error') ;
 		$("#IU4").attr('title','Campo Obligatorio') ;
 		I4 = false;
+	}
+	else{
+	$("#div4").attr('class','form-group') ;
+	$("#IU4").attr('title','');
+	}
+	
+	if(isNaN($("#IU4").val())){
+		$("#div4").attr('class','form-group has-error') ;
+		$("#IU4").attr('title','Formato incorrecto') ;
+		
+		I7 = false;
 	}
 	else{
 	$("#div4").attr('class','form-group') ;
@@ -316,7 +334,7 @@ function MIU_02(){	 //Valida los campos
 	$("#IU5").attr('title','');
 	}
 	
-		return (I1 && I2  && I3  && I4 && I5 && I6 );	
+		return (I1 && I2  && I3  && I4 && I5 && I6 &&I7);	
 }}
 
 function MIU_03(){//Limpia el valor de los campos de entrada
