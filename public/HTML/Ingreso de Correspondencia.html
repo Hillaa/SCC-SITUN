@@ -46,17 +46,18 @@
 	
     <!-- Menu -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav"  style="margin-top:7px;">
-		<!--li><a href=""style="color:#FFFFFF;">SCC-SITUN</a></li--->
+      <ul class="nav navbar-nav" id ='menu' style="margin-top:7px;">
+		<!--li><a href=""style="color:#FFFFFF;">SCC-SITUN</a></li->
         <li ><a href=""style="color:#FFFFFF;">Ingreso Correspondencia</span> </a></li>
         <li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>
         <li><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>	
 		<li><a href="#"style="color:#FFFFFF;">Reportes</a></li>
-		<!--li><a href="#"style="color:#FFFFFF;">Escanear</a></li-->
+		<!--li><a href="#"style="color:#FFFFFF;">Escanear</a></li->
 		<li><a href="../HTML/ingresaUser"style="color:#FFFFFF;">Agregar Usuario</a></li>
 		<li><a href="../HTML/BusquedaUsuarios"style="color:#FFFFFF;">Buscar Usuarios</a></li>
 		<li><a href="#" style="color:#FFFFFF;">Ayuda</a></li>
 		<li><a href="../logout"style="color:#FFFFFF;">Cerrar sesion</a></li>
+		-->
       </ul>
     
         <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=90  class="nav navbar-nav navbar-right">
@@ -226,18 +227,9 @@
 
 $( document ).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
-	/*fetch( 'http://localhost:3000/sessionInfo', {  
-    method: 'GET'
-      }
-	  )
-	.then(res => res.json())
-  	.then(function(response) {
-  		console.log("Informacion de seson recibida...");
-  		console.log(response);
-})
-  .catch(function(error) {  
-   console.log('Request failed', error);  
-  });*/
+	
+
+
 
 
 var u = localStorage.getItem('usuario');
@@ -252,6 +244,23 @@ var u = localStorage.getItem('usuario');
     		localStorage.setItem('usuario', JSON.stringify(req));
     		var name = req.nombre + ' '+ req.apellido;
     		$("#IC8").attr('value', name);
+
+    		var encabezado = '<li ><a href=""style="color:#FFFFFF;">Ingreso Correspondencia</span> </a></li>'+
+        			'<li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>'+
+        			'<li><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>'+
+					'<li><a href="#"style="color:#FFFFFF;">Reportes</a></li>'+
+					'<!--li><a href="#"style="color:#FFFFFF;">Escanear</a></li-->';
+					if(req.tipo === '1')
+					{
+						encabezado+= '<li><a href="../HTML/ingresaUser"style="color:#FFFFFF;">Agregar Usuario</a></li>'+
+						'<li><a href="../HTML/BusquedaUsuarios"style="color:#FFFFFF;">Buscar Usuarios</a></li>';
+					}					
+					encabezado+= '<li><a href="#" style="color:#FFFFFF;">Ayuda</a></li>'+
+					'<li><a href="../logout"style="color:#FFFFFF;">Cerrar sesion</a></li>';
+
+
+
+		$('#menu').html(encabezado);
     		console.log(req);
       	console.log("success!");
     	},  
@@ -261,6 +270,8 @@ var u = localStorage.getItem('usuario');
 
 	});
 }
+
+
   
 
 });
