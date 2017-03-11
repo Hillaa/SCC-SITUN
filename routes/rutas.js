@@ -10,11 +10,18 @@ var passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  //res.render('index', { title: 'Express' });
+
+	var obj = { mensaje: 'Usuario y/o clave incorrectos' };
+	console.log(req.retry);
+	if(req.retry)
+		console.log('retrying');
+	//	obj.retry = true;
+
+  res.render('index', obj);
   //console.log("Ingresando al root");
  // console.log(req.session);
 
-	res.sendFile(path.join(__dirname+'/../public/HTML/index.html'));
+	//res.sendFile(path.join(__dirname+'/../public/HTML/index.html'));
 });
 
 router.get('/HTML/*', function(req, res, next) {

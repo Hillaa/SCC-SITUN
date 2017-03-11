@@ -20,7 +20,7 @@
           <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-        <div class="alert alert-danger"><STRONG>Error: </STRONG>Usuario y/o contraseña incorrectos</div>
+        <div class="alert alert-danger" id= "mensaje"><STRONG>Error: </STRONG> <%= mensaje %></div>
           <form role="form" action="http://localhost:3000/login" method="POST">
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>

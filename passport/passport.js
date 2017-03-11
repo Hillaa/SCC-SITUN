@@ -19,11 +19,12 @@ module.exports = function(passport){
         passwordField : 'password',
 		passReqToCallback: true
 	}, function(req, email, password, done){
-
+	
 		server.getUSR({TU_1:email})
 		.then(function(data){
 			if(data.length === 0) // si no existe el usuario
 			{
+				req.retry = true;
 				return done(null,false, email);
 			}
 			else
@@ -43,6 +44,7 @@ module.exports = function(passport){
 				}
 				else
 				{
+					req.retry = true;
 					return done(null,false, email);
 				}
 				console.log(usr);
