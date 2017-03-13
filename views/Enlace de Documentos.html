@@ -60,17 +60,16 @@
 	   
 	   <table class ="table" style="border: hidden">
 			<tr>
-				<td width = 45%>
+				<td width = '20%'>
 					<div class="col-md-1"></div>
-					<div class="col-md-8">
-						<span  class="text-danger"><h2>Enlace de Documentos</h2></span>
-							
-						<form class="form-horizontal">
-										
+					<div class="col-md-16">
+						<span  class="text-danger"><h2>Enlace de Documentos</h2></span>							
+						<form class="form-horizontal">										
 							<div class="form-group">
-								<div class = "col-sm-8"> <label class=" control-label  text-danger">Criterio de Búsqueda</label>
+								<div class = "col-sm-10"> 
+									<label class=" control-label  text-danger">Criterio de Búsqueda</label>
 								</div>
-								<div class="col-xs-8">
+								<div class="col-xs-12">
 									<select class="form-control input-sm" id="opBusqueda" ng-model = "criterio">
 										<option value="Nº oficio">Nº Oficio
 										<option value="Destinatorio">Destinatorio                                            
@@ -81,9 +80,9 @@
 							</div>
 							
 							<div class="form-group">
-								<div class = "col-sm-8"> <label class="col-sm-2 control-label  text-danger">Documento 1</label>
+								<div class = "col-sm-15"> <label class="col-sm-2 control-label  text-danger">Documento 1</label>
 								</div>
-								<div class="col-xs-8">
+								<div class="col-xs-12">
 									<input type="text" class = "form-control input-sm" id = "Documento1"  ng-model="doc1.tc_3" ng-Keypress = "buscar('Documento1', $event)" ng-click="setCurrent(1)"></input>
 									<input type ="button" class = "btn" id = "editDoc1" value = "editar" ng-click="editar('Documento1')"></input>
 								</div>
@@ -91,15 +90,15 @@
  
 							<div class="form-group">
 								<label class="col-sm-2 control-label  text-danger">Documento 2</label>
-								<div class="col-sm-8">
+								<div class="col-sm-12">
 									<input type="text" class="form-control" id="Documento2"  ng-model = "doc2.tc_3" ng-Keypress = "buscar('Documento2', $event)" ng-click="setCurrent(2)">
 									<input type ="button" class = "btn" id = "editDoc2" value = "editar" ng-click="editar('Documento2')"></input>
 								</div>
 							</div>
 						</form>
           
-						<div class="col-sm-2">
-							<input type = "button"class="btn btn-default" id ="guardar" value = "Realizar Enlace" ng-click = "enlazar()">
+						<div class="col-sm-5">
+							<input type = "button" class="btn btn-default" id ="guardar" value = "Realizar Enlace" ng-click = "enlazar()">
 						</div>
 						<div class="col-sm-3">
       
