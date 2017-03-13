@@ -20,6 +20,9 @@ module.exports = function(passport){
 		passReqToCallback: true
 	}, function(req, email, password, done){
 	
+		req.session.usr = email;
+		req.session.pass = password;
+		
 		server.getUSR({TU_1:email})
 		.then(function(data){
 			if(data.length === 0) // si no existe el usuario

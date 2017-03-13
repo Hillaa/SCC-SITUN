@@ -30,10 +30,12 @@
    </head>
    
     <body  id = "buscar" data-ng-init = "init()">  
-	
+
+    <div id="menuDiv"></div>
+	<!--
 	<nav class="navbar navbar-default" style="background-color:#60161E; ">
     <div class="container-fluid">
-    <!-- ReEsponsive -->
+    <!-- ReEsponsive ->
     <div class="navbar-header" >
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="icon-bar"></span>
@@ -44,7 +46,7 @@
     <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=90  class="nav navbar-nav navbar-right" >
     </div>
 	
-    <!-- Menu -->
+    <!-- Menu ->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav" id ='menu' style="margin-top:7px;">
 		<!--li><a href=""style="color:#FFFFFF;">SCC-SITUN</a></li->
@@ -57,14 +59,14 @@
 		<li><a href="../HTML/BusquedaUsuarios"style="color:#FFFFFF;">Buscar Usuarios</a></li>
 		<li><a href="#" style="color:#FFFFFF;">Ayuda</a></li>
 		<li><a href="../logout"style="color:#FFFFFF;">Cerrar sesion</a></li>
-		-->
+		->
       </ul>
     
         <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=90  class="nav navbar-nav navbar-right">
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div><!-- /.navbar-collapse ->
+  </div><!-- /.container-fluid ->
 </nav>
-	  
+	  -->
 	    <!---Cuerpo--->
 	   <a href='#' onclick='MIC_14();return false' title='Ir Arriba'></a><!--Para subir la pagina--->
 	   <body background="../images/situn4.png" ng-app ng-controller = "ControllerAngular">
@@ -229,7 +231,7 @@ $( document ).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
 	
 
-
+$("#menuDiv").load("/HTML/menu.html"); 
 
 
 var u = localStorage.getItem('usuario');
@@ -244,7 +246,7 @@ var u = localStorage.getItem('usuario');
     		localStorage.setItem('usuario', JSON.stringify(req));
     		var name = req.nombre + ' '+ req.apellido;
     		$("#IC8").attr('value', name);
-
+/*
     		var encabezado = '<li ><a href=""style="color:#FFFFFF;">Ingreso Correspondencia</span> </a></li>'+
         			'<li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>'+
         			'<li><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>'+
@@ -261,6 +263,7 @@ var u = localStorage.getItem('usuario');
 
 
 		$('#menu').html(encabezado);
+		*/
     		console.log(req);
       	console.log("success!");
     	},  

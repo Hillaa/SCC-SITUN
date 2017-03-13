@@ -20,7 +20,11 @@
           <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-        <div class="alert alert-danger" id= "mensaje"><STRONG>Error: </STRONG> <%= mensaje %></div>
+
+        
+        <% if (error) { %> 
+          <div class="alert alert-danger" id= "mensaje"><STRONG>Error: </STRONG> <%= mensaje %></div>
+        <% } %>
           <form role="form" action="http://localhost:3000/login" method="POST">
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
@@ -50,7 +54,20 @@
 $(document).ready(function(){    
         //$("#myModal").modal();  
         
-        $('#myModal').modal({ backdrop: 'static', keyboard: false })  
+        $('#myModal').modal({ backdrop: 'static', keyboard: false });
+
+
+        <% if (error) { %> 
+
+          
+          $('#usrname').val('<%= usr  %>');
+         $('#psw').val('<%= pass  %>');
+        <% } %>
+       /* if(error)
+        {
+          $('#usrname').value('hay error');
+        }
+        */
 });
 
 </script>
