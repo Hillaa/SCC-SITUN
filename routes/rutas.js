@@ -29,6 +29,7 @@ router.get('/', function(req, res, next) {
 	//res.sendFile(path.join(__dirname+'/../public/HTML/index.html'));
 });
 
+/*
 router.get('/HTML/*', function(req, res, next) {
   console.log("Ingresando al Buscar desde " + req.url); 
   console.log(req.session.passport);
@@ -43,11 +44,14 @@ router.get('/HTML/*', function(req, res, next) {
 		console.log("Si esta loggeado XD");
 		var dir = req.url.replace(/%20/g, " ");
 		console.log(req.session.usuario);
+		console.log(dir);
+		//res.render(dir);
 		res.sendFile(path.join(__dirname+'/../public/'+dir+'.html'));
 		//next();
 	}
 });
 
+*/
 router.post('/login',passport.authenticate('local-login',{
 	successRedirect: '/HTML/Ingreso de Correspondencia',
 	failureRedirect: '/',
@@ -64,6 +68,27 @@ router.get('/sessionInfo',function(req, res, next){
 	console.log("Solicitud de info de sesson... "); 
   //console.log(req.session);
 	res.json(req.session.usuario);
+});
+
+router.get('/HTML/*', function(req, res, next) {
+  console.log("Ingresando al Buscar desde " + req.url); 
+  console.log(req.session.passport);
+	if(!req.session.passport)
+	{
+		console.log("No esta loggeado...");
+		//console.log(req.session);
+		res.redirect('/');
+	}
+	else{
+		//req.session.usr = "hola.";
+		console.log("Si esta loggeado XD");
+		var dir = (req.url.replace(/%20/g, " ")).substr(6);
+		console.log(req.session.usuario);
+		console.log(dir);
+		res.render(dir);
+		//res.sendFile(path.join(__dirname+'/../public/'+dir+'.html'));
+		//next();
+	}
 });
 
 
