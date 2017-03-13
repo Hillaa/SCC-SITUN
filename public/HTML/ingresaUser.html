@@ -18,15 +18,16 @@
         <link rel="stylesheet" href="\..\stylesheets\bootstrap.css">   
 	
     <!-- Angular--> 
-	<!--script src="\node_modules\bootstrap\dist\js\angular.min.js"></script--->
+	<!--script src="\node_modules\bootstrap\dist\js\angular.min.js"></script-->
 	
    </head>
    
     <body>  
-	
+	<div id="menuDiv"></div>
+	<!--
 	<nav class="navbar navbar-default" style="background-color:#60161E; ">
     <div class="container-fluid">
-    <!-- ReEsponsive -->
+    <!-- ReEsponsive ->
     <div class="navbar-header" >
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="icon-bar"></span>
@@ -37,15 +38,15 @@
    <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=90  class="nav navbar-nav navbar-right">
     </div>
 	
-    <!-- Menu -->
+    <!-- Menu ->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
        <ul class="nav navbar-nav" style="margin-top:7px;">
-      	<!--li><a href=""style="color:#FFFFFF;">SCC-SITUN</a></li--->
+      	<!--li><a href=""style="color:#FFFFFF;">SCC-SITUN</a></li->
          <li ><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;">Ingreso Correspondencia</span> </a></li>
         <li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>
         <li><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>	
 		<li><a href="#"style="color:#FFFFFF;">Reportes</a></li>
-		<!--li><a href="#"style="color:#FFFFFF;">Escanear</a></li-->
+		<!--li><a href="#"style="color:#FFFFFF;">Escanear</a></li->
 		<li><a href="../HTML/ingresaUser"style="color:#FFFFFF;">Agregar Usuario</a></li>
 		<li><a href="../HTML/BusquedaUsuarios"style="color:#FFFFFF;">Buscar Usuarios</a></li>
 	    <li><a href="../logout"style="color:#FFFFFF;">Cerrar sesion</a></li>
@@ -54,12 +55,12 @@
     
         <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=90  class="nav navbar-nav navbar-right">
 		
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div><!-- /.navbar-collapse ->
+  </div><!-- /.container-fluid ->
 </nav>
-	  
-	   <!---Cuerpo--->
-	   <a href='#' onclick='MIU_14();return false' title='Ir Arriba'></a><!--Para subir la pagina--->
+	  -->
+	   <!---Cuerpo-->
+	   <a href='#' onclick='MIU_14();return false' title='Ir Arriba'></a><!--Para subir la pagina-->
 	   <body background="../images/situn4.png" >
 	     <div class="col-md-1"></div>
 	   <div class="col-md-4">
@@ -115,10 +116,10 @@
 		<!--div class="col-md-6"  ></label></div-->
 			<div class="col-md-3"></div>
 			<div class="col-md-3"> 		
-					<center><div class="date panel-danger" style="background-color:#60161E; color:white; margin-top:240px" ></center><!-- div calendario----->
+					<center><div class="date panel-danger" style="background-color:#60161E; color:white; margin-top:240px" ></center><!-- div calendario-->
 			 
 					<script src="\..\javascripts/bootstrap-datepicker.js"></script> <!---Si se borra el pierde trate de acomodarlo 
-		        en donde estan los otros js pero dice que no se encuentran, como que este y el bootstrap-datepicker.min.js chocan--->	
+		        en donde estan los otros js pero dice que no se encuentran, como que este y el bootstrap-datepicker.min.js chocan-->	
 				</div>
 			  
 		     </div>
@@ -128,6 +129,8 @@
 <script type="text/javascript">
   
   $(document).ready(function () { //Metodo del calendario
+
+  		$("#menuDiv").load("/HTML/menu.html");
                 
                 $('.date').datepicker({         
             });

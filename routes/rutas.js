@@ -11,12 +11,17 @@ var passport = require('passport');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-	var obj = { mensaje: 'Usuario y/o clave incorrectos' };
-	console.log(req.retry);
-	if(req.retry)
-		console.log('retrying');
-	//	obj.retry = true;
+	var obj = { mensaje: 'Usuario y/o clave incorrectos', 
+	error: req.session.retry,
+	usr: req.session.usr,
+	pass: req.session.pass
+	};
+	//console.log(req.session.retry);
 
+	//if(req.session.retry)
+	//	console.log('retrying');
+	//	obj.retry = true;
+	req.session.retry = true;
   res.render('index', obj);
   //console.log("Ingresando al root");
  // console.log(req.session);
