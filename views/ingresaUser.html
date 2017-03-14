@@ -252,9 +252,7 @@ function MIU_02(){	 //Valida los campos
 	I7= true;
 
 	if($("#IU1").val().length == 0 ){
-		$("#div1").attr('class','form-group has-error') ;
-		$("#IU1").attr('title','Campo Obligatorio') ;
-		
+		MIU_12(1);		
 		I1 = false;
 	}
 	else{
@@ -262,24 +260,21 @@ function MIU_02(){	 //Valida los campos
 	}
 		
 	if($("#IU2").val().length == 0){
-		$("#div2").attr('class','form-group has-error') ;
-		$("#IU2").attr('title','Campo Obligatorio') ;
+		MIU_12(2);		
 		I2 = false;
 	}
 	else{
 		MIU_04(2);
 	}
 	if($("#IU3").val().length == 0){
-		$("#div3").attr('class','form-group has-error') ;
-		$("#IU3").attr('title','Campo Obligatorio') ;
+		MIU_12(3);		
 		I3 = false;
 	}
 	else{
 		MIU_04(3);
 	}
 	if($("#IU4").val().length == 0){
-		$("#div4").attr('class','form-group has-error') ;
-		$("#IU4").attr('title','Campo Obligatorio') ;
+		MIU_12(4);		
 		I4 = false;
 	}
 	else{
@@ -289,7 +284,6 @@ function MIU_02(){	 //Valida los campos
 	if(isNaN($("#IU4").val())){
 		$("#div4").attr('class','form-group has-error') ;
 		$("#IU4").attr('title','Formato incorrecto') ;
-		
 		I7 = false;
 	}
 	else{
@@ -298,8 +292,7 @@ function MIU_02(){	 //Valida los campos
 		}
 	}
 	if($("#IU5").val().length == 0){
-		$("#div5").attr('class','form-group has-error') ;
-		$("#IU5").attr('title','Campo Obligatorio') ;
+		MIU_12(5);		
 		I5 = false;
 	}
 	else{
@@ -307,8 +300,7 @@ function MIU_02(){	 //Valida los campos
 	}
 	
 	if($("#IU6").val().length == 0){
-		$("#div6").attr('class','form-group has-error') ;
-		$("#IU6").attr('title','Campo Obligatorio') ;
+		MIU_12(6);		
 		I6 = false;
 	}
 	else{
@@ -320,7 +312,7 @@ function MIU_02(){	 //Valida los campos
 		$("#div5").attr('class','form-group has-error') ;
 		$("#IU5").attr('title','La contraseña no coincide') ;
 		$("#IU5").val("");
-	$("#IU6").val("");
+		$("#IU6").val("");
 		I6 = false;
 	}
 	else{
@@ -384,6 +376,33 @@ function MIU_07(n){//Limpia los campos cuando se enfocan
   MIU_04(n);
  }
  	  
+	  
+
+function MIU_12(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase from-group a has-error
+	switch(op){
+	case 1: $("#div1").attr('class','form-group has-error') ;
+			$("#IU1").attr('title','Campo Obligatorio');
+			break;
+	
+	case 2: $("#div2").attr('class','form-group has-error') ;
+			$("#IU2").attr('title','Campo Obligatorio');
+			break;
+	case 3: $("#div3").attr('class','form-group has-error') ;
+			$("#IU3").attr('title','Campo Obligatorio');
+			break;
+	case 4: $("#div4").attr('class','form-group has-error') ;
+			$("#IU4").attr('title','Campo Obligatorio');
+			break;
+	case 5: $("#div5").attr('class','form-group has-error') ;
+			$("#IU5").attr('title','Campo Obligatorio');
+			break;
+	case 6: $("#div6").attr('class','form-group has-error') ;
+			$("#IU6").attr('title','Campo Obligatorio');
+			break;
+	
+	default: break;
+	}
+}
   
 </script>
     </body>
