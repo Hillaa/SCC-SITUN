@@ -113,7 +113,6 @@
 			   </div>
 		
 		
-		<!--div class="col-md-6"  ></label></div-->
 			<div class="col-md-3"></div>
 			<div class="col-md-3"> 		
 					<center><div class="date panel-danger" style="background-color:#60161E; color:white; margin-top:240px" ></center><!-- div calendario-->
@@ -152,14 +151,14 @@
      	
 		.then(obj =>{
 		if(obj.data[0]==null){
-		setTimeout('MIU_05()', 1500);
+		setTimeout('MIU_05()', 2000);
 		MIU_01();
 		}
 		else	
 		$("#mensaje").text("Fallo al realizar la acción,\n el usuario a ingresar ya existe"); 
 		
 		}) 
-	//	.then( _ => setTimeout('MIU_05()', 2000))
+
 		.catch(err => console.log('Request failed', err));
 		
 	
@@ -259,8 +258,7 @@ function MIU_02(){	 //Valida los campos
 		I1 = false;
 	}
 	else{
-	$("#div1").attr('class','form-group') ;
-	$("#IU1").attr('title','');
+	MIU_04(1);
 	}
 		
 	if($("#IU2").val().length == 0){
@@ -269,8 +267,7 @@ function MIU_02(){	 //Valida los campos
 		I2 = false;
 	}
 	else{
-	$("#div2").attr('class','form-group') ;
-	$("#IU2").attr('title','');
+		MIU_04(2);
 	}
 	if($("#IU3").val().length == 0){
 		$("#div3").attr('class','form-group has-error') ;
@@ -278,8 +275,7 @@ function MIU_02(){	 //Valida los campos
 		I3 = false;
 	}
 	else{
-	$("#div3").attr('class','form-group') ;
-	$("#IU3").attr('title','');
+		MIU_04(3);
 	}
 	if($("#IU4").val().length == 0){
 		$("#div4").attr('class','form-group has-error') ;
@@ -287,8 +283,7 @@ function MIU_02(){	 //Valida los campos
 		I4 = false;
 	}
 	else{
-	$("#div4").attr('class','form-group') ;
-	$("#IU4").attr('title','');
+		MIU_04(4);
 	}
 	
 	if(isNaN($("#IU4").val())){
@@ -298,8 +293,9 @@ function MIU_02(){	 //Valida los campos
 		I7 = false;
 	}
 	else{
-	$("#div4").attr('class','form-group') ;
-	$("#IU4").attr('title','');
+	if(I7&&I4){
+		MIU_04(4);
+		}
 	}
 	if($("#IU5").val().length == 0){
 		$("#div5").attr('class','form-group has-error') ;
@@ -307,8 +303,7 @@ function MIU_02(){	 //Valida los campos
 		I5 = false;
 	}
 	else{
-	$("#div5").attr('class','form-group') ;
-	$("#IU5").attr('title','');
+		MIU_04(5);
 	}
 	
 	if($("#IU6").val().length == 0){
@@ -317,8 +312,7 @@ function MIU_02(){	 //Valida los campos
 		I6 = false;
 	}
 	else{
-	$("#div6").attr('class','form-group') ;
-	$("#IU6").attr('title','');
+		MIU_04(6);
 	}
 	if($("#IU6").val()!=$("#IU5").val()){
 	$("#div6").attr('class','form-group has-error') ;
@@ -331,10 +325,8 @@ function MIU_02(){	 //Valida los campos
 	}
 	else{
 	if(I6&&I5){
-	$("#div6").attr('class','form-group') ;
-	$("#IU6").attr('title','');
-	$("#div5").attr('class','form-group') ;
-	$("#IU5").attr('title','');
+		MIU_04(6);
+		MIU_04(5);
 	}
 	
 		return (I1 && I2  && I3  && I4 && I5 && I6 &&I7);	
@@ -354,12 +346,25 @@ for(let i=1;i<7;i++){
 
 function MIU_04(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase has-error a from-group
 	switch(op){
-	case 1: document.getElementById("div1").className ="form-group" ; break;
-	case 2: document.getElementById("div2").className ="form-group" ; break;
-	case 3: document.getElementById("div3").className ="form-group" ; break;
-	case 4: document.getElementById("div4").className ="form-group" ;break;
-	case 5: document.getElementById("div5").className ="form-group" ;break;
-	case 6: document.getElementById("div6").className ="form-group" ;break;
+	case 1: $("#div1").attr('class','form-group') ;
+			$("#IU1").attr('title','');
+			break;
+	
+	case 2: $("#div2").attr('class','form-group') ;
+			$("#IU2").attr('title','');
+			break;
+	case 3: $("#div3").attr('class','form-group') ;
+			$("#IU3").attr('title','');
+			break;
+	case 4: $("#div4").attr('class','form-group') ;
+			$("#IU4").attr('title','');
+			break;
+	case 5: $("#div5").attr('class','form-group') ;
+			$("#IU5").attr('title','');
+			break;
+	case 6: $("#div6").attr('class','form-group') ;
+			$("#IU6").attr('title','');
+			break;
 	
 	default: break;
 	}

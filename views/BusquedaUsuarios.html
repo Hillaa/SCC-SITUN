@@ -290,7 +290,6 @@ function MB_01($scope)//ControllerAngular
 	}
 	else{
 	  claseNormal(1);
-	$("#IU1").attr('title','');
 	}
 	if($("#IU2").val().length == 0){
 		$("#div2").attr('class','form-group has-error') ;
@@ -299,7 +298,7 @@ function MB_01($scope)//ControllerAngular
 	}
 	else{
 	 claseNormal(2);
-	$("#IU2").attr('title','');
+
 	}
 	if($("#IU3").val().length == 0){
 		$("#div3").attr('class','form-group has-error') ;
@@ -308,7 +307,7 @@ function MB_01($scope)//ControllerAngular
 	}
 	else{
 	 claseNormal(3);
-	$("#IU3").attr('title','');
+
 	}
 	if($("#IU4").val().length == 0){
 		$("#div4").attr('class','form-group has-error') ;
@@ -317,7 +316,7 @@ function MB_01($scope)//ControllerAngular
 	}
 	else{
 	 claseNormal(4);
-	$("#IU4").attr('title','');
+
 	}
 	if($( "#IU4" ).prop("disabled")!=true){ 
 	if($("#IU5").val().length == 0){
@@ -327,7 +326,7 @@ function MB_01($scope)//ControllerAngular
 	}
 	else{
 	 claseNormal(5);
-	$("#IU5").attr('title','');
+
 	}
 	}
 	if($("#IU4").val()!=$("#IU5").val() && $( "#IU4" ).prop("disabled")!=true){
@@ -364,11 +363,21 @@ function limpiarValores(){
   
   function claseNormal(op){
 	switch(op){
-		case 1:  $("#div1").attr('class','form-group'); break;
-		case 2:	 $("#div2").attr('class','form-group'); break;
-		case 3:  $("#div3").attr('class','form-group'); break;
-		case 4:  $("#div4").attr('class','form-group'); break;
-		case 5:  $("#div5").attr('class','form-group'); break;
+		case 1:  $("#div1").attr('class','form-group'); 
+				 $("#IU1").attr('title','');
+				 break;
+		case 2:	 $("#div2").attr('class','form-group'); 
+				$("#IU2").attr('title','');
+				break;
+		case 3:  $("#div3").attr('class','form-group'); 
+				$("#IU3").attr('title','');
+				break;
+		case 4:  $("#div4").attr('class','form-group');
+				$("#IU4").attr('title','');
+				break;
+		case 5:  $("#div5").attr('class','form-group');
+				$("#IU5").attr('title','');
+				break;
 	}
   }
   
@@ -472,7 +481,7 @@ function MB_04($scope) //Toma el criterio de busqueda y devuelve la columna que 
 } 
 
 function MB_05($scope){// limpia el div con el id de buscar
-	document.getElementById('buscar').value="";
+	$("#buscar ").val("");
 	$scope.usuarios = new Array();
 	} 
 	
