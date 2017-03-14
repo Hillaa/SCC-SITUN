@@ -445,17 +445,14 @@ function MIC_02(){	 //Valida los campos
 	IC10 = true;
 	
 	if($("#IC1").val().length == 0){
-		$("#datetimepicker4").attr('class','input-append form-group has-error') ;
-		$("#IC1").attr('title','Campo Obligatorio') ;
+		MIC_23(1);
 		IC1 = false;
 	}
 	else{
 	MIC_04(1);
 	}
 	if($("#IC2").val().length == 0){
-		$("#div2").attr('class','form-group has-error') ;
-		$("#IC2").attr('title','Campo Obligatorio') ;
-		
+		MIC_23(2);		
 		IC2 = false;
 	}
 	else{
@@ -463,56 +460,49 @@ function MIC_02(){	 //Valida los campos
 	}
 	
 	if($("#IC3").val().length == 0){
-		$("#datetimepicker3").attr('class','input-append form-group has-error') ;
-		$("#IC3").attr('title','Campo Obligatorio') ;
+		MIC_23(3);
 		IC3 = false;
 	}
 	else{
 		MIC_04(3);
 		}
 	if($("#IC4").val().length == 0){
-		$("#div4").attr('class','form-group has-error') ;
-		$("#IC4").attr('title','Campo Obligatorio') ;
+		MIC_23(4);
 		IC4 = false;
 	}
 	else{
 		MIC_04(4);
 	}
 	if($("#IC5").val().length == 0){
-		$("#div5").attr('class','form-group has-error') ;
-		$("#IC5").attr('title','Campo Obligatorio') ;
+		MIC_23(5);
 		IC5 = false;
 	}
 	else{
 		MIC_04(5);
 	}
 	if($("#IC6").val().length == 0){
-		$("#div6").attr('class','form-group has-error') ;
-		$("#IC6").attr('title','Campo Obligatorio') ;
+		MIC_23(6);
 		IC6 = false;
 	}
 	else{
 		MIC_04(6);
 	}
 	if($("#IC7").val().length == 0){
-		$("#div7").attr('class','form-group has-error') ;
-		$("#IC7").attr('title','Campo Obligatorio') ;
+		MIC_23(7);
 		IC7 = false;
 	}
 	else{
 		MIC_04(7);
 	}
 	if($("#IC8").val().length == 0){
-		$("#div8").attr('class','form-group has-error') ;
-		$("#IC8").attr('title','Campo Obligatorio') ;
+		MIC_23(8);
 		IC8 = false;
 	}
 	else{
 		MIC_04(8);
 	}
 	if($("#IC9").val().length == 0){
-		$("#div9").attr('class','form-group has-error') ;
-		$("#IC9").attr('title','Campo Obligatorio') ;
+		MIC_23(9);
 		IC9 = false;
 	}
 	else{
@@ -528,13 +518,13 @@ function MIC_02(){	 //Valida los campos
 }
 <!--limpia todos los campos--->
 function MIC_09(){//Metodo de cancelar
-MIC_03();
-MIC_19();
-MIC_14();//sube la pagina
+	MIC_03();
+	MIC_19();
+	MIC_14();//sube la pagina
 }
 function MIC_03(){//Limpia el valor de los campos de entrada
-for(let i=1;i<10;i++){
-MIC_04(i);
+	for(let i=1;i<10;i++){
+	MIC_04(i);
 }
 	$("#IC2").val("");
 	$("#IC3").val("");
@@ -546,13 +536,12 @@ MIC_04(i);
 	$("#IC10").val("");
 	$("#IC13").val("");
 	$("#IC14").val("");
-	
 	$("#IC12").prop("checked",false);
 	$("#IC2").prop("checked",false);
 	$( "#enlace_checkbox" ).prop( "checked", false );
 	}
 function MIC_19(){//Limpia el div con el id=mensaje
-$("#mensaje").text("");
+	$("#mensaje").text("");
 }
 function MIC_04(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase has-error a from-group
 	switch(op){
@@ -636,12 +625,12 @@ function MIC_06(){//Realiza la consulta del id de la ultima correspondencia ingr
  	}
 
 function MIC_07($scope){//Realiza la consulta si la correspondencia a ingresar ya existe
-	  if(MIC_02() == false){
+	if(MIC_02() == false){
 	     $("#mensaje").text("Campos requeridos");
 		 MIC_14();
 	     return;
 		}
-		let parametro = $('#IC2').val().toUpperCase(); 
+	let parametro = $('#IC2').val().toUpperCase(); 
 	fetch( 'http://localhost:3000/api/TC/BO', {  
     method: 'POST', 
     datatype:'json',
@@ -653,18 +642,18 @@ function MIC_07($scope){//Realiza la consulta si la correspondencia a ingresar y
 	)	 
 	.then(res => res.json())
      .then(obj => {
-	if(obj.data[0]==null)
-	   MIC_01($scope);
-	   else{ 
-	if(obj.data[0].tc_3=="SIN OFICIO")
-		MIC_01($scope);
-	else
-	{
-		MIC_14();
-		$("#mensaje").text("Fallo al realizar la acción, la correspondencia a ingresar ya existe"); 
-	}
+		if(obj.data[0]==null)
+			MIC_01($scope);
+		else{ 
+			if(obj.data[0].tc_3=="SIN OFICIO")
+			MIC_01($scope);
+			else
+			{
+			MIC_14();
+			$("#mensaje").text("Fallo al realizar la acción, la correspondencia a ingresar ya existe"); 
+			}
 	  
-	  }
+		}
    })
 	.then( _ => MIC_14())
 	.catch(err => {
@@ -840,6 +829,41 @@ if(fechaAviso.length == 0 || fechaLimite.length == 0){
 	}
 
 	return  ( A1 && A2 && A3  && A4 && A5 && A6 ); 
+}
+
+function MIC_23(op){//Realiza un cambio de clase a los campos de entrada del formulario de la from-group a la clase has-error
+	switch(op){
+	case 1: $("#datetimepicker4").attr('class','input-append form-group has-error') ;
+			$("#IC1").attr('title','Campo Obligatorio') ;
+			break;
+	case 2: $("#div2").attr('class','form-group has-error') ;
+			$("#IC2").attr('title','Campo Obligatorio') ;
+			break;
+	case 3: $("#datetimepicker3").attr('class','input-append form-group has-error') ;
+			$("#IC3").attr('title','Campo Obligatorio') ;
+			break;
+	case 4: $("#div4").attr('class','form-group has-error') ;
+			$("#IC4").attr('title','Campo Obligatorio') ;
+			break;
+	case 5: $("#div5").attr('class','form-group has-error') ;
+			$("#IC5").attr('title','Campo Obligatorio') ;
+			break;
+	case 6: $("#div6").attr('class','form-group has-error') ;
+			$("#IC6").attr('title','Campo Obligatorio') ;
+			break;
+	case 7: $("#div7").attr('class','form-group has-error') ;
+			$("#IC7").attr('title','Campo Obligatorio') ;
+			break;
+	case 8: $("#div8").attr('class','form-group has-error') ;
+			$("#IC8").attr('title','Campo Obligatorio') ;
+			break;
+	case 9: $("#div9").attr('class','form-group has-error') ;
+			$("#IC9").attr('title','Campo Obligatorio') ;
+			break;
+	
+	
+	default: break;
+	}
 }
     
     

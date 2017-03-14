@@ -76,28 +76,28 @@
 				
 				<tr>
                     <td><label class="text-danger">Nombre</label></td>
-					<td><div id="div1" class="form-group"><textarea id="IU1" type="text" class="form-control" onfocus="claseNormal(1)"  ></textarea></div></td>
+					<td><div id="div1" class="form-group"><textarea id="IU1" type="text" class="form-control" onfocus="MBU_11(1)"  ></textarea></div></td>
 				</tr>
 				
 				<tr>
                     <td> <label class="text-danger">Primer Apellido</label> </td>	
-					<td><div id="div2" class="form-group"><textarea id="IU2" type="text" class="form-control" onfocus="claseNormal(2)"></textarea></div></td>				 
+					<td><div id="div2" class="form-group"><textarea id="IU2" type="text" class="form-control" onfocus="MBU_11(2)"></textarea></div></td>				 
 				</tr>
 				
                 <tr>
                     <td> <label class="text-danger">Segundo Apellido</label> </td>
-                   <td><div id="div3" class="form-group"><textarea id="IU3" type="text" class="form-control" onfocus="claseNormal(3)"></textarea></div></td> 
+                   <td><div id="div3" class="form-group"><textarea id="IU3" type="text" class="form-control" onfocus="MBU_11(3)"></textarea></div></td> 
                 </tr>
 				
                 <tr>
 				    <td><label class="text-danger" for="exampleInputPassword1" >Contraseña</label> </td> 
-                    <td><div id="div4" class="form-group"><input type="password" class="form-control" id="IU4" onfocus="claseNormal(4)" disabled></input></div> </td>  
-					<td><button id="btnCambiar" type="button" class="btn btn-default"  onclick = "activar()" style= "margin-left:10px; margin-bottom:10px">Cambiar</button></td>
+                    <td><div id="div4" class="form-group"><input type="password" class="form-control" id="IU4" onfocus="MBU_11(4)" disabled></input></div> </td>  
+					<td><button id="btnCambiar" type="button" class="btn btn-default"  onclick = "MBU_12()" style= "margin-left:10px; margin-bottom:10px">Cambiar</button></td>
                 </tr>
 				
 				<tr>
 				    <td><label class="text-danger" for="exampleInputPassword1" style="display:none" id="LIU5">Confirmar Contraseña</label> </td> 
-                    <td><div id="div5" class="form-group"><input type="password" class="form-control" id="IU5" style="display:none" onfocus="claseNormal(5)"></input></div> </td>  
+                    <td><div id="div5" class="form-group"><input type="password" class="form-control" id="IU5" style="display:none" onfocus="MBU_11(5)"></input></div> </td>  
 					
 			   </tr>
 				
@@ -190,31 +190,31 @@ $(document).ready(function() {
 
 
 let app = angular.module('app', []);
-function MB_01($scope)//ControllerAngular
+function MBU_01($scope)//ControllerAngular
  {
 	$scope.criterio = "identificacion";
 	$scope.usuarios = new Array();
 	$scope.updateUsuarios = c => $scope.usuarios = c;
-	$scope.buscar = _ => MB_02($scope);
-	$scope.clear = _ => MB_05($scope);
-	$scope.obtenerUsuario	= n => asignarUsuario($scope, n); 
-	$scope.actualiza =_ => actualizarInfo($scope);
+	$scope.buscar = _ => MBU_02($scope);
+	$scope.clear = _ => MBU_05($scope);
+	$scope.obtenerUsuario	= n => MBU_14($scope, n); 
+	$scope.actualiza =_ => MBU_06($scope);
   }
   
-   app.controller('ControllerAngular', MB_01); 
+   app.controller('ControllerAngular', MBU_01); 
    
-  function actualizarInfo($scope){
-  console.log('validacion '+validar());
-    if(validar()){
-	console.log('Entro despues de validacion'+validar()); // Quitar
-	actualizarPersona();
-	actualizarUsuario();
-    MB_02($scope);
+  function MBU_06($scope){ //Carga los datos cuando uno actualiza la informacion de un usuario
+ 
+    if(MBU_09()){
+	console.log('Entro despues de validacion'+MBU_09()); // Quitar
+	MBU_07();
+	MBU_08();
+    MBU_02($scope);
 	$('#myModal').modal('hide'); // NUEVO
 	}
   }
   
-  function actualizarPersona(){
+  function MBU_07(){ //Actualiza la informacion de la tabla persona base de datos
     let a = $('#IU0').val().toUpperCase();
 	let b = $('#IU1').val().toUpperCase();
 	let c = $('#IU2').val().toUpperCase(); 
@@ -244,7 +244,7 @@ function MB_01($scope)//ControllerAngular
   }
   
   
-  function actualizarUsuario(){
+  function MBU_08(){ //Actualiza la información de la tabla usuario en la base de datos
     let a = $('#IU0').val();
 	let b = $('#IU4').val();
 	
@@ -276,7 +276,7 @@ function MB_01($scope)//ControllerAngular
   });
  
   }
-  function validar(){
+  function MBU_09(){ //Validación de los campos del pop up editar 
 	I2 = true;
 	I3 = true;
 	I4 = true;
@@ -284,38 +284,34 @@ function MB_01($scope)//ControllerAngular
 	I6= true;
 
 	if($("#IU1").val().length == 0){
-		$("#div1").attr('class','form-group has-error') ;
-		$("#IU1").attr('title','Campo Obligatorio') ;
+		MBU_16(1);
 		I2 = false;
 	}
 	else{
-	  claseNormal(1);
+	  MBU_11(1);
 	}
 	if($("#IU2").val().length == 0){
-		$("#div2").attr('class','form-group has-error') ;
-		$("#IU2").attr('title','Campo Obligatorio') ;
+		MBU_16(2);
 		I3 = false;
 	}
 	else{
-	 claseNormal(2);
+	 MBU_11(2);
 
 	}
 	if($("#IU3").val().length == 0){
-		$("#div3").attr('class','form-group has-error') ;
-		$("#IU3").attr('title','Campo Obligatorio') ;
+		MBU_16(3);
 		I4 = false;
 	}
 	else{
-	 claseNormal(3);
+	 MBU_11(3);
 
 	}
 	if($("#IU4").val().length == 0){
-		$("#div4").attr('class','form-group has-error') ;
-		$("#IU4").attr('title','Campo Obligatorio') ;
+		MBU_16(4);
 		I5 = false;
 	}
 	else{
-	 claseNormal(4);
+	 MBU_11(4);
 
 	}
 	if($( "#IU4" ).prop("disabled")!=true){ 
@@ -325,7 +321,7 @@ function MB_01($scope)//ControllerAngular
 		I6 = false;
 	}
 	else{
-	 claseNormal(5);
+	 MBU_11(5);
 
 	}
 	}
@@ -340,9 +336,9 @@ function MB_01($scope)//ControllerAngular
 	}
 	else{
 	if(I6&&I5){
-	 claseNormal(4);
+	 MBU_11(4);
 	$("#IU4").attr('title','');
-	 claseNormal(5);
+	 MBU_11(5);
 	$("#IU5").attr('title','');
 	}
 	}
@@ -351,17 +347,17 @@ function MB_01($scope)//ControllerAngular
 }
 
 
-function limpiarValores(){
+function MBU_10(){// Limpia los campos de input 
     $("#div5").attr('class','form-group') ;
 	$("#IU5").attr('title','');
 	$("#IU5").val("");
 	let i =1;
 	for(i=1;i<6;i++){
-	   claseNormal(i);
+	   MBU_11(i);
 	}
 }
   
-  function claseNormal(op){
+  function MBU_11(op){ //Cambia de clase los inputs por la clase form-group
 	switch(op){
 		case 1:  $("#div1").attr('class','form-group'); 
 				 $("#IU1").attr('title','');
@@ -381,23 +377,23 @@ function limpiarValores(){
 	}
   }
   
-  function activar(){
+  function MBU_12(){ //Activa el pop up de busqueda
     $("#IU4").removeAttr("disabled");
     $("#LIU5").show();
     $("#IU5").show();	
     $("#btnCambiar").hide();
   }
   
-  function desactivar(){
+  function MBU_13(){ //Desactiva el pop up de busqueda
     $("#IU4").attr('disabled','disabled');
     $("#LIU5").hide();
     $("#IU5").hide();
 	$("#btnCambiar").show();
   }
  
- function asignarUsuario($scope, cor)
- {	desactivar();
-   limpiarValores();
+ function MBU_14($scope, cor)//Carga la informacion de la base de datos
+ {	MBU_13();
+	MBU_10();
 	 fetch( 'http://localhost:3000/api/TPTU/B', {  
     method: 'POST', 
     datatype:'json',
@@ -408,11 +404,11 @@ function limpiarValores(){
       }
 	)	 
 	.then(res => res.json())
-	.then(obj => cargarDatos(obj.data[0])
+	.then(obj => MBU_15(obj.data[0])
 			)
 	.catch(err => console.log('Request failed', err));
  }
-  function cargarDatos(data){
+  function MBU_15(data){ //Carga los datos de los usuarios a la tabla
   console.log(data);
      $("#IU1").val(data.tp_1);
      $("#IU2").val(data.tp_2);
@@ -427,17 +423,17 @@ function limpiarValores(){
 
  }
  
- function MB_02($scope)  //Metodo de Busqueda
+ function MBU_02($scope)  //Metodo de Busqueda
  {
- console.log("Retornado de url > " + MB_03($scope));
+ console.log("Retornado de url > " + MBU_03($scope));
 	let h3 = document.getElementById('buscar').value;
-	 fetch( 'http://localhost:3000/api/TP/'+MB_03($scope), {  
+	 fetch( 'http://localhost:3000/api/TP/'+MBU_03($scope), {  
     method: 'POST', 
     datatype:'json',
     headers: {  
       "Content-type": "application/x-www-form-urlencoded"  
       } ,
-    body: MB_04($scope) + "=" + h3
+    body: MBU_04($scope) + "=" + h3
       }
 	)	 
 	.then(res => res.json())
@@ -447,7 +443,7 @@ function limpiarValores(){
  }
  
  
-function MB_03($scope)// Toma el tipo de busqueda y regresa el sufijo correspondiente a la dirección del servidor
+function MBU_03($scope)// Toma el tipo de busqueda y regresa el sufijo correspondiente a la dirección del servidor
 {
 	let op = $scope.criterio;
 	console.log("El tipo de busqueda es por: |" + op + "|");
@@ -463,7 +459,7 @@ function MB_03($scope)// Toma el tipo de busqueda y regresa el sufijo correspond
 			return 'BA2';
 	}
 }  
-function MB_04($scope) //Toma el criterio de busqueda y devuelve la columna que se debe buscar en la BD
+function MBU_04($scope) //Toma el criterio de busqueda y devuelve la columna que se debe buscar en la BD
 {
 	let op = $scope.criterio;
 	switch(op)
@@ -480,11 +476,36 @@ function MB_04($scope) //Toma el criterio de busqueda y devuelve la columna que 
 	
 } 
 
-function MB_05($scope){// limpia el div con el id de buscar
+function MBU_05($scope){// limpia el div con el id de buscar
 	$("#buscar ").val("");
 	$scope.usuarios = new Array();
-	} 
+	}
 	
+function MBU_16(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase from-group a has-error
+	switch(op){
+	case 1: $("#div1").attr('class','form-group has-error') ;
+			$("#IU1").attr('title','Campo Obligatorio');
+			break;
+	
+	case 2: $("#div2").attr('class','form-group has-error') ;
+			$("#IU2").attr('title','Campo Obligatorio');
+			break;
+	case 3: $("#div3").attr('class','form-group has-error') ;
+			$("#IU3").attr('title','Campo Obligatorio');
+			break;
+	case 4: $("#div4").attr('class','form-group has-error') ;
+			$("#IU4").attr('title','Campo Obligatorio');
+			break;
+	case 5: $("#div5").attr('class','form-group has-error') ;
+			$("#IU5").attr('title','Campo Obligatorio');
+			break;
+	case 6: $("#div6").attr('class','form-group has-error') ;
+			$("#IU6").attr('title','Campo Obligatorio');
+			break;
+	
+	default: break;
+	}
+}
 </script>
 
   
