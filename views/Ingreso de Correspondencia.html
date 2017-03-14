@@ -278,8 +278,6 @@ $("#menuDiv").load("/HTML/menu");
 
 
 
-
-
 let app = angular.module('app', []);
 function MIC_22($scope)//ControllerAngular 
  {
@@ -335,7 +333,6 @@ $("#IC15").click(function(){
 	}
  
  function MIC_20(n){//Limpia los campos cuando se enfocan
- //document.getElementById("IC11").disabled=true;
   MIC_19();
   MIC_04(n);
  }
@@ -347,35 +344,39 @@ function MIC_08(){  //Toma la fecha del sistema y la refleja en el campo de la f
 }
 
 function MIC_21(){ //Cambia el valor del campo referente al numero de oficio si la opcion SIN OFICIO esta marcada
-if(document.getElementById("IC12").checked==true){
-	document.getElementById("IC2").value="SIN OFICIO";
-	document.getElementById("IC2").disabled=true;
+if($("#IC12").is(':checked')){
+	$("#IC2").val("SIN OFICIO");
+	$("#IC2").prop("disabled",true);	
 	}
 	else{
-	document.getElementById("IC2").value="";
-	document.getElementById("IC2").disabled=false;
+	$("#IC2").val("");
+	$("#IC2").prop("disabled",false);
 	}
 }
- $(document).ready(function () {
+/**
+* Funciones de los calendarios de la pagina
+**/
+ $(document).ready(function () {  //Calendario que se muestra en la pagina
                 
                 $('.date').datepicker({
                      
                 });
             
      });
-   $(function() {
+
+  $(function() {     //Calendario de la fecha de oficio
     $('#datetimepicker3').datetimepicker({
       pickTime: false
     });
   });
   
-   $(function() {
+   $(function() { //Calendario de la fecha de aviso de la alarma
     $('#datetimepicker5').datetimepicker({
       pickTime: false
     });
   });
   
-  $(function() {
+  $(function() { //Calendario de la fecha de limite de la alarma
     $('#datetimepicker6').datetimepicker({
       pickTime: false
     });
@@ -414,7 +415,6 @@ if(document.getElementById("IC12").checked==true){
 					if(res.indexOf("error")==-1){
 						$("#mensaje").text("Acción realizada con exito");
 							MIC_13($scope); 
-							//document.getElementById("IC11").disabled=true; //VER
 							console.log($("#enlace_checkbox").is(':checked'));
 							if($("#enlace_checkbox").is(':checked'))
 							{
@@ -422,12 +422,11 @@ if(document.getElementById("IC12").checked==true){
 							}
 					}
 					else
-						document.getElementById("mensaje").innerHTML="Fallo al realizar la acción";
+						$("#mensaje").text("Fallo al realizar la acción"); 
 				});
 	})
   .catch(function(error) {  
-  // document.getElementById("mensaje").innerHTML="Fallo al realizar la acción";
-   console.log('Request failed', error);  
+     console.log('Request failed', error);  
   });
   
 }
@@ -446,86 +445,78 @@ function MIC_02(){	 //Valida los campos
 	IC10 = true;
 	
 	if($("#IC1").val().length == 0){
-		document.getElementById("datetimepicker4").className ="input-append  form-group has-error" ;
-		document.getElementById("IC1").title = "Campo Obligatoria" ;
+		$("#datetimepicker4").attr('class','input-append form-group has-error') ;
+		$("#IC1").attr('title','Campo Obligatorio') ;
 		IC1 = false;
 	}
 	else{
-	document.getElementById("datetimepicker4").className ="input-append  form-group" ;
-	document.getElementById("IC1").title = "" ;
+	MIC_04(1);
 	}
 	if($("#IC2").val().length == 0){
-		document.getElementById("div2").className = "form-group has-error" ;
-		document.getElementById("IC2").title = "Campo Obligatorio";
+		$("#div2").attr('class','form-group has-error') ;
+		$("#IC2").attr('title','Campo Obligatorio') ;
+		
 		IC2 = false;
 	}
 	else{
-	document.getElementById("div2").className ="  form-group" ;
-	document.getElementById("IC2").title = "" ;
+		MIC_04(2);
 	}
 	
 	if($("#IC3").val().length == 0){
-		document.getElementById("datetimepicker3").className = " input-append  form-group has-error" ;
-		document.getElementById("IC3").title = "Campo Obligatorio";
+		$("#datetimepicker3").attr('class','input-append form-group has-error') ;
+		$("#IC3").attr('title','Campo Obligatorio') ;
 		IC3 = false;
 	}
 	else{
-	document.getElementById("datetimepicker3").className ="input-append  form-group" ;
-	document.getElementById("IC3").title = "" ;
-	}
+		MIC_04(3);
+		}
 	if($("#IC4").val().length == 0){
-		document.getElementById("div4").className ="form-group has-error" ;
-		document.getElementById("IC4").title = "Campo Obligatorio";
+		$("#div4").attr('class','form-group has-error') ;
+		$("#IC4").attr('title','Campo Obligatorio') ;
 		IC4 = false;
 	}
 	else{
-	document.getElementById("div4").className =" form-group" ;
-	document.getElementById("IC4").title = "" ;
+		MIC_04(4);
 	}
 	if($("#IC5").val().length == 0){
-		document.getElementById("div5").className = "form-group has-error" ;
-		document.getElementById("IC5").title = "Campo Obligatorio";
+		$("#div5").attr('class','form-group has-error') ;
+		$("#IC5").attr('title','Campo Obligatorio') ;
 		IC5 = false;
 	}
 	else{
-	document.getElementById("div5").className ="  form-group" ;
-	document.getElementById("IC5").title = "" ;
+		MIC_04(5);
 	}
 	if($("#IC6").val().length == 0){
-		document.getElementById("div6").className = "form-group has-error" ;
-		document.getElementById("IC6").title = "Campo Obligatorio";
+		$("#div6").attr('class','form-group has-error') ;
+		$("#IC6").attr('title','Campo Obligatorio') ;
 		IC6 = false;
 	}
 	else{
-	document.getElementById("div6").className ="  form-group" ;
-	document.getElementById("IC6").title = "" ;
+		MIC_04(6);
 	}
 	if($("#IC7").val().length == 0){
-		document.getElementById("div7").className = "form-group has-error" ;
-		document.getElementById("IC7").title = "Campo Obligatorio";
+		$("#div7").attr('class','form-group has-error') ;
+		$("#IC7").attr('title','Campo Obligatorio') ;
 		IC7 = false;
 	}
 	else{
-	document.getElementById("div7").className ="form-group" ;
-	document.getElementById("IC7").title = "" ;
+		MIC_04(7);
 	}
 	if($("#IC8").val().length == 0){
-		document.getElementById("div8").className = "form-group has-error" ;
-		document.getElementById("IC8").title = "Campo Obligatorio";
+		$("#div8").attr('class','form-group has-error') ;
+		$("#IC8").attr('title','Campo Obligatorio') ;
 		IC8 = false;
 	}
 	else{
-	document.getElementById("div8").className ="  form-group" ;
-	document.getElementById("IC8").title = "" ;
+		MIC_04(8);
 	}
 	if($("#IC9").val().length == 0){
-		document.getElementById("div9").className ="form-group has-error" ;
-		document.getElementById("IC9").title = "Campo Obligatorio";
+		$("#div9").attr('class','form-group has-error') ;
+		$("#IC9").attr('title','Campo Obligatorio') ;
 		IC9 = false;
 	}
 	else{
-	document.getElementById("div9").className ="  form-group" ;
-	document.getElementById("IC9").title = "" ;
+		MIC_04(9);
 	}
 	if( $("#IC13").val().length != 0 ||   $("#IC14").val().length != 0  ){ // En caso de programar la alarma
 	  var aux=MIC_18();
@@ -542,7 +533,7 @@ MIC_19();
 MIC_14();//sube la pagina
 }
 function MIC_03(){//Limpia el valor de los campos de entrada
-for(let i=0;i<10;i++){
+for(let i=1;i<10;i++){
 MIC_04(i);
 }
 	$("#IC2").val("");
@@ -551,16 +542,13 @@ MIC_04(i);
 	$("#IC5").val("");
 	$("#IC6").val("");
 	$("#IC7").val("");
-	//document.getElementById("IC8").value = "";
 	$("#IC9").val("");
 	$("#IC10").val("");
 	$("#IC13").val("");
 	$("#IC14").val("");
-	//document.getElementById("mensaje").innerHTML="";
 	
-	//document.getElementById("IC11").disabled=true;
-	document.getElementById("IC12").checked=false;
-	document.getElementById("IC2").disabled=false;
+	$("#IC12").prop("checked",false);
+	$("#IC2").prop("checked",false);
 	$( "#enlace_checkbox" ).prop( "checked", false );
 	}
 function MIC_19(){//Limpia el div con el id=mensaje
@@ -568,16 +556,34 @@ $("#mensaje").text("");
 }
 function MIC_04(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase has-error a from-group
 	switch(op){
-	case 1: document.getElementById("datetimepicker4").className= "input-append form-group";break;
-	case 2: document.getElementById("div2").className ="form-group" ; break;
-	case 3: document.getElementById("datetimepicker3").className ="input-append  form-group" ; break;
-	case 4: document.getElementById("div4").className ="  form-group" ;break;
-	case 5: document.getElementById("div5").className ="  form-group" ;break;
-	case 6: document.getElementById("div6").className ="  form-group" ;break;
-	case 7: document.getElementById("div7").className ="  form-group" ;break;
-	case 8: document.getElementById("div8").className ="  form-group" ;break;
-	case 9: document.getElementById("div9").className ="  form-group" ;break;
-	//case 10: document.getElementById("div10").className ="  form-group" ;break
+	case 1: $("#datetimepicker4").attr('class','input-append  form-group') ;
+			$("#IC1").attr('title','') ;
+			break;
+	case 2: $("#div2").attr('class','input-append  form-group') ;
+			$("#IC2").attr('title','') ;
+			break;
+	case 3: $("#datetimepicker3").attr('class','input-append  form-group') ;
+			$("#IC3").attr('title','') ;
+			break;
+	case 4: $("#div4").attr('class','input-append  form-group') ;
+			$("#IC4").attr('title','') ;
+			break;
+	case 5: $("#div5").attr('class','input-append  form-group') ;
+			$("#IC5").attr('title','') ;
+			break;
+	case 6: $("#div6").attr('class','input-append  form-group') ;
+			$("#IC6").attr('title','') ;
+			break;
+	case 7: $("#div7").attr('class','input-append  form-group') ;
+			$("#IC7").attr('title','') ;
+			break;
+	case 8: $("#div8").attr('class','input-append  form-group') ;
+			$("#IC8").attr('title','') ;
+			break;
+	case 9: $("#div9").attr('class','input-append  form-group') ;
+			$("#IC9").attr('title','') ;
+			break;
+	
 	
 	default: break;
 	}
@@ -588,23 +594,24 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 	
 	var d=new Date();
 	
-	let fecha1 = d.getFullYear() + '-'+(d.getMonth()+1) + '-' + ((d.getDate()<10)?'0':'') + d.getDate();
+	let fecha1 = d.getFullYear() + '-'+ ((d.getMonth()<10)?'0':'') +(d.getMonth()+1) + '-' + ((d.getDate()<10)?'0':'') + d.getDate();
 	let fecha2=$("#IC3").val();
 	//La fecha debe de llevar el formato YYYY/MM/dd
 	
 	let r=fecha2.substring(10, 6)+'-'+fecha2.substring(5, 3)+'-'+fecha2.substring(2, 0);
+	
 	if(fecha1>=r){
-	document.getElementById("datetimepicker4").className ="input-append  form-group " ;
-	document.getElementById("IC1").title = "" ;
-	document.getElementById("datetimepicker3").className ="input-append  form-group " ;
-	document.getElementById("IC3").title = "" ;
+		$("#datetimepicker4").attr('class','input-append  form-group') ;
+		$("#IC1").attr('title','') ;
+		$("#datetimepicker3").attr('class','input-append  form-group') ;
+		$("#IC3").attr('title','') ;
 	return true;}
 	else{
-	document.getElementById("datetimepicker4").className ="input-append  form-group has-error" ;
-	document.getElementById("IC1").title = "Fecha de oficio mayor a la de recibido" ;
-	document.getElementById("datetimepicker3").className ="input-append  form-group has-error" ;
-		document.getElementById("IC3").title = "Fecha de oficio mayor a la de recibido" ;
-	return false;}
+		$("#datetimepicker4").attr('class','input-append form-group has-error') ;
+		$("#IC1").attr('title','La fecha de oficio no debe ser mayor que la fecha de recibido') ;
+		$("#datetimepicker3").attr('class','input-append form-group has-error') ;
+		$("#IC3").attr('title','La fecha de oficio no debe ser mayor que la fecha de recibido') ;
+		return false;}
 }
 function MIC_06(){//Realiza la consulta del id de la ultima correspondencia ingresada
 					//Guarda el dato en el localstorage y cambia a la pagina a la de enlace
@@ -622,7 +629,7 @@ function MIC_06(){//Realiza la consulta del id de la ultima correspondencia ingr
 			let correspondencia = new Correspondencia(obj.data[0].tc_3,y,true); // // Aqui necesitamos los datos de la correspondencia de la BD
 			localStorage.setItem("user",JSON.stringify(correspondencia));
 		})
-		.then( _ => window.location.href='http://localhost:3000/node_modules/bootstrap/dist/paginas/Enlace%20de%20Documentos.html')
+		.then( _ => window.location.href='http://localhost:3000/HTML/Enlace%20de%20Documentos')
 		.catch(function(error) {  
 			console.log('Request failed', error);  
 		});
@@ -758,23 +765,23 @@ let fecha1 = d.getFullYear() + '-'+((d.getMonth()+1<10)?'0':'') +(d.getMonth()+1
 if(fechaAviso.length == 0 || fechaLimite.length == 0){
 	
 	if( fechaAviso.length == 0){
-		document.getElementById("datetimepicker5").className ="input-append  form-group has-error" ;
-		document.getElementById("IC14").title = "Campo Obligatorio" ;
+		$("#datetimepicker5").attr('class','input-append form-group has-error') ;
+		$("#IC14").attr('title','Campo Obligatorio') ;
 		A1=false;
 	}
 	else{
-	document.getElementById("datetimepicker5").className ="input-append  form-group" ;
-	document.getElementById("IC14").title = "" ;
+	$("#datetimepicker5").attr('class','input-append  form-group') ;
+		$("#IC14").attr('title','') ;
 	}
 	
 	  if(fechaLimite.length == 0){
-		document.getElementById("datetimepicker6").className ="input-append  form-group has-error" ;
-		document.getElementById("IC13").title = "Campo Obligatorio" ;
+		$("#datetimepicker6").attr('class','input-append form-group has-error') ;
+			$("#IC13").attr('title','Campo Obligatorio') ;
 		A2=false;
 	}
 	else{
-	document.getElementById("datetimepicker6").className ="input-append  form-group" ;
-	document.getElementById("IC13").title = "" ;
+	$("#datetimepicker6").attr('class','input-append  form-group') ;
+		$("#IC13").attr('title','') ;
 	}
 	
 	}
@@ -788,44 +795,44 @@ if(fechaAviso.length == 0 || fechaLimite.length == 0){
 	let fL=fechaLimite.substring(10, 6)+'-'+fechaLimite.substring(5, 3)+'-'+fechaLimite.substring(2, 0);
 
 	if(fA< fecha1){
-	 document.getElementById("datetimepicker5").className ="input-append  form-group has-error" ;
-	document.getElementById("IC14").title = "La fecha de aviso de la alarma debe ser mayor a la fecha Actual" ;
+	 $("#datetimepicker5").attr('class','input-append form-group has-error') ;
+	$("#IC14").attr('title','La fecha de aviso de la alarma debe ser mayor a la fecha Actual') ;
 	A3=false;
 	
 	}
 	else{
-	document.getElementById("datetimepicker5").className ="input-append  form-group" ;
-	document.getElementById("IC14").title = "" ;
+		$("#datetimepicker5").attr('class','input-append  form-group') ;
+		$("#IC14").attr('title','') ;
 	if(fA>fL){
-	document.getElementById("datetimepicker5").className ="input-append  form-group has-error" ;
-	document.getElementById("IC14").title = "La fecha de Aviso de la alarma no puede ser mayor a la fecha limite de respuesta del documento" ;
+	$("#datetimepicker5").attr('class','input-append form-group has-error') ;
+	$("#IC14").attr('title','La fecha de Aviso de la alarma no puede ser mayor a la fecha limite de respuesta del documento') ;
 	A4=false;
 	
 	}
 	else{
-	document.getElementById("datetimepicker5").className ="input-append  form-group" ;
-	document.getElementById("IC14").title = "" ;
+	$("#datetimepicker5").attr('class','input-append  form-group') ;
+	$("#IC14").attr('title','') ;
 	}
 	}
 	
     if(fL< fecha1){
-	 document.getElementById("datetimepicker6").className ="input-append  form-group has-error" ;
-	document.getElementById("IC13").title = "La fecha Limite de respuesta del documento debe ser mayor a la fecha Actual" ;
+	$("#datetimepicker6").attr('class','input-append  form-group has-error') ;
+	$("#IC13").attr('title','La fecha Limite de respuesta del documento debe ser mayor a la fecha Actual') ;
 	A5=false;
 	
 	}
 	else{
-	document.getElementById("datetimepicker6").className ="input-append  form-group" ;
-	document.getElementById("IC13").title = "" ;
+	$("#datetimepicker6").attr('class','input-append  form-group');
+	$("#IC13").attr('title','') ;
 	if(fA>fL){
-	document.getElementById("datetimepicker5").className ="input-append  form-group has-error" ;
-	document.getElementById("IC14").title = "La fecha de aviso de la alarma no puede ser mayor a la fecha limite de respuesta del documento" ;
+	$("#datetimepicker5").attr('class','input-append  form-group has-error') ;
+	$("#IC13").attr('title','La fecha de aviso de la alarma no puede ser mayor a la fecha limite de respuesta del documento') ;
 	A6=false;
 	
 	}
 	else{
-	document.getElementById("datetimepicker5").className ="input-append  form-group" ;
-	document.getElementById("IC14").title = "" ;
+	$("#datetimepicker5").attr('class','input-append  form-group') ;
+	$("#IC14").attr('title','') ;
 	}
 	}
 	
