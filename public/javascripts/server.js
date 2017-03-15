@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var app = express();
 
+var formidable = require('formidable');
+
 
 var options = {
   // Initialization Options
@@ -57,7 +59,6 @@ function createTU(req, res, next) {
 //-------- CREACION DE UN NUEVO TC EN LA TABLA ----------
 function createTC(req, res, next) {
 	console.log("Insert received...");
-	console.log(req.body);
      db.none('insert into TC (TC_2, TC_3, TC_4, TC_5, TC_6, TC_7, TC_8, TC_9, TC_10, TC_11)' +
       'values(current_date, ${TC_3}, ${TC_4}, ${TC_5}, ${TC_6},${TC_7}, ${TC_8}, ${TC_9}, ${TC_10}, ${TC_11})',
 	     req.body)
