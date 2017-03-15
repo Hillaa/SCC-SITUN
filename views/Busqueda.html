@@ -248,13 +248,13 @@ function MB_01($scope)//ControllerAngular
 	$scope.updateCorrespondencias = c => $scope.correspondencias = c;
 	$scope.buscar = _ => MB_02($scope);
 	$scope.clear = _ => MB_05($scope);
-	$scope.obtenerEnlaces	= n => asignarEnlaces($scope, n);
+	$scope.obtenerEnlaces	= n => MB_06($scope, n);
 	$scope.enlaces = new Array();
   }
   
    app.controller('ControllerAngular', MB_01); 
  
- function asignarEnlaces($scope, cor)
+ function MB_06($scope, cor)
  {	
 	 fetch( 'http://localhost:3000/api/ALL/ENLACES', {  
     method: 'POST', 
@@ -329,7 +329,7 @@ function MB_04($scope) //Toma el criterio de busqueda y devuelve la columna que 
 } 
 
 function MB_05($scope){// limpia el div con el id de buscar
-	document.getElementById('buscar').value="";
+	$("#buscar").val("");
 	$scope.correspondencias = new Array();
 	} 
 </script>
