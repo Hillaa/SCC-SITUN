@@ -36,12 +36,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
 app.use(express.static('HTML', {
   dotfiles: 'deny'
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+//app.use(bodyParser({uploadDir:'./Adjunto'}));
 
 app.use(passport.initialize());
 app.use(passport.session());

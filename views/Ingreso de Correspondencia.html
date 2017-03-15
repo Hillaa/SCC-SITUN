@@ -145,14 +145,17 @@
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
 					</div>
 		
-			<div  style="display:none" id="div_dias"><span class="text-danger"><h4>Cantidad de días:</h4></span>
-				<input type="text"  class="form-control" id = "input_dias"></input>
-	  		</div>
 				<!--<button id="IC11" style="margin-top:15px"type="button" onclick="MIC_06()"class="btn btn-default"disabled>Enlace</button><!--</a>-->
 				<label class="text-danger" style=""><input  type="checkbox" id="enlace_checkbox" value="enlace_checkbox">Con Enlace</label>
 		<div style="margin-top:60px"><label id="mensaje" class="text-danger"></label></div>
 		
-		</div>
+	
+		<input id = "adjun" type="file" name="adjunto" accept=".pdf" onchange="prueba(this.value)" > <!-- NUEVO -->
+		 <a id="hrefAdjunto" target="_blank" style = "display:none" title=>Ver Documento</a> <!-- NUEVO -->
+		<!-- <embed src="a.pdf"  width="250" height="375"> </embed> QUITAR --> 
+		
+		
+		 </div>
 	
 		<div class="col-md-1 "></div><!--Genera el espacio entre componentes---->	
 		
@@ -222,15 +225,14 @@
   
 	   
 <script type="text/javascript">
+
+
  document.addEventListener("DOMContentLoaded", MIC_08);
  
-
-
-
 $( document ).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
 	
-
+	
 var u = localStorage.getItem('usuario');
 //if(!u)
 {
@@ -279,6 +281,14 @@ $("#menuDiv").load("/HTML/menu");
 
 
 let app = angular.module('app', []);
+
+function prueba(valor){ // NUEVO ---- VER
+	console.log("Valor del elemento adjunto  "+document.getElementById("adjun").files[0].name ); // Da el nombre del archivo
+	console.log(valor);
+document.getElementById("hrefAdjunto").href = document.getElementById("adjun").files[0].name;
+$("#hrefAdjunto").show();
+}
+
 function MIC_22($scope)//ControllerAngular 
  {
 	$scope.alarmas = new Array();
@@ -397,12 +407,14 @@ if($("#IC12").is(':checked')){
 	let i3 = '1'; // cambiar solo lo puse por que si no mamaron al ingresar
 	let j3 = $('#IC9').val().toUpperCase();
     let k3 = $('#IC10').val().toUpperCase();
-
+    let adj = document.getElementById("adjun").files[0];//$('#adjun').prop('files');
+    console.log(adj);
  fetch( 'http://localhost:3000/api/TC/I', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
-      "Content-type": "application/x-www-form-urlencoded"  
+      "Content-type": "application/x-www-form-urlencoded",
+
       } ,
     body: "TC_2="+ b3+ "&TC_3="+c3+
 	"&TC_4="+ d3 + "&TC_5="+ e3 +"&TC_6="+ f3 + 
@@ -410,6 +422,7 @@ if($("#IC12").is(':checked')){
       }
 	  )
   .then(function(response) {
+
 		return response.text().then(function(res) {
 				console.log("Resultado: "+res);
 					if(res.indexOf("error")==-1){
@@ -420,6 +433,13 @@ if($("#IC12").is(':checked')){
 							{
 								MIC_06();
 							}
+
+							 var formData  = new FormData();		
+							 formData.append('arc', adj);
+							fetch('http://localhost:3000/upload', {
+    						method: 'POST',
+    						body: formData
+  });
 					}
 					else
 						$("#mensaje").text("Fallo al realizar la acción"); 

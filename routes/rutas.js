@@ -8,6 +8,8 @@ var url = require("url");
 
 var passport = require('passport');
 
+var formidable = require('formidable');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
@@ -57,6 +59,20 @@ router.post('/login',passport.authenticate('local-login',{
 	failureRedirect: '/',
 	filureFlash: false
 }));
+
+router.post('/upload',function(req, res){
+	var entrada = new formidable.IncomingForm();
+	entrada.uploadDir ='Adjunto';
+	entrada.parse(req);
+    entrada.on('fileBegin', function(field, file){
+        file.path = "./public/Adjunto/"+file.name;
+    });	
+    entrada.on('end', function(){
+		
+		res.end();
+    });
+	console.log("Solicitud de upload...");
+});
 
 router.get('/logout',function(req, res){
 	req.logout();
