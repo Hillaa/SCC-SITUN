@@ -61,7 +61,43 @@
   </div><!-- /.container-fluid ->
 </nav>
 	  -->
+	  
+	  	<!-- Trigger the modal with a button -->
+<!-- Modal -->
+<div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:500px;">
+  <div class="well">
+   
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="text-danger">Ayuda</h4>
+      </div>
+      <div class="modal-body">
+		<right>
+                <tbody>
+				Busqueda de Correspondencia:<p>
+					Para buscar una correspondencia se deberá escribir en el espacio correspondiente
+					el asunto, numero de oficio, destinatario o remitente de la correspondencia, esto 
+					dependiendo del criterio de busqueda que selecciono y presionar el botón Buscar.
+					Las correspondencias que estarán relacionadas apareceran en el cuadro que se 
+					muestra en la página.<p>
+					
+				Ver Enlaces:<p>	
+					En este apartado tambien podrá ver los enlaces que tienen las correspondencias
+					presionando el botón Ver Enlaces de cada correspondencia.	
+				</tbody> 
+	       </right>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center>	
+      </div>
+    </div>
 
+  </div>
+  </div>  <!-- fin del popup de ayuda --> 
+	  
 
 	  <!-- Trigger the modal with a button -->
 <!-- Modal -->
@@ -194,7 +230,11 @@
 
 $(document).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
-	$("#menuDiv").load("/HTML/menu.html");
+	$("#menuDiv").load("/HTML/menu");
+		$("#ayuda").click(
+	function(){
+		$("#miAyuda").show();
+	});
 
 });
 
