@@ -84,16 +84,16 @@
 								<div class = "col-sm-15"> <label class="col-sm-2 control-label  text-danger">Documento 1</label>
 								</div>
 								<div class="col-xs-12">
-									<input type="text" class = "form-control input-sm" id = "Documento1"  ng-model="doc1.tc_3" ng-Keypress = "buscar('Documento1', $event)" ng-click="setCurrent(1)"></input>
-									<input type ="button" class = "btn" id = "editDoc1" value = "editar" ng-click="editar('Documento1')"></input>
+									<input type="text" class = "form-control input-sm" id = "E1"  ng-model="doc1.tc_3" ng-Keypress = "buscar('E1', $event)" ng-click="setCurrent(1)"></input>
+									<input type ="button" class = "btn" id = "E3" value = "editar" ng-click="editar('E1')"></input>
 								</div>
 							</div>
  
 							<div class="form-group">
 								<label class="col-sm-2 control-label  text-danger">Documento 2</label>
 								<div class="col-sm-12">
-									<input type="text" class="form-control" id="Documento2"  ng-model = "doc2.tc_3" ng-Keypress = "buscar('Documento2', $event)" ng-click="setCurrent(2)">
-									<input type ="button" class = "btn" id = "editDoc2" value = "editar" ng-click="editar('Documento2')"></input>
+									<input type="text" class="form-control" id="E2"  ng-model = "doc2.tc_3" ng-Keypress = "buscar('E2', $event)" ng-click="setCurrent(2)">
+									<input type ="button" class = "btn" id = "E4" value = "editar" ng-click="editar('E2')"></input>
 								</div>
 							</div>
 						</form>
@@ -157,15 +157,15 @@ $(document).ready(function() {
   let banderita;
 function ME_01(){  //metodo para recuperar el id de la correspondencia guardado en el local storage
 
-	$("#editDoc1").hide();
-	$("#editDoc2").hide();
+	$("#E3").hide();
+	$("#E4").hide();
 
 	 obj  = JSON.parse(localStorage.getItem("user"));
 	 console.log("Objeto cargado de local.." + localStorage.getItem("user"));
 	  banderita = obj.bandera;
 	  if ( banderita==true){
-	  $("#Documento1").val(obj.numOficio);
-	  $("#Documento1").prop("disabled", true );
+	  $("#E1").val(obj.numOficio);
+	  $("#E1").prop("disabled", true );
 	  
 	  }
 	  localStorage.clear();
@@ -187,30 +187,30 @@ function ME_02($scope)//ControllerAngular
 	$scope.criterio = "Asunto";	
 	$scope.init = _ => console.log("Se ha iniciado el sistema...");
 	$scope.setCurrent = c => $scope.current = c;
-	$scope.updateDoc = a => ME_03(a, $scope);//$scope.current == 1? ($scope.doc1 = a, deshabilitar('Documento1')): ($scope.doc2 = a, deshabilitar('Documento2'));
+	$scope.updateDoc = a => ME_03(a, $scope);//$scope.current == 1? ($scope.doc1 = a, deshabilitar('E1')): ($scope.doc2 = a, deshabilitar('E2'));
 	
 	$scope.updateCorrespondencias = c => $scope.correspondencias = c;
 	$scope.buscar = (a,b) => ME_05(a,$scope,b);
 	$scope.enlazar = _ => ME_06($scope);
 	
-	$scope.editar = d => ME_04(d, $scope);//(d == "Documento1") ? ($scope.doc1 = null, habilitar(d)) : ($scope.doc2 = null, habilitar(d));
+	$scope.editar = d => ME_04(d, $scope);//(d == "E1") ? ($scope.doc1 = null, habilitar(d)) : ($scope.doc2 = null, habilitar(d));
 		
   }
   
    app.controller('ControllerAngular', ME_02);
    
    
-	function ME_03(a, $scope)//Modifica ellos campos documento1 o documento2
+	function ME_03(a, $scope)//Modifica los campos E1 o E2
 	{
-		$scope.current == 1? ($scope.doc1 =  a, $("#editDoc1").show() ): ($scope.doc2 = a , $("#editDoc2").show());
-		let id = ($scope.current == 1)? "Documento1" : "Documento2";
+		$scope.current == 1? ($scope.doc1 =  a, $("#E3").show() ): ($scope.doc2 = a , $("#E4").show());
+		let id = ($scope.current == 1)? "E1" : "E2";
 		$("#" + id ).attr("value",a.tc_3);
 		$("#" + id ).prop('disabled', true);
 	}
 	
 	function ME_04(d, $scope)//Edita el documento
 	{
-		(d == "Documento1") ? ($scope.doc1 = null, $("#editDoc1").hide()) : ($scope.doc2 = null, $("#editDoc2").hide());
+		(d == "E1") ? ($scope.doc1 = null, $("#E3").hide()) : ($scope.doc2 = null, $("#E4").hide());
 		$("#"+d).prop('disabled', false);
 		$("#mensaje").html('');
 	}
@@ -328,10 +328,10 @@ function ME_09($scope) //Toma el criterio de busqueda y devuelve la columna que 
   }
   
   function ME_07(){//Limpia los campos , Metodo Cancelar
-	$("#Documento1").val("");
-	$("#Documento2").val("");
-	$("#Documento1").prop("disabled",false);
-	$("#Documento2").prop("disabled",false);
+	$("#E1").val("");
+	$("#E2").val("");
+	$("#E1").prop("disabled",false);
+	$("#E2").prop("disabled",false);
 	$("#mensaje").html('');
   
 	if(banderita == true)

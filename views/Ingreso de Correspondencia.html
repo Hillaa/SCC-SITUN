@@ -146,7 +146,7 @@
 					</div>
 		
 				<!--<button id="IC11" style="margin-top:15px"type="button" onclick="MIC_06()"class="btn btn-default"disabled>Enlace</button><!--</a>-->
-				<label class="text-danger" style=""><input  type="checkbox" id="enlace_checkbox" value="enlace_checkbox">Con Enlace</label>
+				<label class="text-danger" style=""><input  type="checkbox" id="IC16" value="enlace_checkbox">Con Enlace</label>
 		<div style="margin-top:60px"><label id="mensaje" class="text-danger"></label></div>
 		
 	
@@ -301,8 +301,9 @@ function MIC_22($scope)//ControllerAngular
   }
   
    app.controller('ControllerAngular', MIC_22); 
-  function MIC_10($scope) {
   
+  function MIC_10($scope) { //Busca todas las alarmas correspondientes al dia para ser mostradas
+    
 	 fetch( 'http://localhost:3000/api/TA/ALL_FECHA', {  
     method: 'POST', 
     datatype:'json',
@@ -316,7 +317,7 @@ function MIC_22($scope)//ControllerAngular
 	.catch(err => console.log('Request failed', err));
  }
  
- function MIC_11(a, $scope){
+ function MIC_11(a, $scope){ //Elimina las alarmas de la tabla alarma
 
 $("#IC15").click(function(){
     fetch( 'http://localhost:3000/api/TA/UD', {  
@@ -428,8 +429,8 @@ if($("#IC12").is(':checked')){
 					if(res.indexOf("error")==-1){
 						$("#mensaje").text("Acción realizada con exito");
 							MIC_13($scope); 
-							console.log($("#enlace_checkbox").is(':checked'));
-							if($("#enlace_checkbox").is(':checked'))
+							console.log($("#IC16").is(':checked'));
+							if($("#IC16").is(':checked'))
 							{
 								MIC_06();
 							}
@@ -558,7 +559,7 @@ function MIC_03(){//Limpia el valor de los campos de entrada
 	$("#IC14").val("");
 	$("#IC12").prop("checked",false);
 	$("#IC2").prop("checked",false);
-	$( "#enlace_checkbox" ).prop( "checked", false );
+	$( "#IC16" ).prop( "checked", false );
 	}
 function MIC_19(){//Limpia el div con el id=mensaje
 	$("#mensaje").text("");
@@ -702,7 +703,7 @@ function MIC_07($scope){//Realiza la consulta si la correspondencia a ingresar y
 		console.log('Fecha limte '+b5);  // QUITAR
 			console.log('Fecha aviso '+c5);
 		let d5 = 0;
-	    if( !$("#enlace_checkbox").is(':checked'))
+	    if( !$("#IC16").is(':checked'))
 		{
 			MIC_03();
 		}
@@ -758,7 +759,7 @@ function MIC_07($scope){//Realiza la consulta si la correspondencia a ingresar y
    	);
 	}
 	
-function MIC_18(){
+function MIC_18(){ //Valida los campos de la programación de alarmas
 let A1=true;
 let  A2=true;
 let A3= true;
