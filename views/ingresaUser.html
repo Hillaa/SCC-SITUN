@@ -57,14 +57,46 @@
 		
     </div><!-- /.navbar-collapse ->
   </div><!-- /.container-fluid ->
-</nav>
-	  -->
+</nav>   -->
+
+  	<!-- Trigger the modal with a button -->
+<!-- Modal -->
+	  
+<div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:325px;">
+  <div class="modal-dialog">
+   
+    <!-- Modal content-->
+   <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="text-danger">Ayuda</h4>
+      </div>
+      <div class="modal-body">
+		<center>
+                <tbody>
+					Para ingresar un usuario se debe llenar todos los campos requeridos
+					en la página correctamente, en caso de que el usuario que se va a
+					ingresar es un administrador en el sistema, se deberá seleccionar la 
+					opción Administrador y presionar el botón Guardar. Sino es un administrador 
+					no se debe de seleccionar esa opción.				
+				</tbody> 
+	       </center>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center>	
+      </div>
+    </div>
+
+  </div>
+  </div>  <!-- fin del popup de ayuda --> 
+
 	   <!---Cuerpo-->
 	   <a href='#' onclick='MIU_14();return false' title='Ir Arriba'></a><!--Para subir la pagina-->
 	   <body background="../images/situn4.png" >
 	     <div class="col-md-1"></div>
 	   <div class="col-md-4">
-         <span class="text-danger"><h3>Ingresar Usuario</h3></span><br><br>
+         <span class="text-danger"><h3>Ingresar Usuario</h3></span><br>
             <form name = "Formulario">
             <table id ="tablaIU">
                 <tbody>
@@ -133,6 +165,10 @@
                 
                 $('.date').datepicker({         
             });
+			$('#ayuda').click(
+		function(){
+			$('#miAyuda').show();
+			});
      });
  
 						

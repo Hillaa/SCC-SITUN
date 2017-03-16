@@ -219,7 +219,7 @@
 						<button   type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" ng-click="obtenerUsuario(c)">Editar</button>
 					</td>
 					<td> 
-						<button type="button" id="btnEliminar" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" ng-click="obtenerUsuario(c)"><img src="../../../../images/eliminar.png" width="20" height="20"/></button>
+						<button type="button" id="btnEliminar" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" ng-click="obtenerUsuarios(c)"><img src="../../../../images/eliminar.png" width="20" height="20"/></button>
 					</td>
 			</tr>
 		</tbody>       
@@ -249,7 +249,7 @@ function MB_01($scope)//ControllerAngular
 	$scope.buscar = _ => MB_02($scope);
 	$scope.clear = _ => MB_05($scope);
 	$scope.obtenerUsuario	= n => asignarUsuario($scope, n);
-    $scope.obtenerUsuario	= s => asignarUsuario2($scope, s);	
+    $scope.obtenerUsuarios	= s => asignarUsuario2($scope, s);	
 	$scope.eliminarUsuarios	= e => eliminarUsuarios($scope, e); 
 	$scope.actualiza =_ => actualizarInfo($scope);
   }
@@ -442,6 +442,7 @@ function limpiarValores(){
  function asignarUsuario($scope, cor)
  {	desactivar();
    limpiarValores();
+   console.log("entran  asigna");
 	 fetch( 'http://localhost:3000/api/TPTU/B', {  
     method: 'POST', 
     datatype:'json',
