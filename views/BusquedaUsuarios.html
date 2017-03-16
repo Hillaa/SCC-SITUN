@@ -31,7 +31,6 @@
     </button>
   <IMG SRC="../images/situn2.png" WIDTH=85 HEIGHT=58  class="nav navbar-nav navbar-right">
     </div>
-
     <!-- Menu ->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav" style="margin-top:7px;">
@@ -238,7 +237,6 @@
          <p align="left"><p align="left">
 		 <div class="table table-bordered" >
 	    <p align="left"><table class="table" id="tabla_busqueda">
-
 		<thead> 
 			<tr class="danger">
 			<td>Identicación</td>
@@ -271,7 +269,6 @@
 	
 <script type="text/javascript">
   
-
 $(document).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
 	$("#menuDiv").load("/HTML/menu");
@@ -279,11 +276,8 @@ $(document).ready(function() {
 	function(){
 	$("#miAyuda").show();
 	});
-
 });
-
 let app = angular.module('app', []);
-
 function MB_01($scope)//ControllerAngular
  {
 	$scope.criterio = "identificacion";
@@ -378,7 +372,6 @@ function MB_01($scope)//ControllerAngular
 	I4 = true;
 	I5 = true;
 	I6= true;
-
 	if($("#IU1").val().length == 0){
 		$("#div1").attr('class','form-group has-error') ;
 		$("#IU1").attr('title','Campo Obligatorio') ;
@@ -443,11 +436,8 @@ function MB_01($scope)//ControllerAngular
 	$("#IU5").attr('title','');
 	}
 	}
-
 		return (I2  && I3  && I4 && I5 && I6 );	
 }
-
-
 function limpiarValores(){
     $("#div5").attr('class','form-group') ;
 	$("#IU5").attr('title','');
@@ -519,7 +509,6 @@ function limpiarValores(){
 	 
 	 else
 		$("#administrador_checkbox").prop("checked", "");
-
  }
  
  function MB_02($scope)  //Metodo de Busqueda
@@ -582,7 +571,6 @@ function MB_04($scope) //Toma el criterio de busqueda y devuelve la columna que 
 	}
 	
 } 
-
 function MB_05($scope){// limpia el div con el id de buscar
 	document.getElementById('buscar').value="";
 	$scope.usuarios = new Array();
