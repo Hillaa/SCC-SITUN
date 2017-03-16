@@ -164,9 +164,9 @@ function ME_01(){  //metodo para recuperar el id de la correspondencia guardado 
 	 console.log("Objeto cargado de local.." + localStorage.getItem("user"));
 	  banderita = obj.bandera;
 	  if ( banderita==true){
-	  document.getElementById("Documento1").value=obj.numOficio;
-	  document.getElementById("Documento1").disabled=true;
-	 // localStorage.clear();
+	  $("#Documento1").val(obj.numOficio);
+	  $("#Documento1").prop("disabled", true );
+	  
 	  }
 	  localStorage.clear();
 }
@@ -212,7 +212,7 @@ function ME_02($scope)//ControllerAngular
 	{
 		(d == "Documento1") ? ($scope.doc1 = null, $("#editDoc1").hide()) : ($scope.doc2 = null, $("#editDoc2").hide());
 		$("#"+d).prop('disabled', false);
-		  document.getElementById("mensaje").innerHTML="";
+		$("#mensaje").html('');
 	}
   
 /*
@@ -222,7 +222,8 @@ function ME_02($scope)//ControllerAngular
 	function ME_05(id, $scope,h) //Metodo de buscar
 	{
 		let keycode = (h.which)?h.which : h.keyCode;
-		let h3 = document.getElementById(id).value;
+		
+		let h3 = $("#" + id ).val();
 		let criterio = ((keycode != 8)?(h3 + String.fromCharCode(keycode)) : h3.substr(0,h3.length-1)).toUpperCase();
 
 	
@@ -296,7 +297,8 @@ function ME_09($scope) //Toma el criterio de busqueda y devuelve la columna que 
 		
 		console.log(a4 , b4);
 		if(a4==b4){
-		document.getElementById("mensaje").innerHTML="Fallo al realizar la acción, el documento a enlazar es el mismo";
+		$("#mensaje").html('Fallo al realizar la acción, el documento a enlazar es el mismo');
+		
 		}
 		else{
 		fetch( 'http://localhost:3000/api/TE/I', {  
@@ -312,11 +314,11 @@ function ME_09($scope) //Toma el criterio de busqueda y devuelve la columna que 
 			return response.text().then(function(res) {
 					if(res.indexOf("error")==-1){
 						console.log(res);
-						document.getElementById("mensaje").innerHTML="Acción realizada con exito";
+						$("#mensaje").html('Acción realizada con exito');
 						setTimeout(ME_07, 2000);
 					}
 					else
-						document.getElementById("mensaje").innerHTML="Fallo al realizar la acción";
+						$("#mensaje").html('Fallo al realizar la acción');
 			});
 		})
 		.catch(function(error) {  
@@ -326,20 +328,20 @@ function ME_09($scope) //Toma el criterio de busqueda y devuelve la columna que 
   }
   
   function ME_07(){//Limpia los campos , Metodo Cancelar
-	document.getElementById("Documento1").value="";
-	document.getElementById("Documento2").value="";
-	document.getElementById("Documento1").disabled=false;
-	document.getElementById("Documento2").disabled=false;
-	document.getElementById("mensaje").innerHTML="";
+	$("#Documento1").val("");
+	$("#Documento2").val("");
+	$("#Documento1").prop("disabled",false);
+	$("#Documento2").prop("disabled",false);
+	$("#mensaje").html('');
   
 	if(banderita == true)
 	{
 		localStorage.clear();
-		window.location.href ='http://localhost:3000/index.html'
+		window.location.href ='http://localhost:3000/HTML/Ingreso%20de%20Correspondencia'
 	}
   }
   
-  /*Super comentario para poder subir los cambios al cochino github*/
+  
     
 </script>
 

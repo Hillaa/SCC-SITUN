@@ -122,8 +122,56 @@
   </div>
 </div>
 
-	   <!---Cuerpo-->
-	   <body background="../images/situn4.png">
+<!---nuevo eliminacion-->
+<!-- CUADRO DE ELIMINACION -->
+
+<!-- Modal -->
+
+<div class="col-md-1"></div>
+	   
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+   
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="text-danger">Eliminacion de Usuarios</h4>
+      </div>
+      <div class="modal-body">
+		<center><table  id ="tablaAU">
+                <tbody>
+				<tr>
+                    <td><label  class="text-danger">¿Desea eliminar al usuario </label>
+					<label id="labelEliminar" class="text-danger"></label>
+					<label id="labelEliminar2" class="text-danger"></label>
+					<label id="labelEliminar3" class="text-danger"></label>
+					<label id="labelEliminar4" class="text-danger"></label>
+					</td>
+					
+					</tr>
+				
+				
+				</tbody> 
+	     </table>  </center>
+		 
+		
+		
+      </div>
+      <div class="modal-footer">
+	    <center><button type="button" class="btn btn-default" ng-click = "eliminarUsuarios(c)">Si</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button></center>	
+      </div>
+    </div>
+
+  </div>
+  </div>
+</div>
+
+<!--cierra eliminacion-->
+
+	   <!---Cuerpo--->
+	   <body background="../../../../images/situn4.png">
 	   
 
 	
@@ -157,7 +205,8 @@
 			<td>Nombre</td>
 			<td>Primer apellido</td>
 			<td>Segundo apellido</td>
-			<td>Edición</td> <!--// VER -->
+			<td>Edición</td> 
+			<td>Eliminar</td> <!--// VER -->
 			</tr>
 		</thead>
 		<tbody>
@@ -167,7 +216,10 @@
 					<td> {{c.tp_2 }} </td>
 					<td> {{c.tp_3 }} </td>
 					<td> 
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" ng-click="obtenerUsuario(c)">Editar</button>
+						<button   type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" ng-click="obtenerUsuario(c)">Editar</button>
+					</td>
+					<td> 
+						<button type="button" id="btnEliminar" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" ng-click="obtenerUsuario(c)"><img src="../../../../images/eliminar.png" width="20" height="20"/></button>
 					</td>
 			</tr>
 		</tbody>       
@@ -187,9 +239,8 @@ $(document).ready(function() {
 
 });
 
-
-
 let app = angular.module('app', []);
+
 function MB_01($scope)//ControllerAngular
  {
 	$scope.criterio = "identificacion";
@@ -197,7 +248,9 @@ function MB_01($scope)//ControllerAngular
 	$scope.updateUsuarios = c => $scope.usuarios = c;
 	$scope.buscar = _ => MB_02($scope);
 	$scope.clear = _ => MB_05($scope);
-	$scope.obtenerUsuario	= n => asignarUsuario($scope, n); 
+	$scope.obtenerUsuario	= n => asignarUsuario($scope, n);
+    $scope.obtenerUsuario	= s => asignarUsuario2($scope, s);	
+	$scope.eliminarUsuarios	= e => eliminarUsuarios($scope, e); 
 	$scope.actualiza =_ => actualizarInfo($scope);
   }
   
@@ -403,6 +456,14 @@ function limpiarValores(){
 			)
 	.catch(err => console.log('Request failed', err));
  }
+ 
+  function asignarUsuario2($scope, cor)
+ {	
+ $("#labelEliminar").text(cor.tp_4+" ");
+ $("#labelEliminar2").text(cor.tp_1+" ");
+ $("#labelEliminar3").text(cor.tp_2+" ");
+ $("#labelEliminar4").text(cor.tp_3+"?");
+ }
   function cargarDatos(data){
   console.log(data);
      $("#IU1").val(data.tp_1);
@@ -420,8 +481,16 @@ function limpiarValores(){
  
  function MB_02($scope)  //Metodo de Busqueda
  {
+ let user=localStorage.getItem("usuario");
+ let usuario=JSON.parse(user);
  console.log("Retornado de url > " + MB_03($scope));
 	let h3 = document.getElementById('buscar').value;
+	
+	if(usuario.Id==h3){
+	console.log("usuario"+usuario.Id+h3);
+	$("#btnEliminar").attr('disabled', 'disabled');
+	}
+	
 	 fetch( 'http://localhost:3000/api/TP/'+MB_03($scope), {  
     method: 'POST', 
     datatype:'json',
@@ -435,7 +504,7 @@ function limpiarValores(){
 	.then(obj => $scope.$apply( _=>
 					$scope.updateUsuarios(obj.data)))
 	.catch(err => console.log('Request failed', err));
- }
+}
  
  
 function MB_03($scope)// Toma el tipo de busqueda y regresa el sufijo correspondiente a la dirección del servidor
@@ -475,6 +544,57 @@ function MB_05($scope){// limpia el div con el id de buscar
 	document.getElementById('buscar').value="";
 	$scope.usuarios = new Array();
 	} 
+	
+	
+	 //--------------------probar
+ function eliminarUsuarios($scope, cor) {
+ 
+ deleteTU($scope,cor);
+ deleteTP($scope,cor);
+ MB_02($scope);
+ MB_02($scope); 
+ MB_02($scope);
+ $('#myModal2').modal('hide'); // NUEVO
+ }
+ 
+ 	function deleteTU($scope, cor){
+	let d = $("#labelEliminar").text();//$('#IU4').val();
+	console.log("valor de D "+d);
+	return fetch('http://localhost:3000/api/TU/D?TU_1=' + d, {  
+     method: 'get', 
+     mode:'no-cors',
+     datatype:'html',
+     headers: {  
+      "Content-type": "text/html"
+    }  
+  })
+		 .then(res => res.json())
+     	 .then(json => console.log(json))
+		//.then(obj =>console.log("Objeto",obj))  //Columna especifica obj.data[0].tp_1 // Nota: para pasar a JSON se usa JSON.stringify(obj.data[0].tp_1)
+		.catch(err => console.log('Request failed', err));
+	}
+	
+		function deleteTP($scope, cor){
+	let d = $("#labelEliminar").text();//$('#IU4').val();
+	console.log(d);
+	return fetch('http://localhost:3000/api/TP/D?TP_4=' + d, {  
+     method: 'get', 
+     mode:'no-cors',
+     datatype:'html',
+     headers: {  
+      "Content-type": "text/html"
+    }  
+  })
+		 .then(res => res.json())
+     	 .then(json => console.log(json))
+		//.then(obj =>console.log("Objeto",obj))  //Columna especifica obj.data[0].tp_1 // Nota: para pasar a JSON se usa JSON.stringify(obj.data[0].tp_1)
+		.catch(err => console.log('Request failed', err));
+	}
+	
+	/*function guarda(){
+	let x=
+	}*/
+ //--------------------fin prueba
 	
 </script>
 
