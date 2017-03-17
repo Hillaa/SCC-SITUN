@@ -265,6 +265,22 @@ function getALLTC1(req, res, next) {
     });
 }
 
+//------ RETORNO DE UN TC ESPECIFICO SEGUN TC_1---------------------
+function getALLTC5(req, res, next) {
+	console.log("entra");
+	var low = req.body.TC_1;
+ req.body.TC_1 = low ;
+ var promises = [];
+  db.any('select * from TC where TC_1 = ${TC_1}', req.body)
+	.then( function (data) {
+		res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ONE TC'
+        });
+    });
+}
 
 function getAllEnlaces(req, res, next)	// devuelve los enlaces de una correspondencia
 {
@@ -631,6 +647,7 @@ module.exports = {
   getALLTC2: getALLTC2,
   getALLTC3: getALLTC3,
   getALLTC4: getALLTC4,
+  getALLTC5: getALLTC5,
   getALLTE_ONE: getALLTE_ONE,
   getALLTA_FECHA: getALLTA_FECHA,
   createTP: createTP,
