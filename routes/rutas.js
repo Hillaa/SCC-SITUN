@@ -13,47 +13,20 @@ var formidable = require('formidable');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
+	if(req.session.passport)
+	{
+		res.render('Ingreso de Correspondencia');
+	}
+
 	var obj = { mensaje: 'Usuario y/o clave incorrectos', 
 	error: req.session.retry,
 	usr: req.session.usr,
 	pass: req.session.pass
 	};
-	//console.log(req.session.retry);
-
-	//if(req.session.retry)
-	//	console.log('retrying');
-	//	obj.retry = true;
 	req.session.retry = true;
   res.render('index', obj);
-  //console.log("Ingresando al root");
- // console.log(req.session);
-
-	//res.sendFile(path.join(__dirname+'/../public/HTML/index.html'));
 });
 
-/*
-router.get('/HTML/*', function(req, res, next) {
-  console.log("Ingresando al Buscar desde " + req.url); 
-  console.log(req.session.passport);
-	if(!req.session.passport)
-	{
-		console.log("No esta loggeado...");
-		//console.log(req.session);
-		res.redirect('/');
-	}
-	else{
-		//req.session.usr = "hola.";
-		console.log("Si esta loggeado XD");
-		var dir = req.url.replace(/%20/g, " ");
-		console.log(req.session.usuario);
-		console.log(dir);
-		//res.render(dir);
-		res.sendFile(path.join(__dirname+'/../public/'+dir+'.html'));
-		//next();
-	}
-});
-
-*/
 router.post('/login',passport.authenticate('local-login',{
 	successRedirect: '/HTML/Ingreso de Correspondencia',
 	failureRedirect: '/',
@@ -81,29 +54,24 @@ router.get('/logout',function(req, res){
 });
 
 router.get('/sessionInfo',function(req, res, next){
-	console.log("Solicitud de info de sesson... "); 
-  //console.log(req.session);
+	console.log("Solicitud de info de sesson... ");
 	res.json(req.session.usuario);
 });
 
 router.get('/HTML/*', function(req, res, next) {
   console.log("Ingresando al Buscar desde " + req.url); 
   console.log(req.session.passport);
-	if(!req.session.passport)
+	if(!req.isAuthenticated())
 	{
 		console.log("No esta loggeado...");
-		//console.log(req.session);
 		res.redirect('/');
 	}
 	else{
-		//req.session.usr = "hola.";
 		console.log("Si esta loggeado XD");
 		var dir = (req.url.replace(/%20/g, " ")).substr(6);
 		console.log(req.session.usuario);
 		console.log(dir);
 		res.render(dir);
-		//res.sendFile(path.join(__dirname+'/../public/'+dir+'.html'));
-		//next();
 	}
 });
 
