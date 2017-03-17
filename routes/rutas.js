@@ -128,6 +128,7 @@ router.post('/api/TC/BO', db.getALLTC1); // Busqueda TC  oficio
 router.post('/api/TC/BD', db.getALLTC2); // Busqueda TC  destinatario
 router.post('/api/TC/BR', db.getALLTC3); // Busqueda TC  remitente
 router.post('/api/TC/BA', db.getALLTC4); // Busqueda TC  asunto
+router.post('/api/TC/BC', db.getALLTC5); // Busqueda TC  codigo
 router.post('/api/TE/ALL_ONE',db.getALLTE_ONE);	// Busqueda Todos los enlaces sobre un documento
 router.post('/api/TA/ALL_FECHA',db.getALLTA_FECHA);	// Busqueda Todos las alarmas antes de la fecha
 router.get('/api/TC/BC',db.getLastTC); // Busqueda TC recupera ultimo id de la tabla TC
