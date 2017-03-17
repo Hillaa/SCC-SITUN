@@ -3,6 +3,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Busqueda de Usuarios</title>
+   
+        <!--
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script type="text/javascript"src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
     <script type="text/javascript"src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script> 
@@ -12,9 +14,21 @@
 	<script src="\..\javascripts\angular.min.js"></script>
 
     <link rel="stylesheet" href="\..\stylesheets\bootstrap.min.css">    
- 
+ -->
 
-	
+	<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
+<script src="\..\javascripts\new\moment-2.15.1.js"></script>
+
+<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
+
+<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
+
+
+<script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
+
+<script src="\..\javascripts\angular.min.js"></script>
+
+<link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
     <body ng-app ng-controller = "ControllerAngular">
 
 
@@ -235,7 +249,7 @@
 
 $(document).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
-	$("#menuDiv").load("/HTML/menu.html");
+	$("#menuDiv").load("/HTML/menu");
 
 });
 
