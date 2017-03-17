@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ingreso Correspondencia</title>
      
-	 
+	 <!--
  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
  
 
@@ -15,15 +15,25 @@
   <link href="\..\stylesheets\bootstrap-datetimepicker.min.css" rel="stylesheet">
 
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
-    <!--script type="text/javascript"src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script-->
+    <!--script type="text/javascript"src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script->
     <script type="text/javascript" src="\..\javascripts\bootstrap-datetimepicker.min.js"></script>
 
-     <!--Eliminar este archivo de css---link href="\node_modules\bootstrap\dist\css\style.css" rel="stylesheet"--->
+     <!--Eliminar este archivo de css---link href="\node_modules\bootstrap\dist\css\style.css" rel="stylesheet"->
  
  <link rel="stylesheet" href="\..\stylesheets\datepicker.css">
         <link rel="stylesheet" href="\..\stylesheets\bootstrap.css">   
-		
-			
+		-->
+			<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
+<script src="\..\javascripts\new\moment-2.15.1.js"></script>
+
+<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
+
+<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
+
+
+<script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
+
+<link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
 	<!-- Angular--> 
 	<script src="\..\javascripts\angular.min.js"></script>
 	
@@ -145,7 +155,7 @@
 	  
 	  <!-- **************** fin  estilo de mensajes de error ----->
 	    <!---Cuerpo--->
-	   <a href='#' onclick='MIC_14();return false' title='Ir Arriba'></a><!--Para subir la pagina--->
+	   <a href='#' onclick='MIC_14();return false' title='Ir Arriba'></a><!--Para subir la pagina-->
 	   <body background="../images/situn4.png" ng-app ng-controller = "ControllerAngular">
 	      <div class="col-md-1"></div>
 	   <div class="col-md-4">
@@ -155,9 +165,17 @@
                 <tbody>
 						<tr>
                    <td> <label class="text-danger">Fecha Recibido</label></td>
-                    <td> <div id="datetimepicker4" class="input-append form-group"><input class="form-control"id="IC1" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(1)" > <!--****** NUEVO ***********-->
+                    <td> 
+                    <!--<div id="datetimepicker4" class="input-append form-group"><input class="form-control"id="IC1" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(1)" > <!--****** NUEVO ***********->
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(1)"></i></span> 
 					</div>
+					-->
+					<div class='input-group date' id='datetimepicker4'>
+          					<input type='text' class="form-control" id="IC1"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(1)"></span>
+          					</span>
+        				</div>
 					</td>
                 </tr>
                 <tr>
@@ -167,9 +185,16 @@
 					</tr>
                 <tr>
                     <td> <label class="text-danger">Fecha Oficio</label></td>
-                    <td> <div id="datetimepicker3" class="input-append form-group"><input class="form-control"id="IC3" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********-->
+                    <td> 
+                    <!--<div id="datetimepicker3" class="input-append form-group"><input class="form-control"id="IC3" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
-					</div>
+					</div> -->
+					<div class='input-group date' id='datetimepicker3'>
+          					<input type='text' class="form-control" id="IC3"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+          					</span>
+        				</div>
 					</td>
                 </tr>
                 <tr>
@@ -213,15 +238,30 @@
 		<div class="col-md-2 form-group"><!--Genera el espacio entre componentes---->	 
 			<span class="text-danger"><h4>Alarma</h4></span>
                 <label class="text-danger">Fecha Aviso</label>
-                   <div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********-->
+                   <!-- <div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
 					</div>
+					-->
+					<div class='input-group date' id='datetimepicker5'>
+          					<input type='text' class="form-control" id="IC14"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+          					</span>
+        				</div>
 				<label class="text-danger">Fecha limite</label>
-                   <div id="datetimepicker6" class="input-append form-group"><input class="form-control"id="IC13" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)"> <!--****** NUEVO ***********-->
+				<!--
+                   <div id="datetimepicker6" class="input-append form-group"><input class="form-control"id="IC13" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)"> <!--****** NUEVO ***********->
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
 					</div>
-		
+				-->
+				<div class='input-group date' id='datetimepicker6'>
+          					<input type='text' class="form-control" id="IC13"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+          					</span>
+        				</div>
 				<!--<button id="IC11" style="margin-top:15px"type="button" onclick="MIC_06()"class="btn btn-default"disabled>Enlace</button><!--</a>-->
+
 				<label class="text-danger" style=""><input  type="checkbox" id="enlace_checkbox" value="enlace_checkbox">Con Enlace</label>
 		<div style="margin-top:60px"><label id="mensaje" class="text-danger"></label></div>
 		
@@ -441,7 +481,7 @@ if($("#IC12").is(':checked')){
 }
 /**
 * Funciones de los calendarios de la pagina
-**/
+**//*
  $(document).ready(function () {  //Calendario que se muestra en la pagina
                 
                 $('.date').datepicker({
@@ -474,7 +514,37 @@ if($("#IC12").is(':checked')){
     });
   });
   
-  
+  */
+
+$(document).ready(function () {  //Calendario que se muestra en la pagina
+                
+                /*$('.date').datepicker({
+                     
+                });*/
+                $('#calend').datepicker({
+                     
+                });            
+     });
+$('#datetimepicker4').datetimepicker({
+   		format: 'DD-MM-YYYY', 
+   		showClear:true
+	});
+ 
+    $('#datetimepicker3').datetimepicker({
+   		format: 'DD-MM-YYYY', 
+   		showClear:true
+	});
+    $('#datetimepicker5').datetimepicker({
+   		format: 'DD-MM-YYYY', 
+   		showClear:true
+	});
+
+    $('#datetimepicker6').datetimepicker({
+    	format: 'DD-MM-YYYY', 
+   		showClear:true
+    });
+
+
  function MIC_01($scope){ //Recoge los datos de los campos y realiza el fecth de inserción 
 							//a la base de datos
 	var d=new Date();
