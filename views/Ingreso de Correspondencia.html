@@ -183,9 +183,9 @@
                     <td><div  id="div2"class="form-group"><textarea id="IC2" type="text" class="form-control" onfocus="MIC_20(2)"></textarea>
 					<label class="text-danger" style=""><input  type="checkbox" id="IC12" value="first_checkbox" onchange="MIC_21()">Sin Oficio</label></div></td>           
 					</tr>
-                <tr>
+                <tr >
                     <td> <label class="text-danger">Fecha Oficio</label></td>
-                    <td> 
+                    <td > 
                     <!--<div id="datetimepicker3" class="input-append form-group"><input class="form-control"id="IC3" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
 					</div> -->
@@ -343,7 +343,7 @@
 <script type="text/javascript">
 
 
- document.addEventListener("DOMContentLoaded", MIC_08);
+// document.addEventListener("DOMContentLoaded", MIC_08);
  
 $( document ).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
@@ -463,11 +463,13 @@ $("#IC15").click(function(){
   MIC_04(n);
  }
  
+ /*
 function MIC_08(){  //Toma la fecha del sistema y la refleja en el campo de la fecha de recibido
 	var f = new Date();
-	$("#IC1").val(f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear());
-
-}
+	//$("#IC1").val(f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear());
+	//$("#IC1")
+	//console.log($("#datetimepicker4").datetimepicker('getDate'));
+}*/
 
 function MIC_21(){ //Cambia el valor del campo referente al numero de oficio si la opcion SIN OFICIO esta marcada
 if($("#IC12").is(':checked')){
@@ -527,7 +529,8 @@ $(document).ready(function () {  //Calendario que se muestra en la pagina
      });
 $('#datetimepicker4').datetimepicker({
    		format: 'DD-MM-YYYY', 
-   		showClear:true
+   		showClear:true,
+   		defaultDate: new Date()
 	});
  
     $('#datetimepicker3').datetimepicker({
