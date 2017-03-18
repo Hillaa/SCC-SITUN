@@ -88,6 +88,7 @@ router.post('/api/TC/ALL',db.getAllTC);		// Busqueda todos lo TC
 //----------- DEVOLUCION DE DATOS DE UNA TABLA SEGUN UNA CONDICION ----------
 router.post('/api/TPTU/B',db.getTPTU);// Busqueda TP Y TU especifico
 router.post('/api/TP/B', db.getSingleTP); // Busqueda TP especifico identificacion
+router.post('/api/TC/FR', db.getSingleTC); // Busqueda TC especifico fechaRecibido
 router.post('/api/TP/BN',db.getALLTP1); // Busqueda TP nombre
 router.post('/api/TP/BA1',db.getALLTP2); // Busqueda TP Primer apellido
 router.post('/api/TP/BA2',db.getALLTP3); // Busqueda TP Primer apellido
@@ -97,6 +98,7 @@ router.post('/api/TC/BD', db.getALLTC2); // Busqueda TC  destinatario
 router.post('/api/TC/BR', db.getALLTC3); // Busqueda TC  remitente
 router.post('/api/TC/BA', db.getALLTC4); // Busqueda TC  asunto
 router.post('/api/TC/BC', db.getALLTC5); // Busqueda TC  codigo
+router.post('/api/TC/BF', db.getALLTC6); // Busqueda TC  fecha
 router.post('/api/TE/ALL_ONE',db.getALLTE_ONE);	// Busqueda Todos los enlaces sobre un documento
 router.post('/api/TA/ALL_FECHA',db.getALLTA_FECHA);	// Busqueda Todos las alarmas antes de la fecha
 router.get('/api/TC/BC',db.getLastTC); // Busqueda TC recupera ultimo id de la tabla TC
