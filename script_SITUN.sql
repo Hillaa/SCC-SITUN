@@ -30,6 +30,7 @@ TC_8 TEXT,
 TC_9 VARCHAR(15),
 TC_10 TEXT,
 TC_11 TEXT,
+TC_12 TEXT,
 CONSTRAINT pkTC PRIMARY KEY(TC_1),
 CONSTRAINT fkTC FOREIGN KEY (TC_9) REFERENCES TP (TP_4)
 );
@@ -57,7 +58,7 @@ CONSTRAINT pkTA PRIMARY KEY (TA_1, TA_2)
 
 insert into TP values ('Grettel','Castro','Cruz','1');
 
-
+insert into TU values ('1','123',1);
 
 
 
