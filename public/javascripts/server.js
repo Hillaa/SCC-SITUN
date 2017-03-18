@@ -14,7 +14,7 @@ var options = {
 var pgp = require('pg-promise')(options);
 
 //------ CONEXION A LA BASE DE DATOS ------------------
-var connectionString = "pg://postgres:root@localhost:5432/BD_SITUN"; // CAMBIAR POR CLAVE DEL POSTGRES DE USTEDES
+var connectionString = "pg://postgres:postgres@localhost:5432/BD_SITUN"; // CAMBIAR POR CLAVE DEL POSTGRES DE USTEDES
 var db = pgp(connectionString);
 
 
@@ -201,6 +201,21 @@ function getSingleTU(req, res, next) {
     });
 }
 
+//------ RETORNO DE UN TC ESPECIFICO ---------------------
+function getSingleTC(req, res, next) {
+  db.any('SELECT tc_4 FROM TC where tc_4 = (SELECT MAX(tc_4) FROM TC )')
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
 //----- RETORNO DE TODOS LOS TP SEGUN TP_1
 function getALLTP1(req, res, next) {
 	var low = req.body.TP_1.toLowerCase();
@@ -352,6 +367,22 @@ function getALLTC4(req, res, next) {
 	req.body.TC_8 =  '%' +low+'%';
 	 var promises = [];
 	db.any('select * from TC where LOWER(TC_8) LIKE ${TC_8}', req.body)
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ONE TC'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
+//------ RETORNO DE UN TC ENTRE RANGOS SEGUN TC_4  ---------------------
+function getALLTC6(req, res, next) {
+	db.any('select *from TC where tc_4  between   ${TC_4F1}  and ${TC_4F2}  ;', req.body)
     .then(function (data) {
       res.status(200)
         .json({
@@ -643,11 +674,13 @@ module.exports = {
   getAllTC: getAllTC,
   getSingleTP: getSingleTP,
   getSingleTU: getSingleTU,
+  getSingleTC:getSingleTC,
   getALLTC1: getALLTC1,
   getALLTC2: getALLTC2,
   getALLTC3: getALLTC3,
   getALLTC4: getALLTC4,
   getALLTC5: getALLTC5,
+  getALLTC6: getALLTC6,
   getALLTE_ONE: getALLTE_ONE,
   getALLTA_FECHA: getALLTA_FECHA,
   createTP: createTP,
