@@ -423,7 +423,7 @@
 		</center>
       </div>
       <div class="modal-footer">
-	  <button type="button" class="btn btn-default" ng-click = "actualizaAlarma(c)" >Si</button>
+	  <button id="btnGd1" type="button" class="btn btn-default" ng-click = "actualizaAlarma(c)" >Si</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -560,7 +560,7 @@ function MB_01($scope)//ControllerAngular
 	$scope.actualiza =_ => actualizarInfo($scope);
 	$scope.Alarma= x => MB_Alarma($scope,x);
 	$scope.nuevaAlarma = h => newAlarm($scope, h);
-	$scope.actualizaAlarma= s=>actualizarAlarma($scope);
+	
 	
   }
   
@@ -609,8 +609,9 @@ function MB_01($scope)//ControllerAngular
 	.catch(err => console.log('Request failed', err));
  }
  let person;
+ let condicion;
   function cargarDatos( data){
- 
+ condicion=data.tc_1;
   let fechaO=  new Date(data.tc_2.substr(0, 4),data.tc_2.substr(5, 2),data.tc_2.substr(8, 2));
   let fechaOficio=(data.tc_2.substr(8, 2)+"-"+data.tc_2.substr(5, 2)+"-"+data.tc_2.substr(0, 4));
   console.log(fechaOficio);
@@ -1023,8 +1024,8 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 
  ///----------------NUEVO DE AJUSTE ALARMA
    function MB_Alarma($scope ,cor)  //Metodo de Busqueda
- {   //let corr=$scope.correspondencias;
- 
+ {   let corr=cor.tc_1;
+
  	console.log("Retornado de url > " + "Alarmas");
 	console.log( cor.tc_1);
 	//let h3 = document.getElementById('buscar').value;
@@ -1038,21 +1039,12 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
       }
 	)	 
 .then(res => res.json())
-	.then(obj => cargaAlarma(obj.data[0])).then(
-	function(res) {
-	
-	if(obj=>cargaAlarma(obj.data[0])==1){
-	$("#btnGd").click(function(){
-		console.log("guarde");
-		newAlarm(cor.tc_1);
-		$("[data-dismiss=modal]").trigger({ type: "click" });});
-	}}
-			)
+	.then(obj => cargaAlarma(obj.data[0],corr))
 	.catch(err => console.log('Request failed', err));
  }
  
  
-   function cargaAlarma(data){
+   function cargaAlarma(data,corr){
    
    console.log("carga");
   let miDiv;
@@ -1060,10 +1052,18 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
   $("#myModal3").modal("show");
       $("#IC14").val(data.ta_2.substr(8,2)+"-"+data.ta_2.substr(5,2)+"-"+data.ta_2.substr(0,4));
 	  $("#IC15").val(data.ta_3.substr(8,2)+"-"+data.ta_3.substr(5,2)+"-"+data.ta_3.substr(0,4));
+	  $("#btnGd1").click(function(){
+		console.log("guarde2");
+		actualizarAlarma(corr);
+		$("[data-dismiss=modal]").trigger({ type: "click" });});
 	 return 0; }
 	  else{
 	  
 	   $("#myModal4").modal("show");
+	   $("#btnGd").click(function(){
+		console.log("guarde");
+		newAlarm(corr);
+		$("[data-dismiss=modal]").trigger({ type: "click" });});
 	   //$("#divAdjuste2").hide();
 	   return 1;
 	   }
@@ -1078,10 +1078,11 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
  }
  
  
- 	function actualizarAlarma($scope,cor){ //Recoge los datos de los campos y realiza el fecth de inserción 
+ 	function actualizarAlarma(data){ //Recoge los datos de los campos y realiza el fecth de inserción 
 							//a la base de datos
 							//let str=$("#IC1").val();
 	
+//asignarInformacion($scope);
 
 	
 	let b3 = $("#IC15").val().substr(6,4)+"-"+$("#IC14").val().substr(3,2)+"-"+$("#IC14").val().substr(0,2);
@@ -1089,6 +1090,10 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 	
 	let d3 = $("#IC14").val().substr(6,4)+"-"+$("#IC15").val().substr(3,2)+"-"+$("#IC15").val().substr(0,2);
 	console.log("anooo "+d3);
+	
+	
+	console.log("cooon "+data+"/"+b3+"/"+d3);
+	
 
  fetch( 'http://localhost:3000/api/TA/UDF', {  
     method: 'POST', 
@@ -1096,15 +1101,10 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
     headers: {  
       "Content-type": "application/x-www-form-urlencoded"  
       } ,
-    body: "TA_2="+ b3+"&TA_3="+ d3
+    body: "TA_1="+ data+"&TA_2="+ b3+"&TA_3="+ d3
       }
 	  )
-  .then(function(response) {
-		return response.text().then(function(res) {
-				console.log("Resultado: "+res);
-			
-				});
-	})
+  .then()
   .catch(function(error) {  
    console.log('Request failed', error);  
   });
