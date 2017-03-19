@@ -1070,7 +1070,7 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
   .catch(function(error) {  
    console.log('Request failed', error);  
   });
- 
+ $("[data-dismiss=modal]").trigger({ type: "click" });
 }
 
  
