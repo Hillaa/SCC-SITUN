@@ -276,7 +276,7 @@
 						</tbody>
 		           </table>  
       <div class="modal-footer">
-	    <center><button type="button" class="btn btn-default" ng-click = "actualiza()" >Guardar</button>
+	    <center><button type="button" class="btn btn-default" ng-click = "actualiza(c)" >Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center>	
       </div>
 	  
@@ -744,18 +744,15 @@ function MIC_04(op){//Realiza un cambio de clase a los campos de entrada del for
 	case 7: document.getElementById("div7").className ="  form-group" ;break;
 	case 8: document.getElementById("div8").className ="  form-group" ;break;
 	case 9: document.getElementById("div9").className ="  form-group" ;break;
-	//case 10: document.getElementById("div10").className ="  form-group" ;break
-	
 	default: break;
 	}
 	}
-	
-	    function actualizarInfo($scope){
+	function actualizarInfo($scope){
   console.log('validacion '+validar());
     if(validar()){
 	console.log('Entro despues de validacion'+validar()); // Quitar
 	actualizarCorre($scope);
-	
+	console.log("bueno");
     MB_02($scope);
 	$("[data-dismiss=modal]").trigger({ type: "click" });
 	
@@ -786,12 +783,12 @@ if($("#IC12").is(':checked')){
 	IC10 = true;
 	
 	if($("#IC1").val().length == 0){
-		document.getElementById("datetimepicker4").className ="input-append  form-group has-error" ;
+		document.getElementById("datetimepicker55").className ="input-append  form-group has-error" ;
 		document.getElementById("IC1").title = "Campo Obligatoria" ;
 		IC1 = false;
 	}
 	else{
-	document.getElementById("datetimepicker4").className ="input-append  form-group" ;
+	document.getElementById("datetimepicker55").className ="input-append  form-group" ;
 	document.getElementById("IC1").title = "" ;
 	}
 	if($("#IC2").val().length == 0){
@@ -805,12 +802,12 @@ if($("#IC12").is(':checked')){
 	}
 	
 	if($("#IC3").val().length == 0){
-		document.getElementById("datetimepicker3").className = " input-append  form-group has-error" ;
+		document.getElementById("datetimepicker66").className = " input-append  form-group has-error" ;
 		document.getElementById("IC3").title = "Campo Obligatorio";
 		IC3 = false;
 	}
 	else{
-	document.getElementById("datetimepicker3").className ="input-append  form-group" ;
+	document.getElementById("datetimepicker66").className ="input-append  form-group" ;
 	document.getElementById("IC3").title = "" ;
 	}
 	if($("#IC4").val().length == 0){
@@ -886,15 +883,15 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 	
 	let r=fecha2.substring(10, 6)+'-'+fecha2.substring(5, 3)+'-'+fecha2.substring(2, 0);
 	if(fecha1>=r){
-	document.getElementById("datetimepicker4").className ="input-append  form-group " ;
+	document.getElementById("datetimepicker55").className ="input-append  form-group " ;
 	document.getElementById("IC1").title = "" ;
-	document.getElementById("datetimepicker3").className ="input-append  form-group " ;
+	document.getElementById("datetimepicker66").className ="input-append  form-group " ;
 	document.getElementById("IC3").title = "" ;
 	return true;}
 	else{
-	document.getElementById("datetimepicker4").className ="input-append  form-group has-error" ;
+	document.getElementById("datetimepicker55").className ="input-append  form-group has-error" ;
 	document.getElementById("IC1").title = "Fecha de oficio mayor a la de recibido" ;
-	document.getElementById("datetimepicker3").className ="input-append  form-group has-error" ;
+	document.getElementById("datetimepicker66").className ="input-append  form-group has-error" ;
 		document.getElementById("IC3").title = "Fecha de oficio mayor a la de recibido" ;
 	return false;}
 	}
