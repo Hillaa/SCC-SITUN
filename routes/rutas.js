@@ -101,6 +101,7 @@ router.post('/api/TC/BC', db.getALLTC5); // Busqueda TC  codigo
 router.post('/api/TC/BF', db.getALLTC6); // Busqueda TC  fecha
 router.post('/api/TE/ALL_ONE',db.getALLTE_ONE);	// Busqueda Todos los enlaces sobre un documento
 router.post('/api/TA/ALL_FECHA',db.getALLTA_FECHA);	// Busqueda Todos las alarmas antes de la fecha
+router.post('/api/TA/ALL_TA',db.getALLTA1);	// Busqueda alarma por primary key
 router.get('/api/TC/BC',db.getLastTC); // Busqueda TC recupera ultimo id de la tabla TC
 
 //----------- INSERTAR EN TABLAS ----------------------------------------
@@ -116,6 +117,7 @@ router.post('/api/TU/UD', db.updateTU); // Actualizar TU especifico
 router.post('/api/TC/UD', db.updateTC); // Actualizar TC especifico
 router.post('/api/TE/UD', db.updateTE); // Actualizar TE especifico
 router.post('/api/TA/UD', db.updateTA); // Actualizar TA especifico
+router.post('/api/TA/UDF', db.updateTAFechas); // Actualizar TA especifico solo fechas
 
 //----------- ELIMINACIONES EN TABLAS -----------------------------------
 router.get('/api/TP/D', db.removeTP); // Eliminar un TP especifico
