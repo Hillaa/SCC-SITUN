@@ -59,8 +59,9 @@ function createTU(req, res, next) {
 //-------- CREACION DE UN NUEVO TC EN LA TABLA ----------
 function createTC(req, res, next) {
 	console.log("Insert received...");
+	
      db.none('insert into TC (TC_2, TC_3, TC_4, TC_5, TC_6, TC_7, TC_8, TC_9, TC_10, TC_11, TC_12)' +
-      'values(current_date, ${TC_3}, ${TC_4}, ${TC_5}, ${TC_6},${TC_7}, ${TC_8}, ${TC_9}, ${TC_10}, ${TC_11}, ${TC_12})',
+      'values($(TC_2), ${TC_3}, ${TC_4}, ${TC_5}, ${TC_6},${TC_7}, ${TC_8}, ${TC_9}, ${TC_10}, ${TC_11}, ${TC_12})',
 	     req.body)
     .then(function () {
 		console.log("Theniando en insert tc");
