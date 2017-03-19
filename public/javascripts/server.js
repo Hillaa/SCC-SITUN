@@ -543,9 +543,12 @@ function updateTA(req, res, next) {
 
 //-------- ACTUALIZACION DE LA TABLA TA solo fechas----------
 function updateTAFechas(req, res, next) {
-	// req.body.TA_1 = parseInt(req.body.TA_1);
+	
+	req.body.TA_1 = parseInt(req.body.TA_1);
 	 //req.body.TA_4 = parseInt(req.body.TA_4);
-  db.none('update TA set TA_2=${TA_2},TA_3=${TA_3}',
+	 console.log("actualiza");
+  db.none('update TA set TA_2=${TA_2},TA_3=${TA_3}'+
+          'where TA_1=${TA_1}',
     req.body)
     .then(function () {
       res.status(200)
