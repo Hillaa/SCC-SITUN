@@ -180,6 +180,8 @@
 					<td> 
 						<!-- Trigger the modal with a button -->
 						<button type="button" class="btn btn-danger" data-toggle="modal"  ng-click="Alarma(c)">Ajustar</button>
+						
+
 					</td>
 					<td>
 					
@@ -454,61 +456,64 @@
 	  </div>
       <div id="divAjuste1" class="modal-body">
 	  <center>
-		 <label class="text-danger">Actualmente este oficio no cuenta con una alarma ¿Desea crear una alarma para este documento?</label>
+		 <label class="text-danger">Actualmente este oficio no cuenta con una alarma. Puede crear una nueva alarma completando los siguientes campos</label>
 		</center>
       </div>
 	  
 	  
-	   <div id="divAjuste2" class="modal-body"   style="visibility: hidden;">
+	   <div id="divAjuste2" class="modal-body" >  <!--style="visibility: hidden;"--> 
 	  <center>
-		 <label class="text-danger">holaaaaaaa</label>
-		</center>
-      </div>
-	  
-      <div class="modal-footer">
-	  <center>
-		<button id = "si" type="button" class="btn btn-default"  >Si</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-      </center>
-	  </div>
-    </div>
+		 <table class="table">
+			<thead>
+			<tr class="danger">
+				<td>
+					 <label class="text-danger">Fecha Aviso</label>
+				<td>
+				<!--
+					<div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
+					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
+					</div>
+					-->
+					
+					<div class='input-group date' id='datetimepicker7'>
+          					<input type='text' class="form-control" id="IC16"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+          					</span>
+        				</div>
 
-  </div>
-  </div>
-
-	
-
-
-	<!-- fin del popup Alarma-->
-
-	<!-- popup alarma-->
-		   	    <!-- Modal -->
-<!-- Modal -->
-<div ></div>
-	   
-<div id="myModal5" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-   
-    <!-- Modal content-->
-   
-	 <div class="modal-content">
-      <div class="modal-header">		
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		<center>
-			<h4>Nueva Alarma </h4>
+				<td>
+					
+				</td>
+			</tr>
+			<tr class="danger">
+				<td>
+					 <label class="text-danger">Fecha Limite</label>
+				<td>
+				<!--
+					<div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
+					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
+					</div>
+					-->
+					<div class='input-group date' id='datetimepicker8'>
+          					<input type='text' class="form-control" id="IC17"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+          					</span>
+        				</div>
+				<td>
+					
+				</td>
+			</tr>
+			</thead>
 			
-		</center>
-	  </div>
-      <div id="divAjuste1" class="modal-body">
-	  <center>
-		 <!--<label class="text-danger">Actualmente este oficio no cuenta con una alarma ¿Desea crear una alarma para este documento?</label>-->
+		</table>
 		</center>
       </div>
-	   
 	  
       <div class="modal-footer">
 	  <center>
-		<button type="button" class="btn btn-default" ng-click = "nuevaAlarma()" >Si</button>
+		<button id = "btnGd" type="button" class="btn btn-default"   >Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
       </center>
 	  </div>
@@ -554,8 +559,9 @@ function MB_01($scope)//ControllerAngular
 	$scope.recibido = r => ObtenerRecibido();
 	$scope.actualiza =_ => actualizarInfo($scope);
 	$scope.Alarma= x => MB_Alarma($scope,x);
-	$scope.nuevaAlarma = r => creaAlarma();
+	$scope.nuevaAlarma = h => newAlarm($scope, h);
 	$scope.actualizaAlarma= s=>actualizarAlarma($scope);
+	
   }
   
    app.controller('ControllerAngular', MB_01); 
@@ -775,8 +781,7 @@ function validaFechas(){   //validacion de fechas editadas
 	let s=new Date(fechaR.substring(10, 6)+'-'+fechaR.substring(5, 3)+'-'+fechaR.substring(2, 0));
 	let fecha2=$("#IC3").val();
 	let r=new Date(fecha2.substring(10, 6)+'-'+fecha2.substring(5, 3)+'-'+fecha2.substring(2, 0));
-	
-	console.log(r+"//"+s);
+
 	 if(s<r)
 	 return -1;
 	 else if(s>=r)
@@ -1002,6 +1007,19 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
    		showClear:true
     });
  // });
+ 
+   $('#datetimepicker7').datetimepicker({
+      //pickTime: false
+      format: 'DD-MM-YYYY', 
+   		showClear:true
+    });
+ // });
+   $('#datetimepicker8').datetimepicker({
+      //pickTime: false
+      format: 'DD-MM-YYYY', 
+   		showClear:true
+    });
+ // });
 
  ///----------------NUEVO DE AJUSTE ALARMA
    function MB_Alarma($scope ,cor)  //Metodo de Busqueda
@@ -1020,7 +1038,15 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
       }
 	)	 
 .then(res => res.json())
-	.then(obj => cargaAlarma(obj.data[0])
+	.then(obj => cargaAlarma(obj.data[0])).then(
+	function(res) {
+	
+	if(obj=>cargaAlarma(obj.data[0])==1){
+	$("#btnGd").click(function(){
+		console.log("guarde");
+		newAlarm(cor.tc_1);
+		$("[data-dismiss=modal]").trigger({ type: "click" });});
+	}}
 			)
 	.catch(err => console.log('Request failed', err));
  }
@@ -1034,20 +1060,21 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
   $("#myModal3").modal("show");
       $("#IC14").val(data.ta_2.substr(8,2)+"-"+data.ta_2.substr(5,2)+"-"+data.ta_2.substr(0,4));
 	  $("#IC15").val(data.ta_3.substr(8,2)+"-"+data.ta_3.substr(5,2)+"-"+data.ta_3.substr(0,4));
-	  }
+	 return 0; }
 	  else{
 	  
 	   $("#myModal4").modal("show");
 	   //$("#divAdjuste2").hide();
+	   return 1;
 	   }
  }
  
  function creaAlarma(){
  console.log("enrtra");
- //$("[data-dismiss=modal]").trigger({ type: "click" });
+ $("[data-dismiss=modal]").trigger({ type: "click" });
 	//$("[data-target=myModal5]").trigger({ type: "click" });
- $("#divAjuste1").hide();
- $("#divAjuste2").show();
+ /*$("#divAjuste1").hide();
+ $("#divAjuste2").show();*/
  }
  
  
@@ -1084,6 +1111,37 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
  $("[data-dismiss=modal]").trigger({ type: "click" });
 }
 
+//------insercion de una nueva alarma
+function newAlarm(data){//Programa una alarma de una correspondencia 
+
+		let b5 = $("#IC16").val().substr(6,4)+"-"+$("#IC16").val().substr(3,2)+"-"+$("#IC16").val().substr(0,2);
+	console.log("anooo "+b5);
+	
+	let c5 = $("#IC17").val().substr(6,4)+"-"+$("#IC17").val().substr(3,2)+"-"+$("#IC17").val().substr(0,2);
+		let d5 = 0;
+		if(b5!= "" && c5!=""){ 
+		fetch( 'http://localhost:3000/api/TA/I', {  
+			method: 'POST', 
+			datatype:'json',
+			headers: {  
+				"Content-type": "application/x-www-form-urlencoded"  
+			} ,
+			body: "TA_1="+ data+ "&TA_2="+ b5+ "&TA_3="+c5+"&TA_4="+ d5 
+		}
+	  )
+		.then(function(response) {
+			return response.text().then(function(res) {
+				
+					console.log("Resultado enlace: "+res);
+                
+			});
+		})
+		.catch(function(error) {  
+			console.log('Request failed', error);  
+		});
+		}
+	}
+	
  
    
 </script>
