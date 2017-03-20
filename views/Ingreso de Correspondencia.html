@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ingreso Correspondencia</title>
      
-	 
+	 <!--
  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
  
 
@@ -15,15 +15,25 @@
   <link href="\..\stylesheets\bootstrap-datetimepicker.min.css" rel="stylesheet">
 
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
-    <!--script type="text/javascript"src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script-->
+    <!--script type="text/javascript"src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script->
     <script type="text/javascript" src="\..\javascripts\bootstrap-datetimepicker.min.js"></script>
 
-     <!--Eliminar este archivo de css---link href="\node_modules\bootstrap\dist\css\style.css" rel="stylesheet"--->
+     <!--Eliminar este archivo de css---link href="\node_modules\bootstrap\dist\css\style.css" rel="stylesheet"->
  
  <link rel="stylesheet" href="\..\stylesheets\datepicker.css">
         <link rel="stylesheet" href="\..\stylesheets\bootstrap.css">   
-		
-			
+		-->
+			<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
+<script src="\..\javascripts\new\moment-2.15.1.js"></script>
+
+<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
+
+<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
+
+
+<script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
+
+<link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
 	<!-- Angular--> 
 	<script src="\..\javascripts\angular.min.js"></script>
 	
@@ -67,9 +77,25 @@
   </div><!-- /.container-fluid ->
 </nav>
 	  -->
-	
+	  <!-- **************** estilo de mensajes de error -->
 	  
-	  	<!-- Trigger the modal with a button -->
+	   <style>
+  /* Tooltip */
+  .test + .tooltip > .tooltip-inner {
+      background-color: #73AD21; 
+      color: #FFFFFF; 
+      border: 1px solid green; 
+      padding: 15px;
+      font-size: 20px;
+  }
+  /* Tooltip on right */
+  .test + .tooltip.right > .tooltip-arrow {
+      border-right: 5px solid black;
+  }
+  </style>
+  
+  
+  <!-- Trigger the modal with a button -->
 <!-- Modal -->
 	  
 <div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:600px;">
@@ -125,8 +151,11 @@
   </div>  <!-- fin del popup de ayuda --> 
 	  
 	  
+  
+	  
+	  <!-- **************** fin  estilo de mensajes de error ----->
 	    <!---Cuerpo--->
-	   <a href='#' onclick='MIC_14();return false' title='Ir Arriba'></a><!--Para subir la pagina--->
+	   <a href='#' onclick='MIC_14();return false' title='Ir Arriba'></a><!--Para subir la pagina-->
 	   <body background="../images/situn4.png" ng-app ng-controller = "ControllerAngular">
 	      <div class="col-md-1"></div>
 	   <div class="col-md-4">
@@ -135,11 +164,18 @@
             <table id ="tablaIC">
                 <tbody>
 						<tr>
-                    <td><label class="text-danger">Fecha recibido</label></td>
+                   <td> <label class="text-danger">Fecha Recibido</label></td>
                     <td> 
-					<div id="datetimepicker4" class=" form-group" >	<!-- Calendario--->
-					<input id="IC1" data-format="dd-MM-yyyy" class="form-control"type="text" onfocus= "MIC_20(1)" disabled></input> 
+                    <!--<div id="datetimepicker4" class="input-append form-group"><input class="form-control"id="IC1" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(1)" > <!--****** NUEVO ***********->
+					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(1)"></i></span> 
 					</div>
+					-->
+					<div class='input-group date' id='datetimepicker4'>
+          					<input type='text' class="form-control" id="IC1"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(1)"></span>
+          					</span>
+        				</div>
 					</td>
                 </tr>
                 <tr>
@@ -147,16 +183,23 @@
                     <td><div  id="div2"class="form-group"><textarea id="IC2" type="text" class="form-control" onfocus="MIC_20(2)"></textarea>
 					<label class="text-danger" style=""><input  type="checkbox" id="IC12" value="first_checkbox" onchange="MIC_21()">Sin Oficio</label></div></td>           
 					</tr>
-                <tr>
+                <tr >
                     <td> <label class="text-danger">Fecha Oficio</label></td>
-                    <td> <div id="datetimepicker3" class="input-append form-group"><input class="form-control"id="IC3" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********-->
+                    <td > 
+                    <!--<div id="datetimepicker3" class="input-append form-group"><input class="form-control"id="IC3" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
-					</div>
+					</div> -->
+					<div class='input-group date' id='datetimepicker3'>
+          					<input type='text' class="form-control" id="IC3"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+          					</span>
+        				</div>
 					</td>
                 </tr>
                 <tr>
                     <td> <label class="text-danger">Destinatario </label></td>
-                    <td><div id="div4" class="form-group"><textarea id="IC4" type="text" class="form-control"  onfocus="MIC_20(4)"></textarea></div></td> 
+                    <td><div id="div4" class="form-group"><textarea id="IC4" type="text" class="form-control"  onfocus="MIC_20(4)" > </textarea></div></td> 
                 </tr>
 				 <tr>
                     <td> <label class="text-danger">Copia </label></td>
@@ -164,14 +207,14 @@
                 </tr>
 				 <tr>
                     <td> <label class="text-danger">Remitente </label></td>
-                    <td><div id="div6" class="form-group"><textarea id="IC6" type="text" class="form-control" onfocus="MIC_20(6)"></textarea></div></td>                </tr>
+                    <td><div id="div6" class="form-group"><textarea type="text" class="form-control" id="IC6" data-toggle="tooltip" data-placement="right" title="Hooray!" onfocus="MIC_20(5)"></textarea></div></td>                </tr>
                 <tr>
                     <td> <label class="text-danger">Asunto</label></td>
                     <td><div id="div7"class="form-group"><textarea id="IC7" type="text" class="form-control"rows=4 cols=30 onfocus="MIC_20(7)"></textarea></input></div></td> <!--****** NUEVO ***********-->
                 </tr>
 				<tr>
                     <td> <label class="text-danger">Recibido</label></td>
-                    <td><div id="div8"class="form-group"><input id="IC8" type="text"class="form-control" onfocus="MIC_20(8)" ng-model="usuario" disabled></input> <div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div8"class="form-group"><input id="IC8" type="text" class="form-control" onfocus="MIC_20(8)" ng-model="usuario" disabled></input> <div></td> <!--****** NUEVO ***********-->
                 </tr>
 				<tr>
                     <td> <label class="text-danger">Estado</label></td>
@@ -195,23 +238,35 @@
 		<div class="col-md-2 form-group"><!--Genera el espacio entre componentes---->	 
 			<span class="text-danger"><h4>Alarma</h4></span>
                 <label class="text-danger">Fecha Aviso</label>
-                   <div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********-->
+                   <!-- <div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
 					</div>
+					-->
+					<div class='input-group date' id='datetimepicker5'>
+          					<input type='text' class="form-control" id="IC14"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+          					</span>
+        				</div>
 				<label class="text-danger">Fecha limite</label>
-                   <div id="datetimepicker6" class="input-append form-group"><input class="form-control"id="IC13" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)"> <!--****** NUEVO ***********-->
+				<!--
+                   <div id="datetimepicker6" class="input-append form-group"><input class="form-control"id="IC13" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)"> <!--****** NUEVO ***********->
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
 					</div>
-		
+				-->
+				<div class='input-group date' id='datetimepicker6'>
+          					<input type='text' class="form-control" id="IC13"/>
+          					<span class="input-group-addon">
+            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+          					</span>
+        				</div>
 				<!--<button id="IC11" style="margin-top:15px"type="button" onclick="MIC_06()"class="btn btn-default"disabled>Enlace</button><!--</a>-->
-				<label class="text-danger" style=""><input  type="checkbox" id="IC16" value="enlace_checkbox">Con Enlace</label>
+
+				<label class="text-danger" style=""><input  type="checkbox" id="enlace_checkbox" value="enlace_checkbox">Con Enlace</label>
+				<input id = "adjun" type="file" name="adjunto" accept=".pdf" > <!-- NUEVO -->
+				
 		<div style="margin-top:60px"><label id="mensaje" class="text-danger"></label></div>
-		
-	
-		<input id = "adjun" type="file" name="adjunto" accept=".pdf" onchange="prueba(this.value)" > <!-- NUEVO -->
-		 <a id="hrefAdjunto" target="_blank" style = "display:none" title=>Ver Documento</a> <!-- NUEVO -->
-		<!-- <embed src="a.pdf"  width="250" height="375"> </embed> QUITAR --> 
-		
+
 		
 		 </div>
 	
@@ -251,12 +306,12 @@
 			</div> 
 		   </div>
 		
-		<!---div class="date hero-unit"  style="background-color:#60161E; margin-top:200px; color:white;" ><!-- div calendario----->
+		<!---div class="date hero-unit"  style="background-color:#60161E; margin-top:200px; color:white;" ><!-- div calendario-->
           
-            <center><div class="date panel panel-danger "  style="background-color:#60161E;  color:white;" ></center><!-- div calendario----->
+            <center><div class="date panel panel-danger " id="calend" style="background-color:#60161E;  color:white;" ></center><!-- div calendario-->
 			   
 				<script src="\..\javascripts/bootstrap-datepicker.js"></script> <!---Si se borra el pierde trate de acomodarlo 
-		        en donde estan los otros js pero dice que no se encuentran, como que este y el bootstrap-datepicker.min.js chocan--->	
+		        en donde estan los otros js pero dice que no se encuentran, como que este y el bootstrap-datepicker.min.js chocan-->	
 			</div>
 		
 		</div>
@@ -269,7 +324,7 @@
       </div>
       <div class="modal-footer">
         <center><button type="button" data-dismiss="modal" class="btn btn-primary" id="IC15" >Aceptar</button>
-		 <a href="index.html"  class="btn btn-primary">Cancelar</a>
+		 <a href="#"  onclick="location.reload()"  class="btn btn-primary">Cancelar</a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -285,7 +340,7 @@
 <script type="text/javascript">
 
 
- document.addEventListener("DOMContentLoaded", MIC_08);
+// document.addEventListener("DOMContentLoaded", MIC_08);
  
 $( document ).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
@@ -302,7 +357,9 @@ var u = localStorage.getItem('usuario');
     		
     		localStorage.setItem('usuario', JSON.stringify(req));
     		var name = req.nombre + ' '+ req.apellido;
-    		$("#IC8").attr('value', name);
+    		//$("#IC8").attr('value', name);
+    		$("#IC8").val(name);
+    		//document.getElementById('IC8').value='holaaa';
 /*
     		var encabezado = '<li ><a href=""style="color:#FFFFFF;">Ingreso Correspondencia</span> </a></li>'+
         			'<li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>'+
@@ -332,21 +389,15 @@ var u = localStorage.getItem('usuario');
 }
 
 $("#menuDiv").load("/HTML/menu"); 
-$('#ayuda').click(
-	function(){
-	$('#miAyuda').show();
-	});
- 
+  
+
 });
+
+
 
 let app = angular.module('app', []);
 
-function prueba(valor){ // NUEVO ---- VER
-	console.log("Valor del elemento adjunto  "+document.getElementById("adjun").files[0].name ); // Da el nombre del archivo
-	console.log(valor);
-document.getElementById("hrefAdjunto").href = document.getElementById("adjun").files[0].name;
-$("#hrefAdjunto").show();
-}
+
 
 function MIC_22($scope)//ControllerAngular 
  {
@@ -360,9 +411,8 @@ function MIC_22($scope)//ControllerAngular
   }
   
    app.controller('ControllerAngular', MIC_22); 
+  function MIC_10($scope) {
   
-  function MIC_10($scope) { //Busca todas las alarmas correspondientes al dia para ser mostradas
-    
 	 fetch( 'http://localhost:3000/api/TA/ALL_FECHA', {  
     method: 'POST', 
     datatype:'json',
@@ -376,7 +426,7 @@ function MIC_22($scope)//ControllerAngular
 	.catch(err => console.log('Request failed', err));
  }
  
- function MIC_11(a, $scope){ //Elimina las alarmas de la tabla alarma
+ function MIC_11(a, $scope){
 
 $("#IC15").click(function(){
     fetch( 'http://localhost:3000/api/TA/UD', {  
@@ -404,14 +454,16 @@ $("#IC15").click(function(){
  
  function MIC_20(n){//Limpia los campos cuando se enfocan
   MIC_19();
-  MIC_04(n);
+  //MIC_04(n);
  }
  
+ /*
 function MIC_08(){  //Toma la fecha del sistema y la refleja en el campo de la fecha de recibido
 	var f = new Date();
-	$("#IC1").val(f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear());
-
-}
+	//$("#IC1").val(f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear());
+	//$("#IC1")
+	//console.log($("#datetimepicker4").datetimepicker('getDate'));
+}*/
 
 function MIC_21(){ //Cambia el valor del campo referente al numero de oficio si la opcion SIN OFICIO esta marcada
 if($("#IC12").is(':checked')){
@@ -425,7 +477,7 @@ if($("#IC12").is(':checked')){
 }
 /**
 * Funciones de los calendarios de la pagina
-**/
+**//*
  $(document).ready(function () {  //Calendario que se muestra en la pagina
                 
                 $('.date').datepicker({
@@ -433,6 +485,12 @@ if($("#IC12").is(':checked')){
                 });
             
      });
+	 
+	   $(function() {     //Calendario de la fecha de recibido
+    $('#datetimepicker4').datetimepicker({
+      pickTime: false
+    });
+  });
 
   $(function() {     //Calendario de la fecha de oficio
     $('#datetimepicker3').datetimepicker({
@@ -452,11 +510,44 @@ if($("#IC12").is(':checked')){
     });
   });
   
-  
+  */
+
+$(document).ready(function () {  //Calendario que se muestra en la pagina
+                
+                /*$('.date').datepicker({
+                     
+                });*/
+                $('#calend').datepicker({
+                     
+                });            
+     });
+$('#datetimepicker4').datetimepicker({
+   		format: 'DD-MM-YYYY', 
+   		showClear:true,
+   		defaultDate: new Date()
+	});
+ 
+    $('#datetimepicker3').datetimepicker({
+   		format: 'DD-MM-YYYY', 
+   		showClear:true
+	});
+    $('#datetimepicker5').datetimepicker({
+   		format: 'DD-MM-YYYY', 
+   		showClear:true
+	});
+
+    $('#datetimepicker6').datetimepicker({
+    	format: 'DD-MM-YYYY', 
+   		showClear:true
+    });
+
+
  function MIC_01($scope){ //Recoge los datos de los campos y realiza el fecth de inserción 
 							//a la base de datos
-	var d=new Date();
-	let b3 = d.getFullYear() + '-'+d.getMonth() + '-' + d.getDate();
+	let fecha1=$('#IC1').val();
+	let b3 = fecha1.substring(10, 6)+'-'+fecha1.substring(5, 3)+'-'+fecha1.substring(2, 0);
+	
+	console.log("b3"+b3);
 	let c3 = $('#IC2').val().toUpperCase(); 
 	let fecha=$('#IC3').val();
 	let d3 = fecha.substring(10, 6)+'-'+fecha.substring(5, 3)+'-'+fecha.substring(2, 0);
@@ -467,8 +558,19 @@ if($("#IC12").is(':checked')){
 	let i3 = '1'; // cambiar solo lo puse por que si no mamaron al ingresar
 	let j3 = $('#IC9').val().toUpperCase();
     let k3 = $('#IC10').val().toUpperCase();
-    let adj = document.getElementById("adjun").files[0];//$('#adjun').prop('files');
-    console.log(adj);
+	let doc;
+	let adj;
+	if( $('#adjun').val() == ''){
+		doc = '';
+		console.log("VACIO DOCUMENTO");
+	}
+    else{ 
+	    adj= $('#adjun').prop('files');
+	   doc = adj[0].name;
+  console.log("DOCUMENTO "+doc); // QUITAR
+  }
+  
+  console.log("xxx "+b3);
  fetch( 'http://localhost:3000/api/TC/I', {  
     method: 'POST', 
     datatype:'json',
@@ -478,7 +580,7 @@ if($("#IC12").is(':checked')){
       } ,
     body: "TC_2="+ b3+ "&TC_3="+c3+
 	"&TC_4="+ d3 + "&TC_5="+ e3 +"&TC_6="+ f3 + 
-	"&TC_7="+ g3 + "&TC_8="+ h3 +"&TC_9="+ i3+"&TC_10="+ j3+ "&TC_11="+ k3
+	"&TC_7="+ g3 + "&TC_8="+ h3 +"&TC_9="+ i3+"&TC_10="+ j3+ "&TC_11="+ k3 + "&TC_12="+doc
       }
 	  )
   .then(function(response) {
@@ -488,18 +590,19 @@ if($("#IC12").is(':checked')){
 					if(res.indexOf("error")==-1){
 						$("#mensaje").text("Acción realizada con exito");
 							MIC_13($scope); 
-							console.log($("#IC16").is(':checked'));
-							if($("#IC16").is(':checked'))
+							console.log($("#enlace_checkbox").is(':checked'));
+							if($("#enlace_checkbox").is(':checked'))
 							{
 								MIC_06();
 							}
-
+							if(doc!=''){ 
 							 var formData  = new FormData();		
-							 formData.append('arc', adj);
+							 formData.append('arc', adj[0]);
 							fetch('http://localhost:3000/upload', {
     						method: 'POST',
     						body: formData
   });
+							}
 					}
 					else
 						$("#mensaje").text("Fallo al realizar la acción"); 
@@ -554,7 +657,7 @@ function MIC_02(){	 //Valida los campos
 		MIC_04(4);
 	}
 	if($("#IC5").val().length == 0){
-		MIC_23(5);
+		MIC_23(5); 
 		IC5 = false;
 	}
 	else{
@@ -618,7 +721,8 @@ function MIC_03(){//Limpia el valor de los campos de entrada
 	$("#IC14").val("");
 	$("#IC12").prop("checked",false);
 	$("#IC2").prop("checked",false);
-	$( "#IC16" ).prop( "checked", false );
+	$('#adjun').val(""); 
+	$( "#enlace_checkbox" ).prop( "checked", false );
 	}
 function MIC_19(){//Limpia el div con el id=mensaje
 	$("#mensaje").text("");
@@ -658,18 +762,19 @@ function MIC_04(op){//Realiza un cambio de clase a los campos de entrada del for
 	}
 }	
 function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formulario a la clase has-error
-
+	let fechaR=$("#IC1").val();
+	//La fecha debe de llevar el formato YYYY/MM/dd
+	
+	let s=fechaR.substring(10, 6)+'-'+fechaR.substring(5, 3)+'-'+fechaR.substring(2, 0);
 	
 	
-	var d=new Date();
 	
-	let fecha1 = d.getFullYear() + '-'+ ((d.getMonth()<10)?'0':'') +(d.getMonth()+1) + '-' + ((d.getDate()<10)?'0':'') + d.getDate();
-	let fecha2=$("#IC3").val();
+		let fecha2=$("#IC3").val();
 	//La fecha debe de llevar el formato YYYY/MM/dd
 	
 	let r=fecha2.substring(10, 6)+'-'+fecha2.substring(5, 3)+'-'+fecha2.substring(2, 0);
 	
-	if(fecha1>=r){
+	if(s<=r){
 		$("#datetimepicker4").attr('class','input-append  form-group') ;
 		$("#IC1").attr('title','') ;
 		$("#datetimepicker3").attr('class','input-append  form-group') ;
@@ -762,7 +867,7 @@ function MIC_07($scope){//Realiza la consulta si la correspondencia a ingresar y
 		console.log('Fecha limte '+b5);  // QUITAR
 			console.log('Fecha aviso '+c5);
 		let d5 = 0;
-	    if( !$("#IC16").is(':checked'))
+	    if( !$("#enlace_checkbox").is(':checked'))
 		{
 			MIC_03();
 		}
@@ -818,7 +923,7 @@ function MIC_07($scope){//Realiza la consulta si la correspondencia a ingresar y
    	);
 	}
 	
-function MIC_18(){ //Valida los campos de la programación de alarmas
+function MIC_18(){
 let A1=true;
 let  A2=true;
 let A3= true;

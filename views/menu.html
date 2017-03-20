@@ -4,9 +4,12 @@
 <head>
 </head>
 <body>
-	<nav class="navbar navbar-default" style="background-color:#60161E; ">
+<div id='menu'></div>
+
+  <!--
+  <nav class="navbar navbar-default" style="background-color:#60161E; ">
     <div class="container-fluid">
-    <!-- ReEsponsive -->
+    <!-- ReEsponsive ->
     <div class="navbar-header" >
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="icon-bar"></span>
@@ -17,7 +20,7 @@
     <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=90  class="nav navbar-nav navbar-right" >
     </div>
   
-    <!-- Menu -->
+    <!-- Menu ->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav" id ='menu' style="margin-top:7px;">
     <!--li><a href=""style="color:#FFFFFF;">SCC-SITUN</a></li->
@@ -30,33 +33,72 @@
     <li><a href="../HTML/BusquedaUsuarios"style="color:#FFFFFF;">Buscar Usuarios</a></li>
     <li><a href="#" style="color:#FFFFFF;">Ayuda</a></li>
     <li><a href="../logout"style="color:#FFFFFF;">Cerrar sesion</a></li>
-    -->
+    
       </ul>
     
         <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=90  class="nav navbar-nav navbar-right">
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div><!-- /.navbar-collapse ->
+  </div><!-- /.container-fluid ->
 </nav>
-
+-->
 <script type="text/javascript">
   
 $(document).ready(function() {
     usr = JSON.parse(localStorage.getItem('usuario'));
     console.log(usr);
-  var encabezado = '<li ><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;">Ingreso Correspondencia</span> </a></li>'+
-              '<li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>'+
-              '<li><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>'+
-          '<li><a href="#"style="color:#FFFFFF;">Reportes</a></li>'+
-          '<!--li><a href="#"style="color:#FFFFFF;">Escanear</a></li-->';
-          if(usr.tipo === '1')
-          {
-            encabezado+= '<li><a href="../HTML/ingresaUser"style="color:#FFFFFF;">Agregar Usuario</a></li>'+
-            '<li><a href="../HTML/BusquedaUsuarios"style="color:#FFFFFF;">Buscar Usuarios</a></li>';
-          }         
-          encabezado+= '<li><a href="" data-toggle="modal" data-target="#myAyuda" id="ayuda" style="color:#FFFFFF;"><b>Ayuda</b></a></li>'+
-          '<li><a href="../logout"style="color:#FFFFFF;">Cerrar sesion</a></li>';
+    var enc = '<nav class="navbar navbar-default" style="background-color:#60161E; ">'+
+  '<div class="container-fluid">'+
+   ' <!-- Brand and toggle get grouped for better mobile display -->'+
+    '<div class="navbar-header">'+
+      '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">'+
+        '<span class="sr-only">Toggle navigation</span>'+
+        '<span class="icon-bar"></span>'+
+        '<span class="icon-bar"></span>'+
+        '<span class="icon-bar"></span>'+
+      '</button>'+
+      '<IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=50  class="nav navbar-nav navbar-right" >'+
+    '</div>'+
 
-    $('#menu').html(encabezado);
+    '<!-- Collect the nav links, forms, and other content for toggling -->'+
+    '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left:70px">'+
+     '<ul class="nav navbar-nav">'+
+      '<li ><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;">Ingreso de Correspondencia </a></li>'+
+      '<li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>'+
+        '<li><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>'+
+        '<li><a href="../HTML/Reportes"style="color:#FFFFFF;">Reportes</a></li>';
+
+
+        if(usr.tipo === '1')
+          {
+            enc+= '<li class="dropdown" >'+
+          '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#FFFFFF;">Usuarios <span class="caret"></span></a>'+
+          '<ul class="dropdown-menu" style="background-color:#60161E; ">'+
+            '<li><a href="../HTML/ingresaUser" style="color:#FFFFFF;">Agregar Usuario</a></li>'+
+            '<li><a href="../HTML/BusquedaUsuarios" style="color:#FFFFFF;">Buscar Usuarios</a></li>'+
+          '</ul>'+
+        '</li>';
+
+
+            
+          }  
+
+        enc+='<li><a href="" data-toggle="modal" data-target="#myAyuda" id="ayuda" style="color:#FFFFFF;"><b>Ayuda</b></a></li>'+
+          //'<li><a href="../logout"style="color:#FFFFFF;">Cerrar sesion</a></li>'
+          '<li class="dropdown col-md-offset-0.6" >'+
+            '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#FFFFFF;">'+usr.nombre+' '+usr.apellido +'<span class="caret"></span></a>'+
+            '<ul class="dropdown-menu" style="background-color:#60161E; ">'+
+            '<li><a href="../logout" style="color:#FFFFFF;">Cerrar sesion</a></li>'+
+          '</ul>'+
+        '</li>'
+
+      '</ul>'
+    '</div><!-- /.navbar-collapse -->';
+  '</div><!-- /.container-fluid -->'+
+'</nav>';
+
+
+//$('#menu').html(encabezado);
+$('#menu').html(enc);
 
 });
 </script>

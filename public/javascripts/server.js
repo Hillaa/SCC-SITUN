@@ -59,8 +59,9 @@ function createTU(req, res, next) {
 //-------- CREACION DE UN NUEVO TC EN LA TABLA ----------
 function createTC(req, res, next) {
 	console.log("Insert received...");
-     db.none('insert into TC (TC_2, TC_3, TC_4, TC_5, TC_6, TC_7, TC_8, TC_9, TC_10, TC_11)' +
-      'values(current_date, ${TC_3}, ${TC_4}, ${TC_5}, ${TC_6},${TC_7}, ${TC_8}, ${TC_9}, ${TC_10}, ${TC_11})',
+	
+     db.none('insert into TC (TC_2, TC_3, TC_4, TC_5, TC_6, TC_7, TC_8, TC_9, TC_10, TC_11, TC_12)' +
+      'values($(TC_2), ${TC_3}, ${TC_4}, ${TC_5}, ${TC_6},${TC_7}, ${TC_8}, ${TC_9}, ${TC_10}, ${TC_11}, ${TC_12})',
 	     req.body)
     .then(function () {
 		console.log("Theniando en insert tc");
@@ -201,6 +202,21 @@ function getSingleTU(req, res, next) {
     });
 }
 
+//------ RETORNO DE UN TC ESPECIFICO ---------------------
+function getSingleTC(req, res, next) {
+  db.any('SELECT tc_4 FROM TC where tc_4 = (SELECT MAX(tc_4) FROM TC )')
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
 //----- RETORNO DE TODOS LOS TP SEGUN TP_1
 function getALLTP1(req, res, next) {
 	var low = req.body.TP_1.toLowerCase();
@@ -265,6 +281,22 @@ function getALLTC1(req, res, next) {
     });
 }
 
+//------ RETORNO DE UN TC ESPECIFICO SEGUN TC_1---------------------
+function getALLTC5(req, res, next) {
+	console.log("entra");
+	var low = req.body.TC_1;
+ req.body.TC_1 = low ;
+ var promises = [];
+  db.any('select * from TC where TC_1 = ${TC_1}', req.body)
+	.then( function (data) {
+		res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ONE TC'
+        });
+    });
+}
 
 function getAllEnlaces(req, res, next)	// devuelve los enlaces de una correspondencia
 {
@@ -349,6 +381,22 @@ function getALLTC4(req, res, next) {
     });
 }
 
+//------ RETORNO DE UN TC ENTRE RANGOS SEGUN TC_4  ---------------------
+function getALLTC6(req, res, next) {
+	db.any('select *from TC where tc_4  between   ${TC_4F1}  and ${TC_4F2}  ;', req.body)
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ONE TC'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
 //------ RETORNO DE UNO O VARIOS TE ESPECIFICOS SEGUN TE_1 ---------------------
 function getALLTE_ONE(req, res, next) {
 	  req.body.TE_1 = parseInt(req.body.TE_1);
@@ -383,6 +431,22 @@ function getALLTA_FECHA(req, res, next) {
     })
     .catch(function (err) {
       return next(err);
+    });
+}
+
+//----- RETORNO DE TODOS LOS TP SEGUN TP_1
+function getALLTA1(req, res, next) {
+	//var low = req.body.TP_1.toLowerCase();
+ //req.body.TP_1 = '%' + low + '%';
+ var promises = [];
+  db.any('select * from TA where TA_1=${TA_1}', req.body)
+	.then( function (data) {
+		res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ALL TA FROM TA_1'
+        });
     });
 }
 
@@ -469,6 +533,28 @@ function updateTA(req, res, next) {
         .json({
           status: 'success',
           message: 'Updated TA'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
+
+//-------- ACTUALIZACION DE LA TABLA TA solo fechas----------
+function updateTAFechas(req, res, next) {
+	
+	req.body.TA_1 = parseInt(req.body.TA_1);
+	 //req.body.TA_4 = parseInt(req.body.TA_4);
+	 console.log("actualiza");
+  db.none('update TA set TA_2=${TA_2},TA_3=${TA_3}'+
+          'where TA_1=${TA_1}',
+    req.body)
+    .then(function () {
+      res.status(200)
+        .json({
+          status: 'success',
+          message: 'Updated TA fechas'
         });
     })
     .catch(function (err) {
@@ -627,12 +713,16 @@ module.exports = {
   getAllTC: getAllTC,
   getSingleTP: getSingleTP,
   getSingleTU: getSingleTU,
+  getSingleTC:getSingleTC,
   getALLTC1: getALLTC1,
   getALLTC2: getALLTC2,
   getALLTC3: getALLTC3,
   getALLTC4: getALLTC4,
+  getALLTC5: getALLTC5,
+  getALLTC6: getALLTC6,
   getALLTE_ONE: getALLTE_ONE,
   getALLTA_FECHA: getALLTA_FECHA,
+  getALLTA1:getALLTA1,
   createTP: createTP,
   createTU: createTU,
   createTC: createTC,
@@ -649,6 +739,7 @@ module.exports = {
   updateTE: updateTE,
   getLastTC: getLastTC,
   updateTA: updateTA,
+  updateTAFechas:updateTAFechas,
   getAllEnlaces: getAllEnlaces,
   getUSR: getUSR
 };
