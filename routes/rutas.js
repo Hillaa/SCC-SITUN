@@ -13,7 +13,7 @@ var formidable = require('formidable');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-	if(req.session.passport)
+	if(req.isAuthenticated())
 	{
 		res.render('Ingreso de Correspondencia');
 	}
@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
 	usr: req.session.usr,
 	pass: req.session.pass
 	};
-	req.session.retry = true;
+	req.session.retry = false;
   res.render('index', obj);
 });
 
