@@ -305,6 +305,7 @@ function MR_03($scope){// limpia
 
 function MR_04($scope){ //Metodo que genera el reporte
 
+if(MR_05()){
 let pdf = new jsPDF('p', 'pt', 'letter');
 let source =  $('#HTMLtoPDF')[0] ;
 specialElementHandlers = {
@@ -330,6 +331,8 @@ pdf.fromHTML(
         pdf.save('ReporteCorrespondencia.pdf');
       }
   )		
+  
+  }
 }
 
 
