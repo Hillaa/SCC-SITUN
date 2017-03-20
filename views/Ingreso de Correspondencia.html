@@ -765,16 +765,16 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 	let fechaR=$("#IC1").val();
 	//La fecha debe de llevar el formato YYYY/MM/dd
 	
-	let s=fechaR.substring(10, 6)+'-'+fechaR.substring(5, 3)+'-'+fechaR.substring(2, 0);
+	let recibido=fechaR.substring(10, 6)+'-'+fechaR.substring(5, 3)+'-'+fechaR.substring(2, 0);
 	
 	
 	
 		let fecha2=$("#IC3").val();
 	//La fecha debe de llevar el formato YYYY/MM/dd
 	
-	let r=fecha2.substring(10, 6)+'-'+fecha2.substring(5, 3)+'-'+fecha2.substring(2, 0);
+	let oficio=fecha2.substring(10, 6)+'-'+fecha2.substring(5, 3)+'-'+fecha2.substring(2, 0);
 	
-	if(s<=r){
+	if(oficio<=recibido){
 		$("#datetimepicker4").attr('class','input-append  form-group') ;
 		$("#IC1").attr('title','') ;
 		$("#datetimepicker3").attr('class','input-append  form-group') ;
