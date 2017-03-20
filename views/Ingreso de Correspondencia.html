@@ -25,15 +25,11 @@
 		-->
 			<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
 <script src="\..\javascripts\new\moment-2.15.1.js"></script>
-
 <script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
-
 <link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
-
-
 <script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
-
 <link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
+
 	<!-- Angular--> 
 	<script src="\..\javascripts\angular.min.js"></script>
 	
@@ -545,6 +541,10 @@ $('#datetimepicker4').datetimepicker({
  function MIC_01($scope){ //Recoge los datos de los campos y realiza el fecth de inserción 
 							//a la base de datos
 	let fecha1=$('#IC1').val();
+
+  console.log('La fecha de recibido es: ');
+  console.log(fecha1);
+
 	let b3 = fecha1.substring(10, 6)+'-'+fecha1.substring(5, 3)+'-'+fecha1.substring(2, 0);
 	
 	console.log("b3"+b3);
@@ -555,7 +555,8 @@ $('#datetimepicker4').datetimepicker({
 	let f3 = $('#IC5').val().toUpperCase();
 	let g3 = $('#IC6').val().toUpperCase();
 	let h3 = $('#IC7').val().toUpperCase();
-	let i3 = '1'; // cambiar solo lo puse por que si no mamaron al ingresar
+  u = JSON.parse(localStorage.getItem('usuario'));
+	let i3 = u.Id; 
 	let j3 = $('#IC9').val().toUpperCase();
     let k3 = $('#IC10').val().toUpperCase();
 	let doc;
