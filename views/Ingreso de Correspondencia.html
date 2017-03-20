@@ -23,6 +23,14 @@
  <link rel="stylesheet" href="\..\stylesheets\datepicker.css">
         <link rel="stylesheet" href="\..\stylesheets\bootstrap.css">   
 		-->
+	
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 			<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
 <script src="\..\javascripts\new\moment-2.15.1.js"></script>
 <script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
@@ -149,7 +157,7 @@
 	  
   
 	  
-	  <!-- **************** fin  estilo de mensajes de error ----->
+		  <!-- **************** fin  estilo de mensajes de error ----->
 	    <!---Cuerpo--->
 	   <a href='#' onclick='MIC_14();return false' title='Ir Arriba'></a><!--Para subir la pagina-->
 	   <body background="../images/situn4.png" ng-app ng-controller = "ControllerAngular">
@@ -167,7 +175,7 @@
 					</div>
 					-->
 					<div class='input-group date' id='datetimepicker4'>
-          					<input type='text' class="form-control" id="IC1"/>
+          					<input type='text' class="form-control" id="IC1" data-toggle="tooltip" data-placement="right" title="Fecha invalida o mayot a la de oficio"/>
           					<span class="input-group-addon">
             					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(1)"></span>
           					</span>
@@ -176,7 +184,7 @@
                 </tr>
                 <tr>
                     <td> <label class="text-danger">N° Oficio</label> </td>
-                    <td><div  id="div2"class="form-group"><textarea id="IC2" type="text" class="form-control" onfocus="MIC_20(2)"></textarea>
+                    <td><div  id="div2"class="form-group"><textarea id="IC2" data-toggle="tooltip" data-placement="right" title="N° oficio imcompleto"type="text" class="form-control" onfocus="MIC_20(2)"></textarea>
 					<label class="text-danger" style=""><input  type="checkbox" id="IC12" value="first_checkbox" onchange="MIC_21()">Sin Oficio</label></div></td>           
 					</tr>
                 <tr >
@@ -186,7 +194,7 @@
 					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
 					</div> -->
 					<div class='input-group date' id='datetimepicker3'>
-          					<input type='text' class="form-control" id="IC3"/>
+          					<input type='text' class="form-control" id="IC3" data-toggle="tooltip" data-placement="right" title="Fecha invalida o menor a la de recibido" />
           					<span class="input-group-addon">
             					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
           					</span>
@@ -195,30 +203,30 @@
                 </tr>
                 <tr>
                     <td> <label class="text-danger">Destinatario </label></td>
-                    <td><div id="div4" class="form-group"><textarea id="IC4" type="text" class="form-control"  onfocus="MIC_20(4)" > </textarea></div></td> 
+                    <td><div id="div4" class="form-group"><textarea id="IC4"data-toggle="tooltip" data-placement="right" title="Datos de destinatario imcompleto" type="text" class="form-control"  onfocus="MIC_20(4)" > </textarea></div></td> 
                 </tr>
 				 <tr>
                     <td> <label class="text-danger">Copia </label></td>
-                    <td><div id="div5" class="form-group"><textarea id="IC5" type="text" class="form-control" onfocus="MIC_20(5)"></textarea></div></td> 
+                    <td><div id="div5" class="form-group"><textarea id="IC5"data-toggle="tooltip" data-placement="right" title="Datos de copia imcompletos" type="text" class="form-control" onfocus="MIC_20(5)"></textarea></div></td> 
                 </tr>
 				 <tr>
                     <td> <label class="text-danger">Remitente </label></td>
-                    <td><div id="div6" class="form-group"><textarea type="text" class="form-control" id="IC6" data-toggle="tooltip" data-placement="right" title="Hooray!" onfocus="MIC_20(5)"></textarea></div></td>                </tr>
+                    <td><div id="div6" class="form-group"><textarea type="text" class="form-control" id="IC6"data-toggle="tooltip" data-placement="right" title="Datos de remitente imcompletos" onfocus="MIC_20(5)"></textarea></div></td>                </tr>
                 <tr>
                     <td> <label class="text-danger">Asunto</label></td>
-                    <td><div id="div7"class="form-group"><textarea id="IC7" type="text" class="form-control"rows=4 cols=30 onfocus="MIC_20(7)"></textarea></input></div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div7"class="form-group"><textarea id="IC7" data-toggle="tooltip" data-placement="right" title="Datos de asunto imcompletos"type="text" class="form-control"rows=4 cols=30 onfocus="MIC_20(7)"></textarea></input></div></td> <!--****** NUEVO ***********-->
                 </tr>
 				<tr>
                     <td> <label class="text-danger">Recibido</label></td>
-                    <td><div id="div8"class="form-group"><input id="IC8" type="text" class="form-control" onfocus="MIC_20(8)" ng-model="usuario" disabled></input> <div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div8"class="form-group"><input id="IC8" data-toggle="tooltip" data-placement="right" title="Datos de recibido imcompletos"type="text" class="form-control" onfocus="MIC_20(8)" ng-model="usuario" disabled></input> <div></td> <!--****** NUEVO ***********-->
                 </tr>
 				<tr>
                     <td> <label class="text-danger">Estado</label></td>
-                    <td><div id="div9"class="form-group"><textarea type="text" class="form-control" id="IC9"  onfocus="MIC_20(9)"></textarea></div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div9"class="form-group"><textarea type="text" class="form-control" id="IC9"  data-toggle="tooltip" data-placement="right" title="Datos de estado imcompletos"onfocus="MIC_20(9)"></textarea></div></td> <!--****** NUEVO ***********-->
                 </tr>
                 <tr>
                     <td> <label class="text-danger">Observaciones</label></td>
-                    <td><div id="div10"class="form-group"><textarea type="text"class="form-control" id="IC10"  ></textarea></input></div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div10"class="form-group"><textarea type="text"class="form-control" id="IC10" ></textarea></input></div></td> <!--****** NUEVO ***********-->
                 </tr>
                 <tr>
                     <td ><center><button type="button" class="btn btn-default"  ng-click ="guardarCorrespondencia()">Guardar</button>
@@ -230,7 +238,7 @@
         </form>  
 	   </div>
 	   
-	   
+	    
 		<div class="col-md-2 form-group"><!--Genera el espacio entre componentes---->	 
 			<span class="text-danger"><h4>Alarma</h4></span>
                 <label class="text-danger">Fecha Aviso</label>
@@ -731,37 +739,64 @@ function MIC_19(){//Limpia el div con el id=mensaje
 function MIC_04(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase has-error a from-group
 	switch(op){
 	case 1: $("#datetimepicker4").attr('class','input-append  form-group') ;
-			$("#IC1").attr('title','') ;
+
+						$(document).ready(function(){
+   $("[id='IC1']").tooltip('hide');
+});
 			break;
 	case 2: $("#div2").attr('class','input-append  form-group') ;
-			$("#IC2").attr('title','') ;
+
+						$(document).ready(function(){
+   $("[id='IC2']").tooltip('hide');
+});
 			break;
 	case 3: $("#datetimepicker3").attr('class','input-append  form-group') ;
-			$("#IC3").attr('title','') ;
+
+					$(document).ready(function(){
+   $("[id='IC3']").tooltip('hide');
+});
 			break;
 	case 4: $("#div4").attr('class','input-append  form-group') ;
-			$("#IC4").attr('title','') ;
+
+						$(document).ready(function(){
+   $("[id='IC4']").tooltip('hide');
+});
 			break;
 	case 5: $("#div5").attr('class','input-append  form-group') ;
-			$("#IC5").attr('title','') ;
+
+					$(document).ready(function(){
+   $("[id='IC5']").tooltip('hide');
+});
 			break;
 	case 6: $("#div6").attr('class','input-append  form-group') ;
-			$("#IC6").attr('title','') ;
+
+						$(document).ready(function(){
+   $("[id='IC6']").tooltip('hide');
+});
 			break;
 	case 7: $("#div7").attr('class','input-append  form-group') ;
-			$("#IC7").attr('title','') ;
+
+					$(document).ready(function(){
+   $("[id='IC7']").tooltip('hide');
+});
 			break;
 	case 8: $("#div8").attr('class','input-append  form-group') ;
-			$("#IC8").attr('title','') ;
+
+						$(document).ready(function(){
+   $("[id='IC8']").tooltip('hide');
+});
 			break;
 	case 9: $("#div9").attr('class','input-append  form-group') ;
-			$("#IC9").attr('title','') ;
+
+						$(document).ready(function(){
+   $("[id='IC9']").tooltip('hide');
+});
 			break;
 	
 	
 	default: break;
 	}
-}	
+}
 function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formulario a la clase has-error
 	let fechaR=$("#IC1").val();
 	//La fecha debe de llevar el formato YYYY/MM/dd
@@ -1020,38 +1055,62 @@ if(fechaAviso.length == 0 || fechaLimite.length == 0){
 function MIC_23(op){//Realiza un cambio de clase a los campos de entrada del formulario de la from-group a la clase has-error
 	switch(op){
 	case 1: $("#datetimepicker4").attr('class','input-append form-group has-error') ;
-			$("#IC1").attr('title','Campo Obligatorio') ;
+
+			$(document).ready(function(){
+   $("[id='IC1']").tooltip('show');
+});
 			break;
 	case 2: $("#div2").attr('class','form-group has-error') ;
-			$("#IC2").attr('title','Campo Obligatorio') ;
+
+			$(document).ready(function(){
+   $("[id='IC2']").tooltip('show');
+});
 			break;
 	case 3: $("#datetimepicker3").attr('class','input-append form-group has-error') ;
-			$("#IC3").attr('title','Campo Obligatorio') ;
+
+			$(document).ready(function(){
+   $("[id='IC3']").tooltip('show');
+});
 			break;
 	case 4: $("#div4").attr('class','form-group has-error') ;
-			$("#IC4").attr('title','Campo Obligatorio') ;
+
+			$(document).ready(function(){
+   $("[id='IC4']").tooltip('show');
+});
 			break;
 	case 5: $("#div5").attr('class','form-group has-error') ;
-			$("#IC5").attr('title','Campo Obligatorio') ;
+
+			$(document).ready(function(){
+   $("[id='IC5']").tooltip('show');
+});
 			break;
 	case 6: $("#div6").attr('class','form-group has-error') ;
-			$("#IC6").attr('title','Campo Obligatorio') ;
+
+			$(document).ready(function(){
+   $("[id='IC6']").tooltip('show');
+});
 			break;
 	case 7: $("#div7").attr('class','form-group has-error') ;
-			$("#IC7").attr('title','Campo Obligatorio') ;
+
+					$(document).ready(function(){
+   $("[id='IC7']").tooltip('show');
+});
 			break;
 	case 8: $("#div8").attr('class','form-group has-error') ;
-			$("#IC8").attr('title','Campo Obligatorio') ;
+
+			$(document).ready(function(){
+   $("[id='IC8']").tooltip('show');
+});
 			break;
 	case 9: $("#div9").attr('class','form-group has-error') ;
-			$("#IC9").attr('title','Campo Obligatorio') ;
+
+			
 			break;
 	
 	
 	default: break;
 	}
 }
-    
     
 	
 </script>
