@@ -313,7 +313,7 @@
       </div>
       <div class="modal-footer">
 	   <center>
-	  <button id="btnGd1" type="button" class="btn btn-default" ng-click = "actualizaAlarma(c)" >Guardar</button>
+	  <button id="btnGd1" type="button" class="btn btn-default"  >Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 		</center>     
 	 </div>
@@ -870,7 +870,7 @@ function cargaAlarma(data,corr){ //carga los datos de la alarma
     headers: {  
       "Content-type": "application/x-www-form-urlencoded"  
       } ,
-    body: "TA_1="+ data+"&TA_2="+ b3+"&TA_3="+ d3
+    body: "TA_1="+ data+"&TA_2="+ d3+"&TA_3="+ b3+"&TA_4=0"
       }
 	  )
   .then()
@@ -891,7 +891,7 @@ function newAlarm(data){//insercion de una nueva alarma a las correpondencia esc
 			headers: {  
 				"Content-type": "application/x-www-form-urlencoded"  
 			} ,
-			body: "TA_1="+ data+ "&TA_2="+ b5+ "&TA_3="+c5+"&TA_4="+ d5 
+			body: "TA_1="+ data+ "&TA_2="+ c5+ "&TA_3="+b5+"&TA_4="+ d5 
 		}
 	  )
 		.then(function(response) {
