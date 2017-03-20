@@ -3,84 +3,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Busqueda</title>
-  
-  
-  <!----Calendario-
-  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-   >
-   
-   
-  <link rel="stylesheet" href="\..\stylesheets\bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="\..\javascripts\bootstrap.min.js"></script>
-  <link href="\..\stylesheets\bootstrap-datetimepicker.min.css" rel="stylesheet">
-  <script type="text/javascript"src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
-    <!--script type="text/javascript"src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script->
-    <script type="text/javascript"src="\..\javascripts\bootstrap-datetimepicker.min.js"></script>
-
-	-->
-	<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
+		
+<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
 <script src="\..\javascripts\new\moment-2.15.1.js"></script>
-
 <script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
-
 <link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
-
-
 <script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
-
 <link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
+<!-- Angular--> 
+<script src="\..\javascripts\angular.min.js"></script>
+</head>
+<body ng-app ng-controller = "ControllerAngular">
+<div id="menuDiv"></div>
 
-	<!-- Angular--> 
-	<script src="\..\javascripts\angular.min.js"></script>
-	
-	
-    </head>
-	
-    <body ng-app ng-controller = "ControllerAngular">
-
-    <div id="menuDiv"></div>
-
-    <!--
-    <nav class="navbar navbar-default" style="background-color:#60161E;">
-    <div class="container-fluid">
-    <!-- REsponsive ->
-    <div class="navbar-header" >
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-  <IMG SRC="../images/situn2.png" WIDTH=85 HEIGHT=58  class="nav navbar-nav navbar-right">
-    </div>
-
-    <!-- Menu ->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav" style="margin-top:7px;">
-        <li ><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;"><b>Ingreso Correspondencia</b> </a></li>
-        <li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;"><b>Enlace Documentos</b></a></li>
-        <li><a href="#"style="color:#FFFFFF;"><b>Búsqueda</b></a></li>
-		<li><a href="#"style="color:#FFFFFF;"><b>Reportes</b></a></li>
-		<!---li><a href="#"style="color:#FFFFFF;">Escanear</a></li->
-			<li><a href="../HTML/ingresaUser"style="color:#FFFFFF;"><b>Agregar Usuario</b></a></li>
-		<li><a href="../HTML/BusquedaUsuarios"style="color:#FFFFFF;"><b>Buscar Usuarios</b></a></li>
-		 <li><a href="../logout"style="color:#FFFFFF;"><b>Cerrar sesion</b></a></li>
-	    <li><a href="#" style="color:#FFFFFF;"><b>Ayuda</b></a></li>
-      </ul>
-    
-        <IMG SRC="../images/situn2.png" WIDTH=85 HEIGHT=58  class="nav navbar-nav navbar-right">
-    </div><!-- /.navbar-collapse ->
-  </div><!-- /.container-fluid ->
-</nav>
-	  -->
-	  
-	  
-	  
-	  	<!-- Trigger the modal with a button -->
-<!-- Modal -->
+<!-- Modal de MIAYUDA-->
 <div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:500px;">
   <div class="well">
-   
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -113,15 +51,9 @@
   </div>  <!-- fin del popup de ayuda --> 
 	   <!---Cuerpo-->
 	   <body background="../images/situn4.png">
-	   
-
-	
-	
 	   <div class="col-md-8" style="margin-left:20px">
          <span class="text-danger"><h2>Tipo de Busqueda</h2></span>
- 
-           <form class="navbar-form navbar-left">         
-        
+			<form class="navbar-form navbar-left">         
             <div   class="form-group ">
 				<select class="form-control input-sm" id="opBusqueda" ng-model = "criterio">
 					<option value="Nº oficio">Nº Oficio
@@ -129,18 +61,14 @@
 					<option value="Remitente">Remitente                                          
 					<option value="Asunto">Asunto                                      
 				</select> 
-               
-          
 				<input type="text" class="form45" id="buscar"  >
 				<input type = "button" class="btn btn-default" id="buscar" value = "Buscar" ng-click="buscar()" >
 				<input type = "button"class="btn btn-default" id ="cancelar" value = "Cancelar"  ng-click="clear()" >
-            
 			</div>
          <p align="left"><p align="left"><div class="table table-bordered" >
 	<p align="left"><table class="table" id="tabla_busqueda">
-	
 		
-
+<!-- Tabla cargada al buscar correspondencias -->
 		<thead> 
 			<tr class="danger">
 			<td># Oficio</td>
@@ -180,8 +108,6 @@
 					<td> 
 						<!-- Trigger the modal with a button -->
 						<button type="button" class="btn btn-danger" data-toggle="modal"  ng-click="Alarma(c)">Ajustar</button>
-						
-
 					</td>
 					<td>
 					
@@ -192,21 +118,16 @@
 	</table>
                </div></p>
       </form>
-           
-   
 	   </div> 
 	  <!-- popup editar correspondencia-->
 	<!-- Trigger the modal with a button -->
 <!-- Modal -->
-<div class="col-md-1"></div>
-	   
+<div class="col-md-1"></div>   
 <div id="myModal2" class="modal fade" role="dialog">
   <div class="modal-dialog">
-   
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-	 
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="text-danger">Edición</h4>
       </div>
@@ -217,11 +138,6 @@
 				<td>
 					 <label class="text-danger">Fecha Recibido</label>
 				<td>
-				<!--
-					<div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
-					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
-					</div>
-					-->
 					<div class='input-group date' id='datetimepicker55'>
           					<input type='text' class="form-control" id="IC1"/>
           					<span class="input-group-addon">
@@ -281,26 +197,14 @@
 	    <center><button type="button" class="btn btn-default" ng-click = "actualiza(c)" >Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center>	
       </div>
-	  
-	  
-	  
-	  
-	  
-	  
     </div>
-	
-
   </div>
   </div>
 </div>
-	
 	<!-- fin del popup editar correspondencia-->
-	  
-
 	  <!-- Trigger the modal with a button -->
 <!-- Modal -->
-<div class="col-md-1"></div>
-	   
+<div class="col-md-1"></div>	   
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">   
     <!-- Modal content-->
@@ -342,15 +246,11 @@
 			</tbody>
 		</table> 
 		</center>
-		 
-		
-		
       </div>
       <div class="modal-footer">
 	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-
   </div>
   </div>
 </div>
@@ -359,18 +259,14 @@
 		   	    <!-- Modal -->
 <!-- Modal -->
 <div ></div>
-	   
 <div id="myModal3" class="modal fade" role="dialog">
   <div class="modal-dialog">
-   
     <!-- Modal content-->
-   
 	 <div class="modal-content">
       <div class="modal-header">		
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 		<center>
 			<h4>Ajuste de Alarma </h4>
-			
 		</center>
 	  </div>
       <div class="modal-body">
@@ -381,32 +277,19 @@
 				<td>
 					 <label class="text-danger">Fecha Aviso</label>
 				<td>
-				<!--
-					<div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
-					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
-					</div>
-					-->
-					
 					<div class='input-group date' id='datetimepicker33'>
           					<input type='text' class="form-control" id="IC14"/>
           					<span class="input-group-addon">
             					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
           					</span>
         				</div>
-
-				<td>
-					
+				<td>		
 				</td>
 			</tr>
 			<tr class="danger">
 				<td>
 					 <label class="text-danger">Fecha Limite</label>
 				<td>
-				<!--
-					<div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
-					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
-					</div>
-					-->
 					<div class='input-group date' id='datetimepicker44'>
           					<input type='text' class="form-control" id="IC15"/>
           					<span class="input-group-addon">
@@ -414,30 +297,21 @@
           					</span>
         				</div>
 				<td>
-					
 				</td>
 			</tr>
-			</thead>
-			
+			</thead>	
 		</table>
 		</center>
       </div>
-	 
       <div class="modal-footer">
 	   <center>
 	  <button id="btnGd1" type="button" class="btn btn-default" ng-click = "actualizaAlarma(c)" >Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 		</center>     
 	 </div>
-	  
     </div>
-
   </div>
   </div>
-
-	
-
-
 	<!-- fin del popup Alarma-->
 	
 	<!-- popup alarma-->
@@ -447,25 +321,20 @@
 	   
 <div id="myModal4" class="modal fade" role="dialog">
   <div class="modal-dialog">
-   
     <!-- Modal content-->
-   
 	 <div class="modal-content">
       <div class="modal-header">		
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 		<center>
-			<h4>Ajuste de Alarma </h4>
-			
+			<h4>Ajuste de Alarma </h4>	
 		</center>
 	  </div>
       <div id="divAjuste1" class="modal-body">
 	  <center>
 		 <label class="text-danger">Actualmente este oficio no cuenta con una alarma. Puede crear una nueva alarma completando los siguientes campos</label>
 		</center>
-      </div>
-	  
-	  
-	   <div id="divAjuste2" class="modal-body" >  <!--style="visibility: hidden;"--> 
+      </div>	  
+	   <div id="divAjuste2" class="modal-body" >   
 	  <center>
 		 <table class="table">
 			<thead>
@@ -473,40 +342,26 @@
 				<td>
 					 <label class="text-danger">Fecha Aviso</label>
 				<td>
-				<!--
-					<div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
-					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
-					</div>
-					-->
-					
 					<div class='input-group date' id='datetimepicker7'>
           					<input type='text' class="form-control" id="IC16"/>
           					<span class="input-group-addon">
             					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
           					</span>
         				</div>
-
 				<td>
-					
 				</td>
 			</tr>
 			<tr class="danger">
 				<td>
 					 <label class="text-danger">Fecha Limite</label>
 				<td>
-				<!--
-					<div id="datetimepicker5" class="input-append form-group"><input class="form-control"id="IC14" data-format="dd-MM-yyyy" type="text" onfocus="MIC_20(3)" > <!--****** NUEVO ***********->
-					<span class="add-on"><i  data-date-icon="icon-calendar" onclick="MIC_20(3)"></i></span> 
-					</div>
-					-->
-					<div class='input-group date' id='datetimepicker8'>
+				<div class='input-group date' id='datetimepicker8'>
           					<input type='text' class="form-control" id="IC17"/>
           					<span class="input-group-addon">
             					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
           					</span>
         				</div>
 				<td>
-					
 				</td>
 			</tr>
 			</thead>
@@ -514,7 +369,6 @@
 		</table>
 		</center>
       </div>
-	  
       <div class="modal-footer">
 	  <center>
 		<button id = "btnGd" type="button" class="btn btn-default"   >Guardar</button>
@@ -522,32 +376,16 @@
       </center>
 	  </div>
     </div>
-
   </div>
   </div>
-
-	
-
-
-	<!-- fin del popup Alarma-->
-
-
-	  
-	   
+	<!-- fin del popup Alarma-->   
 <script type="text/javascript">
-  
 
-$(document).ready(function() {
-    // Solicita la informacion de la sesion si aun no existe en el storage
+$(document).ready(function() {// Solicita la informacion de la sesion si aun no existe en el storage
 	$("#menuDiv").load("/HTML/menu");
-		$("#ayuda").click(
-	function(){
-		$("#miAyuda").show();
-	});
-
+	$("#ayuda").click(
+	function(){$("#miAyuda").show();});
 });
-
-
 
 let app = angular.module('app', []);
 function MB_01($scope)//ControllerAngular
@@ -564,8 +402,6 @@ function MB_01($scope)//ControllerAngular
 	$scope.actualiza =_ => actualizarInfo($scope);
 	$scope.Alarma= x => MB_Alarma($scope,x);
 	$scope.nuevaAlarma = h => newAlarm($scope, h);
-	
-	
   }
   
    app.controller('ControllerAngular', MB_01); 
@@ -592,10 +428,7 @@ function MB_01($scope)//ControllerAngular
  
  
  let conditional;
-  function asignarInformacion($scope, cor)
- {	//desactivar();
-   //limpiarValores();  
-  
+  function asignarInformacion($scope, cor){
    conditional=cor.tc_1;
    console.log("asigna"+cor.tc_1);
 	 fetch( 'http://localhost:3000/api/TC/BC', {  
@@ -612,19 +445,18 @@ function MB_01($scope)//ControllerAngular
 			)
 	.catch(err => console.log('Request failed', err));
  }
+ 
  let person;
  let condicion;
+  
   function cargarDatos( data){
- condicion=data.tc_1;
-  let fechaO=  new Date(data.tc_2.substr(0, 4),data.tc_2.substr(5, 2),data.tc_2.substr(8, 2));
-  let fechaOficio=(data.tc_2.substr(8, 2)+"-"+data.tc_2.substr(5, 2)+"-"+data.tc_2.substr(0, 4));
-  console.log(fechaOficio);
-     $("#IC1").val(fechaOficio);
-     $("#IC2").val(data.tc_3);
-  
-  let fechaR=  new Date(data.tc_4.substr(0, 4),data.tc_4.substr(5, 2),data.tc_4.substr(8, 2));
-  let fechaRecibido=(data.tc_4.substr(8, 2)+"-"+data.tc_4.substr(5, 2)+"-"+data.tc_4.substr(0, 4));
-  
+	condicion=data.tc_1;
+	let fechaO=  new Date(data.tc_2.substr(0, 4),data.tc_2.substr(5, 2),data.tc_2.substr(8, 2));
+	let fechaOficio=(data.tc_2.substr(8, 2)+"-"+data.tc_2.substr(5, 2)+"-"+data.tc_2.substr(0, 4));
+    $("#IC1").val(fechaOficio);
+    $("#IC2").val(data.tc_3);
+	let fechaR=  new Date(data.tc_4.substr(0, 4),data.tc_4.substr(5, 2),data.tc_4.substr(8, 2));
+	let fechaRecibido=(data.tc_4.substr(8, 2)+"-"+data.tc_4.substr(5, 2)+"-"+data.tc_4.substr(0, 4));
      $("#IC3").val(fechaRecibido);
 	 $("#IC4").val(data.tc_5);
 	 $("#IC5").val(data.tc_6);
@@ -634,19 +466,13 @@ function MB_01($scope)//ControllerAngular
      ObtenerRecibido();
 	 $("#IC9").val(data.tc_10);
 	 $("#IC10").val(data.tc_11);
-	
-	 
-	
-
  }
- //------------------------------------------
+ 
  
  function ObtenerRecibido()
- {	//desactivar();
-   //limpiarValores();
-   //conditional=cor.tc_1;
-  console.log("Person"+person);
-	 fetch( 'http://localhost:3000/api/TP/B', {  
+ {	
+    console.log("Person"+person);
+	fetch( 'http://localhost:3000/api/TP/B', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -660,18 +486,10 @@ function MB_01($scope)//ControllerAngular
 			)
 	.catch(err => console.log('Request failed', err));
  }
- 
- 
+
   function cargarRecibido(data){
       $("#IC8").val(data.tp_1+" "+data.tp_2+" "+data.tp_3);
-     
-  
-	
-
  }
- 
-
- 
  
  function MB_02($scope)  //Metodo de Busqueda
  {
@@ -691,7 +509,6 @@ function MB_01($scope)//ControllerAngular
 					$scope.updateCorrespondencias(obj.data)))
 	.catch(err => console.log('Request failed', err));
  }
- 
  
 function MB_03($scope)// Toma el tipo de busqueda y regresa el sufijo correspondiente a la dirección del servidor
 {
@@ -730,12 +547,8 @@ function MB_05($scope){// limpia el div con el id de buscar
 	$("#buscar").val("");
 	$scope.correspondencias = new Array();
 	} 
-	
-	
-	
-	//----nuevos
-	 function MIC_20(n){//Limpia los campos cuando se enfocan
- //document.getElementById("IC11").disabled=true;
+
+ function MIC_20(n){//Limpia los campos cuando se enfocan
   MIC_19();
   MIC_04(n);
  }
@@ -758,15 +571,12 @@ function MIC_04(op){//Realiza un cambio de clase a los campos de entrada del for
 	default: break;
 	}
 	}
-	function actualizarInfo($scope){
-  console.log('validacion '+validar());
+	
+function actualizarInfo($scope){
     if(validar()){
-	console.log('Entro despues de validacion'+validar()); // Quitar
 	actualizarCorre($scope);
-	console.log("bueno");
     MB_02($scope);
 	$("[data-dismiss=modal]").trigger({ type: "click" });
-	
 	}
   }
   
@@ -786,12 +596,21 @@ function validaFechas(){   //validacion de fechas editadas
 	let s=new Date(fechaR.substring(10, 6)+'-'+fechaR.substring(5, 3)+'-'+fechaR.substring(2, 0));
 	let fecha2=$("#IC3").val();
 	let r=new Date(fecha2.substring(10, 6)+'-'+fecha2.substring(5, 3)+'-'+fecha2.substring(2, 0));
-
 	 if(s<r)
 	 return -1;
 	 else if(s>=r)
 	 return 1;
 
+}
+  function validaFechasAlarma(){   //validacion de fechas de ajuste de alarmas
+	let fechaR=$("#IC14").val();
+	let s=new Date(fechaR.substring(10, 6)+'-'+fechaR.substring(5, 3)+'-'+fechaR.substring(2, 0));
+	let fecha2=$("#IC15").val();
+	let r=new Date(fecha2.substring(10, 6)+'-'+fecha2.substring(5, 3)+'-'+fecha2.substring(2, 0));
+	 if(s<r)
+	 return -1;
+	 else if(s>=r)
+	 return 1;
 }
   
   function validar(){	 //Valida los campos 
@@ -888,23 +707,15 @@ function validaFechas(){   //validacion de fechas editadas
 	document.getElementById("div9").className ="  form-group" ;
 	document.getElementById("IC9").title = "" ;
 	}
-	
-		
 		return (IC1 && IC2  && IC3  && IC4 	&& IC5 && IC6 && IC7 && IC8 && IC9 && MIC_05());
 	
 }
 
-
-
 function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formulario a la clase has-error
-
-	
-	
+	//La fecha debe de llevar el formato YYYY/MM/dd
 	var d=new Date($("#IC1").val());
 	let fecha1 = d.getFullYear() + '-'+(d.getMonth()+1) + '-' + ((d.getDate()<10)?'0':'') + d.getDate();
 	let fecha2=$("#IC3").val();
-	//La fecha debe de llevar el formato YYYY/MM/dd
-	
 	let r=fecha2.substring(10, 6)+'-'+fecha2.substring(5, 3)+'-'+fecha2.substring(2, 0);
 	if(fecha1>=r){
 	document.getElementById("datetimepicker55").className ="input-append  form-group " ;
@@ -916,19 +727,13 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 	document.getElementById("datetimepicker55").className ="input-append  form-group has-error" ;
 	document.getElementById("IC1").title = "Fecha de oficio mayor a la de recibido" ;
 	document.getElementById("datetimepicker66").className ="input-append  form-group has-error" ;
-		document.getElementById("IC3").title = "Fecha de oficio mayor a la de recibido" ;
+	document.getElementById("IC3").title = "Fecha de oficio mayor a la de recibido" ;
 	return false;}
 	}
 	
-	
-	function actualizarCorre($scope,cor){ //Recoge los datos de los campos y realiza el fecth de inserción 
-							//a la base de datos
-							//let str=$("#IC1").val();
+function actualizarCorre($scope,cor){ //Recoge los datos de los campos y realiza el fecth de inserción 
 	var d=new Date($("#IC1").val());
-	
 	let a1=conditional;
-
-	
 	let b3 = $("#IC1").val().substr(6,4)+"-"+$("#IC1").val().substr(3,2)+"-"+$("#IC1").val().substr(0,2);
 	console.log("anooo "+b3);
 	let c3 = $('#IC2').val().toUpperCase(); 
@@ -958,16 +763,7 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 				console.log("Resultado: "+res);
 					if(res.indexOf("error")==-1){
 						$("#mensaje").text("Acción realizada con exito");
-							//MIC_13($scope); 
-							//document.getElementById("IC11").disabled=true; //VER
-							//console.log($("#enlace_checkbox").is(':checked'));
-							/*if($("#enlace_checkbox").is(':checked'))
-							{
-								MIC_06();
-							}*/
-					}
-					else{}
-						//document.getElementById("mensaje").innerHTML="Fallo al realizar la acción";
+							}
 				});
 	})
   .catch(function(error) {  
@@ -980,60 +776,48 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 /**
 * Funciones de los calendarios de la pagina
 **/
-
-
- // $(function() {     //Calendario de la fecha de oficio
+     //Calendario de la fecha de oficio
     $('#datetimepicker33').datetimepicker({
-      //pickTime: false
-      format: 'DD-MM-YYYY', 
+        format: 'DD-MM-YYYY', 
    		showClear:true
     });
-  //});
-  
-  // $(function() { //Calendario de la fecha de recibido
-    $('#datetimepicker44').datetimepicker({
-      //pickTime: false
-      format: 'DD-MM-YYYY', 
-   		showClear:true
-    });
- // });
  
- // $(function() { //Calendario de la fecha de recibido
+  
+  //Calendario de la fecha de recibido
+    $('#datetimepicker44').datetimepicker({
+        format: 'DD-MM-YYYY', 
+   		showClear:true
+    });
+ 
+ 
+	//Calendario de la fecha de recibido
     $('#datetimepicker55').datetimepicker({
-      //pickTime: false
-      format: 'DD-MM-YYYY', 
+        format: 'DD-MM-YYYY', 
    		showClear:true
     });
- // });
- // $(function() { //Calendario de la fecha de recibido
+ 
+   //Calendario de la fecha de recibido
     $('#datetimepicker66').datetimepicker({
-      //pickTime: false
-      format: 'DD-MM-YYYY', 
+        format: 'DD-MM-YYYY', 
    		showClear:true
     });
- // });
+  
  
    $('#datetimepicker7').datetimepicker({
-      //pickTime: false
-      format: 'DD-MM-YYYY', 
+        format: 'DD-MM-YYYY', 
    		showClear:true
     });
- // });
+
    $('#datetimepicker8').datetimepicker({
-      //pickTime: false
-      format: 'DD-MM-YYYY', 
+        format: 'DD-MM-YYYY', 
    		showClear:true
     });
- // });
 
- ///----------------NUEVO DE AJUSTE ALARMA
-   function MB_Alarma($scope ,cor)  //Metodo de Busqueda
+function MB_Alarma($scope ,cor)  //Metodo de ajuste de alarma
  {   let corr=cor.tc_1;
-
  	console.log("Retornado de url > " + "Alarmas");
 	console.log( cor.tc_1);
-	//let h3 = document.getElementById('buscar').value;
-	 fetch( 'http://localhost:3000/api/TA/ALL_TA', {  
+	fetch( 'http://localhost:3000/api/TA/ALL_TA', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -1042,16 +826,12 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
     body:  "TA_1=" + cor.tc_1
       }
 	)	 
-.then(res => res.json())
+    .then(res => res.json())
 	.then(obj => cargaAlarma(obj.data[0],corr))
 	.catch(err => console.log('Request failed', err));
  }
  
- 
-   function cargaAlarma(data,corr){
-   
-   console.log("carga");
-  let miDiv;
+function cargaAlarma(data,corr){ //carga los datos de la alarma
    if(data!=null){
   $("#myModal3").modal("show");
       $("#IC14").val(data.ta_2.substr(8,2)+"-"+data.ta_2.substr(5,2)+"-"+data.ta_2.substr(0,4));
@@ -1059,47 +839,24 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 	  $("#btnGd1").click(function(){
 		console.log("guarde2");
 		actualizarAlarma(corr);
-		$("[data-dismiss=modal]").trigger({ type: "click" });});
+		$("[data-dismiss=modal]").trigger({ type: "click" });
+		}//fin function
+		);
 	 return 0; }
 	  else{
-	  
 	   $("#myModal4").modal("show");
 	   $("#btnGd").click(function(){
 		console.log("guarde");
 		newAlarm(corr);
 		$("[data-dismiss=modal]").trigger({ type: "click" });});
-	   //$("#divAdjuste2").hide();
 	   return 1;
 	   }
  }
- 
- function creaAlarma(){
- console.log("enrtra");
- $("[data-dismiss=modal]").trigger({ type: "click" });
-	//$("[data-target=myModal5]").trigger({ type: "click" });
- /*$("#divAjuste1").hide();
- $("#divAjuste2").show();*/
- }
- 
- 
- 	function actualizarAlarma(data){ //Recoge los datos de los campos y realiza el fecth de inserción 
-							//a la base de datos
-							//let str=$("#IC1").val();
-	
-//asignarInformacion($scope);
-
-	
+  
+ function actualizarAlarma(data){ //Recoge los datos de los campos y realiza el fecth de actualizacion de alarma
 	let b3 = $("#IC15").val().substr(6,4)+"-"+$("#IC14").val().substr(3,2)+"-"+$("#IC14").val().substr(0,2);
-	console.log("anooo "+b3);
-	
 	let d3 = $("#IC14").val().substr(6,4)+"-"+$("#IC15").val().substr(3,2)+"-"+$("#IC15").val().substr(0,2);
-	console.log("anooo "+d3);
-	
-	
-	console.log("cooon "+data+"/"+b3+"/"+d3);
-	
-
- fetch( 'http://localhost:3000/api/TA/UDF', {  
+	fetch( 'http://localhost:3000/api/TA/UDF', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -1115,13 +872,9 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
  $("[data-dismiss=modal]").trigger({ type: "click" });
 }
 
-//------insercion de una nueva alarma
-function newAlarm(data){//Programa una alarma de una correspondencia 
-
-		let b5 = $("#IC16").val().substr(6,4)+"-"+$("#IC16").val().substr(3,2)+"-"+$("#IC16").val().substr(0,2);
-	console.log("anooo "+b5);
-	
-	let c5 = $("#IC17").val().substr(6,4)+"-"+$("#IC17").val().substr(3,2)+"-"+$("#IC17").val().substr(0,2);
+function newAlarm(data){//insercion de una nueva alarma a las correpondencia escogida
+		let b5 = $("#IC16").val().substr(6,4)+"-"+$("#IC16").val().substr(3,2)+"-"+$("#IC16").val().substr(0,2);	
+	    let c5 = $("#IC17").val().substr(6,4)+"-"+$("#IC17").val().substr(3,2)+"-"+$("#IC17").val().substr(0,2);
 		let d5 = 0;
 		if(b5!= "" && c5!=""){ 
 		fetch( 'http://localhost:3000/api/TA/I', {  
@@ -1135,9 +888,7 @@ function newAlarm(data){//Programa una alarma de una correspondencia
 	  )
 		.then(function(response) {
 			return response.text().then(function(res) {
-				
-					console.log("Resultado enlace: "+res);
-                
+					console.log("Resultado de nueva alarma: "+res);
 			});
 		})
 		.catch(function(error) {  
@@ -1145,9 +896,6 @@ function newAlarm(data){//Programa una alarma de una correspondencia
 		});
 		}
 	}
-	
- 
-   
 </script>
     </body>
 </html>
