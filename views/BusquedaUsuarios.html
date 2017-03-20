@@ -233,7 +233,7 @@
 						<button   type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" ng-click="obtenerUsuario(c)">Editar</button>
 					</td>
 					<td> 
-						<button type="button" id="btnEliminar" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" ng-click="obtenerUsuarios(c)"><img src="../../../../images/eliminar.png" width="20" height="20"/></button>
+						<button type="button" id="btnEliminar" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" ng-click="obtenerUsuarios(c)" ng-disabled = "esDisabled(c.tp_4)"><img src="../../../../images/eliminar.png" width="20" height="20" /></button>
 					</td>
 			</tr>
 		</tbody>       
@@ -251,6 +251,7 @@ $(document).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
 	$("#menuDiv").load("/HTML/menu");
 
+
 });
 
 let app = angular.module('app', []);
@@ -266,6 +267,9 @@ function MB_01($scope)//ControllerAngular
     $scope.obtenerUsuarios	= s => asignarUsuario2($scope, s);	
 	$scope.eliminarUsuarios	= e => eliminarUsuarios($scope, e); 
 	$scope.actualiza =_ => actualizarInfo($scope);
+	$scope.usuario = JSON.parse(localStorage.getItem('usuario'));
+	$scope.esDisabled = id => id ===$scope.usuario.Id;//id.localeCompare($scope.usuario.Id) === 0;
+
   }
   
    app.controller('ControllerAngular', MB_01); 
@@ -584,8 +588,8 @@ function MB_05($scope){// limpia el div con el id de buscar
     }  
   })
 		 .then(res => res.json())
-     	 .then(json => console.log(json))
-		//.then(obj =>console.log("Objeto",obj))  //Columna especifica obj.data[0].tp_1 // Nota: para pasar a JSON se usa JSON.stringify(obj.data[0].tp_1)
+     	 .then(json => (console.log(json),$scope.buscar()))		//.then(obj =>console.log("Objeto",obj))  //Columna especifica obj.data[0].tp_1 // Nota: para pasar a JSON se usa JSON.stringify(obj.data[0].tp_1)
+
 		.catch(err => console.log('Request failed', err));
 	}
 	
