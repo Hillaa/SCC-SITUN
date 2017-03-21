@@ -50,7 +50,7 @@
   <!-- Trigger the modal with a button -->
 <!-- Modal -->
 	  
-<div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:600px;">
+<div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:600px;"> 
   <div class="modal-dialog">
    
     <!-- Modal content-->
@@ -64,13 +64,13 @@
                 <tbody>
 				Ingresar:<p>
 				Se deberá llenar todos los campos requeridos de la izquierda de la
-				página en forma correcta y luego presionar el botón Guardar.<p>
+				página en forma correcta y luego presionar el botón Guardar.</p>
 				
 				Programar Alarma:<p>
 				Si desea que la correspondencia a ingresar tenga una alarma, deberá
 				llenar los campos de la fecha de aviso y fecha limite que se encuentra 
 				al centro de la página antes de presionar el botón Guardar, cuando se 
-				hayan ingresado los campos de la alarma podrá presiona el boton Guardar.<p>
+				hayan ingresado los campos de la alarma podrá presiona el boton Guardar.</p>
 					
 				Enlazar Correspondencia:<p>
 					Deberá llenar los campos requeridos y seguidamente seleccionar la 
@@ -81,12 +81,12 @@
 					la correspondencia que deseo enlazar en el documento 2, esta aparecera 
 					en el cuadro de la derecha, se presiona el simbolo más(+) de la correspondencia 
 					que va a enlazar y luego presiono el botón realizar enlace. Al terminar la acción 
-					con exito el sistema lo devolverá a la página de ingreso de correspondencia<p>
+					con exito el sistema lo devolverá a la página de ingreso de correspondencia</p>
 					
 				Eliminar Alarmas del Dia:<p>
 					En el cuadro de las alarmas del dia aparecerán todas las alarmas 
 					programadas para ese día. Cada una de ellas tendra un botón, el cual 
-					para eliminar alguna alarma deberá ser presionado.<p>
+					para eliminar alguna alarma deberá ser presionado.</p>
 					
 					Nota: La correspondencia puede ser ingresada al sistema sin ninguna 
 					alarma ni enlace.
@@ -109,8 +109,8 @@
 	    <!---Cuerpo--->
 	   <a href='#' onclick='MIC_14();return false' title='Ir Arriba'></a><!--Para subir la pagina-->
 	   <body background="../images/situn4.png" ng-app ng-controller = "ControllerAngular">
-	      <div class="col-md-1"></div>
-	   <div class="col-md-4">
+	  <div class="col-md-1"></div>
+	   <div class="col-md-4"> 
          <span class="text-danger"><h4>Ingreso de Correspondencia</h4></span>
             <form name = "Formulario">
             <table id ="tablaIC">
@@ -153,14 +153,15 @@
                 </tr>
 				 <tr>
                     <td> <label class="text-danger">Remitente </label></td>
-                    <td><div id="div6" class="form-group"><textarea type="text" class="form-control" id="IC6"data-toggle="tooltip" data-placement="right" title="Datos de remitente imcompletos" onfocus="MIC_20(5)"></textarea></div></td>                </tr>
+                    <td><div id="div6" class="form-group"><textarea type="text" class="form-control" id="IC6"data-toggle="tooltip" data-placement="right" title="Datos de remitente imcompletos" onfocus="MIC_20(5)"></textarea></div></td>               
+			     </tr>
                 <tr>
                     <td> <label class="text-danger">Asunto</label></td>
-                    <td><div id="div7"class="form-group"><textarea id="IC7" data-toggle="tooltip" data-placement="right" title="Datos de asunto imcompletos"type="text" class="form-control"rows=4 cols=30 onfocus="MIC_20(7)"></textarea></input></div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div7"class="form-group"><textarea id="IC7" data-toggle="tooltip" data-placement="right" title="Datos de asunto imcompletos"type="text" class="form-control"rows=4 cols=30 onfocus="MIC_20(7)"></textarea></input></div></td> 
                 </tr>
 				<tr>
                     <td> <label class="text-danger">Recibido</label></td>
-                    <td><div id="div8"class="form-group"><input id="IC8" data-toggle="tooltip" data-placement="right" title="Datos de recibido imcompletos"type="text" class="form-control" onfocus="MIC_20(8)" ng-model="usuario" disabled></input> <div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div8"class="form-group"><input id="IC8" data-toggle="tooltip" data-placement="right" title="Datos de recibido imcompletos"type="text" class="form-control" onfocus="MIC_20(8)" ng-model="usuario" disabled></input> </div></td> 
                 </tr>
 				<tr>
                     <td> <label class="text-danger">Estado</label></td>
@@ -178,7 +179,8 @@
 						</tbody>
 		           </table>  
         </form>  
-	   </div>
+		</div>
+	
 	   
 	    
 		<div class="col-md-2 form-group"><!--Genera el espacio entre componentes---->	 
@@ -225,19 +227,21 @@
 			
 			<div class="panel panel-danger"  style=" border-radius: 5px 5px 5px 5px;"><!---div alarmas-->
 			<center><span class="text-danger"><h4>Alarmas del día</h4></span>
-			<div> </div></center>	
-			<table class="table" >
+			</center>	
+			 <div  align="left" class="table table-bordered"  style="height: 100px;   overflow-y:auto;">
+
+			<table class="table" id="tabla_busqueda" >
+			<!--<table class="table" > -->
 			<thead> 
 			    <tr class="danger">
-				  <td> <td>
+				<td></td>
 			      <td>Nº Oficio</td>
 			      <td>Fecha de aviso</td>
 			      <td>Fecha de limite</td>
 			    </tr>
-				  </thead>
-				</table>
-    <div class="table table-bordered"  style="height: 100px;   overflow-y:auto;">
-	<p align="left"><table class="table" id="tabla_busqueda" >
+				   </thead> 
+			<!--	</table> -- VER-->
+   
 		  <tbody>
 			<tr ng-repeat = "c in alarmas">
 	
