@@ -500,15 +500,8 @@ function limpiarValores(){
  
  function MB_02($scope)  //Metodo de Busqueda
  {
- let user=localStorage.getItem("usuario");
- let usuario=JSON.parse(user);
  console.log("Retornado de url > " + MB_03($scope));
 	let h3 = document.getElementById('buscar').value;
-	
-	if(usuario.Id==h3){
-	console.log("usuario"+usuario.Id+h3);
-	$("#btnEliminar").attr('disabled', 'disabled');
-	}
 	
 	 fetch( 'http://localhost:3000/api/TP/'+MB_03($scope), {  
     method: 'POST', 
