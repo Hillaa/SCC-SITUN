@@ -4,28 +4,29 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Busqueda</title>
 		
-<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
-<script src="\..\javascripts\new\moment-2.15.1.js"></script>
-<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
-<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
-<script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
-<link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
-<!-- Angular--> 
-<script src="\..\javascripts\angular.min.js"></script>
+	<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
+	<script src="\..\javascripts\new\moment-2.15.1.js"></script>
+	<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
+	<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
+	<script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
+	<link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
+	<!-- Angular--> 
+	<script src="\..\javascripts\angular.min.js"></script>
 </head>
-<body ng-app ng-controller = "ControllerAngular">
-<div id="menuDiv"></div>
 
-<!-- Modal de MIAYUDA-->
-<div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:500px;">
-  <div class="well">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
+<body ng-app ng-controller = "ControllerAngular">
+	<div id="menuDiv"></div>
+
+	<!-- Modal de MIAYUDA-->
+	<div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:500px;">
+	<div class="well">
+		<!-- Modal content-->
+		<div class="modal-content">
+		<div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="text-danger">Ayuda</h4>
-      </div>
-      <div class="modal-body">
+		</div>
+		<div class="modal-body">
 		<right>
                 <tbody>
 				Busqueda de Correspondencia:<p>
@@ -41,17 +42,18 @@
 				</tbody> 
 	       </right>
 		
-      </div>
-      <div class="modal-footer">
+		</div>
+		<div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center>	
-      </div>
-    </div>
+		</div>
+		</div>
 
-  </div>
-  </div>  <!-- fin del popup de ayuda --> 
-	   <!---Cuerpo-->
-	   <body background="../images/situn4.png">
-	   <div class="col-md-8" style="margin-left:20px">
+	</div>
+	</div>  <!-- fin del popup de ayuda --> 
+	  
+	<!---Cuerpo-->
+	<body background="../images/situn4.png">
+	<div class="col-md-8" style="margin-left:20px">
          <span class="text-danger"><h2>Tipo de Busqueda</h2></span>
 			<form class="navbar-form navbar-left">         
             <div   class="form-group ">
@@ -75,7 +77,7 @@
     font-color: gray;
     opacity: 0.4;
 }
-</style>>		
+</style>	
 <!-- Tabla cargada al buscar correspondencias -->
 		<thead> 
 			<tr class="danger">
@@ -105,20 +107,22 @@
 					<td> {{c.tc_7 }} </td>					
 					<td> {{c.tc_9 }} </td>
 					<td> {{c.tc_10 }} </td>
-					<td> 
+						<td> 
 						<!-- Trigger the modal with a button -->
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" ng-click="obtenerEnlaces(c)">Ver Enlaces</button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" ng-click="obtenerEnlaces(c)"><img src="../../../../images/enlace.png" width="20" height="20" /></button>
 					</td>
 					<td> 
 						<!-- Trigger the modal with a button -->
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" ng-click="obtenerInformacion(c)">Editar</button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" ng-click="obtenerInformacion(c)"><img src="../../../../images/editar.png" width="20" height="20" /></button>
+						
+						
 					</td>
 					<td> 
 						<!-- Trigger the modal with a button -->
-						<button type="button" class="btn btn-danger" data-toggle="modal"  ng-click="Alarma(c)">Ajustar</button>
+						<button type="button" class="btn btn-danger" data-toggle="modal"  ng-click="Alarma(c)"><img src="../../../../images/alarma.png" width="20" height="20" /></button>
 					</td>
 					<td>
-						<a ng-href="http://localhost:3000/Adjunto/{{c.tc_12}}" target="_blank" ng-class="c.tc_12.length==0?'disabled':''">Ver</a>	<!-- TERMINAR	-->		
+						<center><a ng-href="http://localhost:3000/Adjunto/{{c.tc_12}}" target="_blank" ng-class="c.tc_12.length==0?'disabled':''"><img src="../../../../images/documento.png" width="32" height="32" /></a>	</center><!-- TERMINAR	-->		
 										
 					</td>
 			</tr>
@@ -149,7 +153,7 @@
 					<div class='input-group date' id='datetimepicker55'>
           					<input type='text' class="form-control" id="IC1"/>
           					<span class="input-group-addon">
-            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+            					<span class="glyphicon glyphicon-calendar" onclick="limpiaCamposEnfocados(3)"></span>
           					</span>
         				</div>
 				<td>
@@ -158,41 +162,41 @@
 			</tr>
                 <tr>
                     <td> <label class="text-danger">N° Oficio</label> </td>
-                    <td><div  id="div2"class="form-group"><textarea  id="IC2" type="text" class="form-control" onfocus="MIC_20(2)"></textarea>
-					<label class="text-danger" style=""><input  type="checkbox" id="IC12" value="first_checkbox" onchange="MIC_21()">Sin Oficio</label></div></td>           
+                    <td><div  id="div2"class="form-group"><textarea  id="IC2" type="text" class="form-control" onfocus="limpiaCamposEnfocados(2)"></textarea>
+					<label class="text-danger" style=""><input  type="checkbox" id="IC12" value="first_checkbox" onchange="checkCampoOficio()">Sin Oficio</label></div></td>           
 					</tr>
                 <tr>
                     <td> <label class="text-danger">Fecha Oficio</label></td>
                     <td> <div class='input-group date' id='datetimepicker66'>
           					<input type='text' class="form-control" id="IC3"/>
           					<span class="input-group-addon">
-            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+            					<span class="glyphicon glyphicon-calendar" onclick="limpiaCamposEnfocados(3)"></span>
           					</span>
         				</div>
 					</td>
                 </tr>
                 <tr>
                     <td> <label class="text-danger">Destinatario </label></td>
-                    <td><div id="div4" class="form-group"><textarea id="IC4" type="text" class="form-control"  onfocus="MIC_20(4)"></textarea></div></td> 
+                    <td><div id="div4" class="form-group"><textarea id="IC4" type="text" class="form-control"  onfocus="limpiaCamposEnfocados(4)"></textarea></div></td> 
                 </tr>
 				 <tr>
                     <td> <label class="text-danger">Copia </label></td>
-                    <td><div id="div5" class="form-group"><textarea id="IC5" type="text" class="form-control" onfocus="MIC_20(5)"></textarea></div></td> 
+                    <td><div id="div5" class="form-group"><textarea id="IC5" type="text" class="form-control" onfocus="limpiaCamposEnfocados(5)"></textarea></div></td> 
                 </tr>
 				 <tr>
                     <td> <label class="text-danger">Remitente </label></td>
-                    <td><div id="div6" class="form-group"><textarea id="IC6" type="text" class="form-control" onfocus="MIC_20(6)"></textarea></div></td>                </tr>
+                    <td><div id="div6" class="form-group"><textarea id="IC6" type="text" class="form-control" onfocus="limpiaCamposEnfocados(6)"></textarea></div></td>                </tr>
                 <tr>
                     <td> <label class="text-danger">Asunto</label></td>
-                    <td><div id="div7"class="form-group"><textarea id="IC7" type="text" class="form-control"rows=4 cols=30 onfocus="MIC_20(7)"></textarea></input></div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div7"class="form-group"><textarea id="IC7" type="text" class="form-control"rows=4 cols=30 onfocus="limpiaCamposEnfocados(7)"></textarea></input></div></td> <!--****** NUEVO ***********-->
                 </tr>
 				<tr>
                     <td> <label class="text-danger">Recibido</label></td>
-                    <td><div id="div8"class="form-group"><input id="IC8" type="text"class="form-control" onfocus="MIC_20(8)" ng-model="usuario" disabled></input> <div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div8"class="form-group"><input id="IC8" type="text"class="form-control" onfocus="limpiaCamposEnfocados(8)" ng-model="usuario" disabled></input> <div></td> <!--****** NUEVO ***********-->
                 </tr>
 				<tr>
                     <td> <label class="text-danger">Estado</label></td>
-                    <td><div id="div9"class="form-group"><textarea type="text" class="form-control" id="IC9"  onfocus="MIC_20(9)"></textarea></div></td> <!--****** NUEVO ***********-->
+                    <td><div id="div9"class="form-group"><textarea type="text" class="form-control" id="IC9"  onfocus="limpiaCamposEnfocados(9)"></textarea></div></td> <!--****** NUEVO ***********-->
                 </tr>
                 <tr>
                     <td> <label class="text-danger">Observaciones</label></td>
@@ -288,7 +292,7 @@
 					<div class='input-group date' id='datetimepicker33'>
           					<input type='text' class="form-control" id="IC14"/>
           					<span class="input-group-addon">
-            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+            					<span class="glyphicon glyphicon-calendar" onclick="limpiaCamposEnfocados(3)"></span>
           					</span>
         				</div>
 				<td>		
@@ -301,7 +305,7 @@
 					<div class='input-group date' id='datetimepicker44'>
           					<input type='text' class="form-control" id="IC15"/>
           					<span class="input-group-addon">
-            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+            					<span class="glyphicon glyphicon-calendar" onclick="limpiaCamposEnfocados(3)"></span>
           					</span>
         				</div>
 				<td>
@@ -353,7 +357,7 @@
 					<div class='input-group date' id='datetimepicker7'>
           					<input type='text' class="form-control" id="IC16"/>
           					<span class="input-group-addon">
-            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+            					<span class="glyphicon glyphicon-calendar" onclick="limpiaCamposEnfocados(3)"></span>
           					</span>
         				</div>
 				<td>
@@ -366,7 +370,7 @@
 				<div class='input-group date' id='datetimepicker8'>
           					<input type='text' class="form-control" id="IC17"/>
           					<span class="input-group-addon">
-            					<span class="glyphicon glyphicon-calendar" onclick="MIC_20(3)"></span>
+            					<span class="glyphicon glyphicon-calendar" onclick="limpiaCamposEnfocados(3)"></span>
           					</span>
         				</div>
 				<td>
@@ -396,25 +400,25 @@ $(document).ready(function() {// Solicita la informacion de la sesion si aun no 
 });
 
 let app = angular.module('app', []);
-function MB_01($scope)//ControllerAngular
+function controllerAngular($scope)//ControllerAngular
  {
 	$scope.criterio = "Asunto";
 	$scope.correspondencias = new Array();
 	$scope.updateCorrespondencias = c => $scope.correspondencias = c;
-	$scope.buscar = _ => MB_02($scope);
-	$scope.clear = _ => MB_05($scope);
-	$scope.obtenerEnlaces	= n => MB_06($scope, n);
+	$scope.buscar = _ => busquedaCorrespondencia($scope);
+	$scope.clear = _ => limpiaTabla($scope);
+	$scope.obtenerEnlaces	= n => buscaEnlaces($scope, n);
 	$scope.enlaces = new Array();
     $scope.obtenerInformacion	= e => asignarInformacion($scope, e);
 	$scope.recibido = r => ObtenerRecibido();
 	$scope.actualiza =_ => actualizarInfo($scope);
-	$scope.Alarma= x => MB_Alarma($scope,x);
-	$scope.nuevaAlarma = h => newAlarm($scope, h);
+	$scope.Alarma= x => ajusteAlarma($scope,x);
+	$scope.nuevaAlarma = h => nuevaAlarma($scope, h);
   }
   
-   app.controller('ControllerAngular', MB_01); 
+   app.controller('ControllerAngular', controllerAngular); 
  
- function MB_06($scope, cor)
+ function buscaEnlaces($scope, cor) //Muestra todos los enlaces relacionados con una correspondencia especifica
  {	
 	 fetch( 'http://localhost:3000/api/ALL/ENLACES', {  
     method: 'POST', 
@@ -436,7 +440,7 @@ function MB_01($scope)//ControllerAngular
  
  
  let conditional;
-  function asignarInformacion($scope, cor){
+  function asignarInformacion($scope, cor){ //Busca la correspondencia y muestra la informacion de esta
    conditional=cor.tc_1;
    console.log("asigna"+cor.tc_1);
 	 fetch( 'http://localhost:3000/api/TC/BC', {  
@@ -457,7 +461,7 @@ function MB_01($scope)//ControllerAngular
  let person;
  let condicion;
   
-  function cargarDatos( data){
+  function cargarDatos( data){ //Muestra los datos de la correspondencia en pantalla
 	condicion=data.tc_1;
 	let fechaO=  new Date(data.tc_2.substr(0, 4),data.tc_2.substr(5, 2),data.tc_2.substr(8, 2));
 	let fechaOficio=(data.tc_2.substr(8, 2)+"-"+data.tc_2.substr(5, 2)+"-"+data.tc_2.substr(0, 4));
@@ -477,8 +481,9 @@ function MB_01($scope)//ControllerAngular
  }
  
  
- function ObtenerRecibido()
- {	
+ function ObtenerRecibido() //busca el nombre de la persona que recibio la correpondencia
+{								//y lo cambia por el id de la persona
+ 	
     console.log("Person"+person);
 	fetch( 'http://localhost:3000/api/TP/B', {  
     method: 'POST', 
@@ -490,26 +495,29 @@ function MB_01($scope)//ControllerAngular
       }
 	)	 
 	.then(res => res.json())
-	.then(obj => cargarRecibido(obj.data[0])
+	.then(obj => cargarRecibido(obj.data[0],true)
 			)
 	.catch(err => console.log('Request failed', err));
  }
 
-  function cargarRecibido(data){
+  function cargarRecibido(data,op){
+	if(op)
       $("#IC8").val(data.tp_1+" "+data.tp_2+" "+data.tp_3);
+	  else
+	  return data.tp_4;
  }
  
- function MB_02($scope)  //Metodo de Busqueda
+ function busquedaCorrespondencia($scope)  //Metodo de Busqueda
  {
- 	console.log("Retornado de url > " + MB_03($scope));
+ 	console.log("Retornado de url > " + tipoBusqueda($scope));
 	let h3 = document.getElementById('buscar').value;
-	 fetch( 'http://localhost:3000/api/TC/'+MB_03($scope), {  
+	 fetch( 'http://localhost:3000/api/TC/'+tipoBusqueda($scope), {  
     method: 'POST', 
     datatype:'json',
     headers: {  
       "Content-type": "application/x-www-form-urlencoded"  
       } ,
-    body: MB_04($scope) + "=" + h3
+    body: tipoBusquedaBD($scope) + "=" + h3
       }
 	)	 
 	.then(res => res.json())
@@ -518,7 +526,7 @@ function MB_01($scope)//ControllerAngular
 	.catch(err => console.log('Request failed', err));
  }
  
-function MB_03($scope)// Toma el tipo de busqueda y regresa el sufijo correspondiente a la dirección del servidor
+function tipoBusqueda($scope)// Toma el tipo de busqueda y regresa el sufijo correspondiente a la dirección del servidor
 {
 	let op = $scope.criterio;
 	console.log("El tipo de busqueda es por: |" + op + "|");
@@ -534,7 +542,7 @@ function MB_03($scope)// Toma el tipo de busqueda y regresa el sufijo correspond
 			return 'BA';
 	}
 }  
-function MB_04($scope) //Toma el criterio de busqueda y devuelve la columna que se debe buscar en la BD
+function tipoBusquedaBD($scope) //Toma el criterio de busqueda y devuelve la columna que se debe buscar en la BD
 {
 	let op = $scope.criterio;
 	switch(op)
@@ -551,21 +559,21 @@ function MB_04($scope) //Toma el criterio de busqueda y devuelve la columna que 
 	
 } 
 
-function MB_05($scope){// limpia el div con el id de buscar
+function limpiaTabla($scope){// limpia el div con el id de buscar
 	$("#buscar").val("");
 	$scope.correspondencias = new Array();
 	} 
 
- function MIC_20(n){//Limpia los campos cuando se enfocan
-  MIC_19();
-  MIC_04(n);
+ function limpiaCamposEnfocados(n){//Limpia los campos cuando se enfocan
+  limpiaDivMensaje();
+  cambioClase1(n);
  }
  
- function MIC_19(){//Limpia el div con el id=mensaje
+ function limpiaDivMensaje(){//Limpia el div con el id=mensaje
 $("#mensaje").text("");
 }
 
-function MIC_04(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase has-error a from-group
+function cambioClase1(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase has-error a from-group
 	switch(op){
 	case 1: document.getElementById("datetimepicker55").className= "input-append form-group";break;
 	case 2: document.getElementById("div2").className ="form-group" ; break;
@@ -580,15 +588,15 @@ function MIC_04(op){//Realiza un cambio de clase a los campos de entrada del for
 	}
 	}
 	
-function actualizarInfo($scope){
+function actualizarInfo($scope){ //Actualiza la informacion que se haya editado
     if(validar()){
-	actualizarCorre($scope);
-    MB_02($scope);
+	actualizarCorrespondencia($scope);
+    busquedaCorrespondencia($scope);
 	$("[data-dismiss=modal]").trigger({ type: "click" });
 	}
   }
   
-  function MIC_21(){ //Cambia el valor del campo referente al numero de oficio si la opcion SIN OFICIO esta marcada
+  function checkCampoOficio(){ //Cambia el valor del campo referente al numero de oficio si la opcion SIN OFICIO esta marcada
 if($("#IC12").is(':checked')){
 	$("#IC2").val("SIN OFICIO");
 	$("#IC2").prop("disabled",true);	
@@ -715,11 +723,11 @@ function validaFechas(){   //validacion de fechas editadas
 	document.getElementById("div9").className ="  form-group" ;
 	document.getElementById("IC9").title = "" ;
 	}
-		return (IC1 && IC2  && IC3  && IC4 	&& IC5 && IC6 && IC7 && IC8 && IC9 && MIC_05());
+		return (IC1 && IC2  && IC3  && IC4 	&& IC5 && IC6 && IC7 && IC8 && IC9 && cambioClase2());
 	
 }
 
-function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formulario a la clase has-error
+function cambioClase2(){//Realiza el cambio de clase de los campon de fecha del formulario a la clase has-error
 	//La fecha debe de llevar el formato YYYY/MM/dd
 	var d=new Date($("#IC1").val());
 	let fecha1 = d.getFullYear() + '-'+(d.getMonth()+1) + '-' + ((d.getDate()<10)?'0':'') + d.getDate();
@@ -739,7 +747,7 @@ function MIC_05(){//Realiza el cambio de clase de los campon de fecha del formul
 	return false;}
 	}
 	
-function actualizarCorre($scope,cor){ //Recoge los datos de los campos y realiza el fecth de inserción 
+function actualizarCorrespondencia($scope,cor){ //Recoge los datos de los campos y realiza el fecth de inserción 
 	var d=new Date($("#IC1").val());
 	let a1=conditional;
 	let b3 = $("#IC1").val().substr(6,4)+"-"+$("#IC1").val().substr(3,2)+"-"+$("#IC1").val().substr(0,2);
@@ -821,7 +829,7 @@ function actualizarCorre($scope,cor){ //Recoge los datos de los campos y realiza
    		showClear:true
     });
 
-function MB_Alarma($scope ,cor)  //Metodo de ajuste de alarma
+function ajusteAlarma($scope ,cor)  //Metodo de ajuste de alarma
  {   let corr=cor.tc_1;
  	console.log("Retornado de url > " + "Alarmas");
 	console.log( cor.tc_1);
@@ -839,7 +847,7 @@ function MB_Alarma($scope ,cor)  //Metodo de ajuste de alarma
 	.catch(err => console.log('Request failed', err));
  }
  
-function cargaAlarma(data,corr){ //carga los datos de la alarma
+function cargaAlarma(data,corr){ //carga los datos de la alarma para mostrar en pantalla
    if(data!=null){
   $("#myModal3").modal("show");
       $("#IC14").val(data.ta_2.substr(8,2)+"-"+data.ta_2.substr(5,2)+"-"+data.ta_2.substr(0,4));
@@ -855,7 +863,7 @@ function cargaAlarma(data,corr){ //carga los datos de la alarma
 	   $("#myModal4").modal("show");
 	   $("#btnGd").click(function(){
 		console.log("guarde");
-		newAlarm(corr);
+		nuevaAlarma(corr);
 		$("[data-dismiss=modal]").trigger({ type: "click" });});
 	   return 1;
 	   }
@@ -880,7 +888,7 @@ function cargaAlarma(data,corr){ //carga los datos de la alarma
  $("[data-dismiss=modal]").trigger({ type: "click" });
 }
 
-function newAlarm(data){//insercion de una nueva alarma a las correpondencia escogida
+function nuevaAlarma(data){//insercion de una nueva alarma a las correpondencia escogida
 		let b5 = $("#IC16").val().substr(6,4)+"-"+$("#IC16").val().substr(3,2)+"-"+$("#IC16").val().substr(0,2);	
 	    let c5 = $("#IC17").val().substr(6,4)+"-"+$("#IC17").val().substr(3,2)+"-"+$("#IC17").val().substr(0,2);
 		let d5 = 0;
