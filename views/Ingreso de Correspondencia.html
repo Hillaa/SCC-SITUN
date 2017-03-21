@@ -146,8 +146,9 @@
                 </tr>
 				 <tr>
                     <td> <label class="text-danger">Copia </label></td>
-                    <td><div id="div5" class="form-group"><textarea id="IC5"data-toggle="tooltip" data-placement="right" title="Datos de copia imcompletos" type="text" class="form-control" onfocus="limpiaCamposEnfocados(5)"></textarea></div></td> 
-                </tr>
+                    <td><div id="div5" class="form-group"><textarea id="IC5"data-toggle="tooltip" data-placement="right" title="Datos de copia imcompletos" type="text" class="form-control" onfocus="limpiaCamposEnfocados(5)"></textarea>
+					<label class="text-danger" style=""><input  type="checkbox" id="check_SinCopia" value="first_checkbox" onchange="checkCampoCopia()">Sin Copia</label></div></td>
+			   </tr>
 				 <tr>
                     <td> <label class="text-danger">Remitente </label></td>
                     <td><div id="div6" class="form-group"><textarea type="text" class="form-control" id="IC6"data-toggle="tooltip" data-placement="right" title="Datos de remitente imcompletos" onfocus="limpiaCamposEnfocados(6)"></textarea></div></td>               
@@ -406,6 +407,17 @@ if($("#IC12").is(':checked')){
 	$("#IC2").prop("disabled",false);
 	}
 }
+
+function checkCampoCopia(){ //Cambia el valor del campo referente al numero de oficio si la opcion SIN OFICIO esta marcada
+if($("#check_SinCopia").is(':checked')){
+	$("#IC5").val("SIN COPIA");
+	$("#IC5").prop("disabled",true);	
+	}
+	else{
+	$("#IC5").val("");
+	$("#IC5").prop("disabled",false);
+	}
+}
 /**
 * Funciones de los calendarios de la pagina
 **/
@@ -615,6 +627,7 @@ function limpiarCampos(){//Limpia el valor de los campos de entrada
 	$("#IC3").val("");
 	$("#IC4").val("");
 	$("#IC5").val("");
+	$("#IC5").removeAttr("disabled");
 	$("#IC6").val("");
 	$("#IC7").val("");
 	$("#IC9").val("");
@@ -623,6 +636,7 @@ function limpiarCampos(){//Limpia el valor de los campos de entrada
 	$("#IC14").val("");
 	$("#IC12").prop("checked",false);
 	$("#IC2").prop("checked",false);
+	$("#check_SinCopia").prop("checked",false);
 	$('#adjun').val(""); 
     $('#input_adjunto').val(""); 
 	$( "#enlace_checkbox" ).prop( "checked", false );
