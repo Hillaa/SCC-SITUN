@@ -2,10 +2,19 @@
 
 <html>
 <head>
+<!--
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 
+ -->
+
+ <script src="\..\javascripts\new\jquery-1.12.2.js"></script>
+  <script src="\..\javascripts\new\jquery.validate.min.js"></script>
+
+<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
+
+<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
+
 </head>
 <body background="../images/situn4.png">
 	<div class="container">
@@ -25,10 +34,10 @@
         <% if (error) { %> 
           <div class="alert alert-danger" id= "mensaje"><STRONG>Error: </STRONG> <%= mensaje %></div>
         <% } %>
-          <form role="form" action="http://localhost:3000/login" method="POST">
+          <form role="form" id="formu" action="http://localhost:3000/login" method="POST">
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" name = "username" id="usrname" placeholder="Ingrese su usuario">
+              <input type="text" class="form-control" name = "username" id="usrname" placeholder="Ingrese su usuario" >
             </div>
             <div class="form-group">
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
@@ -51,24 +60,45 @@
 </div>
  
 <script>
-$(document).ready(function(){    
-        //$("#myModal").modal();  
-        
+$(document).ready(function(){            
         $('#myModal').modal({ backdrop: 'static', keyboard: false });
-
-
-        <% if (error) { %> 
-
-          
+        <% if (error) { %>           
           $('#usrname').val('<%= usr  %>');
          $('#psw').val('<%= pass  %>');
         <% } %>
-       /* if(error)
-        {
-          $('#usrname').value('hay error');
-        }
-        */
+
+        $('#formu').validate({
+          debug: true,
+          rules: {
+            username: {
+              required: true
+            },
+            password: {
+              required: true
+            }
+          },
+          messages: {
+            username: {
+              required: "Se requiere nombre de usuario"
+            },
+            password: {
+              required: "Se requiere contraseña"
+            }
+          },
+          submitHandler: function(form) {
+              //alert("Submitted!");
+              //event.preventDefault();
+              var $form = $(form);
+              //$(form).submit();
+              //$form.submit();
+              form.submit();
+              //$('#formu').ajaxSubmit();
+            }
+        });
 });
+
+
+
 
 </script>
 
