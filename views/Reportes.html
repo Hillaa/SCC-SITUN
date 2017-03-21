@@ -6,62 +6,18 @@
   
   <script src="\..\javascripts\new\jquery-1.12.2.js"></script>
 <script src="\..\javascripts\new\moment-2.15.1.js"></script>
-
 <script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
-
 <link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
-
-
 <script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
-
 <link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
-	<!-- Angular--> 
-	<script src="\..\javascripts\angular.min.js"></script>
 
-  
-	
-	
-    </head>
-	
-	
-	
+
+	<!-- Angular--> 
+	<script src="\..\javascripts\angular.min.js"></script>	
+    </head>	
     <body ng-app ng-controller = "ControllerAngular">
 
     <div id="menuDiv"></div>
-
-    <!--
-    <nav class="navbar navbar-default" style="background-color:#60161E;">
-    <div class="container-fluid">
-    <!-- REsponsive ->
-    <div class="navbar-header" >
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-  <IMG SRC="../images/situn2.png" WIDTH=85 HEIGHT=58  class="nav navbar-nav navbar-right">
-    </div>
-
-    <!-- Menu ->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav" style="margin-top:7px;">
-        <li ><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;"><b>Ingreso Correspondencia</b> </a></li>
-        <li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;"><b>Enlace Documentos</b></a></li>
-        <li><a href="#"style="color:#FFFFFF;"><b>Búsqueda</b></a></li>
-		<li><a href="#"style="color:#FFFFFF;"><b>Reportes</b></a></li>
-		<!---li><a href="#"style="color:#FFFFFF;">Escanear</a></li->
-			<li><a href="../HTML/ingresaUser"style="color:#FFFFFF;"><b>Agregar Usuario</b></a></li>
-		<li><a href="../HTML/BusquedaUsuarios"style="color:#FFFFFF;"><b>Buscar Usuarios</b></a></li>
-		 <li><a href="../logout"style="color:#FFFFFF;"><b>Cerrar sesion</b></a></li>
-	    <li><a href="#" style="color:#FFFFFF;"><b>Ayuda</b></a></li>
-      </ul>
-    
-        <IMG SRC="../images/situn2.png" WIDTH=85 HEIGHT=58  class="nav navbar-nav navbar-right">
-    </div><!-- /.navbar-collapse ->
-  </div><!-- /.container-fluid ->
-</nav>
-	  -->
-
 
 	  <!-- Trigger the modal with a button -->
 <!-- Modal -->
@@ -106,84 +62,89 @@
 
 	
 	
-	   <div class="col-md-8" style="margin-left:20px" >
-         
- 
-           <form class="navbar-form navbar-left">         
-        
-            <div   class="form-group ">
-			
-                  <span class="text-danger"><h2>Reportes  de Correspondencia </h2></span>
-				  
-				  
-				   <label class="text-danger">Desde &nbsp; </label>
-				  <div class='input-group date' id='datetimepicker1'>
-          					<input type='text' class="form-control" id="f1"/>
+	   <div  style="margin-left:20px" width="95%">
+
+           <form class="navbar-form navbar-left">       
+            	<div   class="form-group ">
+                  <span class="text-danger"><h2>Reportes  de Correspondencia </h2>
+                  </span>
+				   	<label class="text-danger">Desde &nbsp; </label>
+				  	<div class='input-group date' id='datetimepicker1'>
+          				<input type='text' class="form-control" id="f1"/>
           					<span class="input-group-addon" id="c1"  >
             					<span class="glyphicon glyphicon-calendar" ></span>
           					</span>
-        				</div>
-			          
-					 <label class="text-danger">Hasta &nbsp; </label>
-                     <div class='input-group date' id='datetimepicker2'>
-          					<input type='text' class="form-control" id="f2"/>
+        			</div>			          
+					<label class="text-danger">Hasta &nbsp; </label>
+                    <div class='input-group date' id='datetimepicker2'>
+          				<input type='text' class="form-control" id="f2"/>
           					<span class="input-group-addon" id="c2"   >
             					<span class="glyphicon glyphicon-calendar" ></span>
           					</span>
-        				</div>
-			  
-			   <p><p align="left"><input type = "button" class="btn btn-default" id="buscar" value = "Buscar" ng-click="buscar()" >
-				<font> &nbsp;  &nbsp;  </font> 
-				<input type = "button"class="btn btn-default" id ="cancelar" value = "Cancelar"  ng-click="clear()" >
-				<font> &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp;  </font>
-		      <a href="#"  class="text-danger" ng-click="generarReporte()">Generar reporte de Correspondencia
-			  </a>
-			   </p></p>
-            
-			</div>
-			
-         <p align="left"><p align="left"><div id="HTMLtoPDF"    class="table table-bordered" >
-		 
-		   <IMG SRC="../images/situn2.png" WIDTH=70 HEIGHT=60>
-		 <font class="text-danger">Lista de reportes </font>
-		   
-		   <p><p><table class="table" id="tabla_encabezado" >
-	      </table>
-		
-	<p align="left"><table class="table" id="tabla_busqueda" >
-
-		<thead> 
-			<tr class="danger">
-			<td>#Oficio</td>
-			<td>F.Oficio</td>
-			<td>F.Recibido</td>
-			<td>Asunto</td>
-			<td>Destino</td>
-			<td>Copia</td>
-			<td>Remitente</td>			
-			<td>Estado</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr  ng-repeat = "c in correspondencias">
-					<td id="tdid"> {{c.tc_3 }} </td>
-					<td> {{c.tc_4 | date:'dd/MM/yyyy'}} </td>
-					<td> {{c.tc_2 | date:'dd/MM/yyyy'}} </td>
-					<td> {{c.tc_8 }} </td>
-					<td> {{c.tc_5 }} </td>
-					<td> {{c.tc_6 }} </td>
-					<td> {{c.tc_7 }} </td>					
-					<td> {{c.tc_10 }} </td>
-			</tr>
-		</tbody>        
-	</table>
-	
-               </div></p>
-      </form>
-	  
-             
-       <div style="margin-top:100px; margin-left:60px; " ><label id="mensaje" class="text-danger"></label></div>
-	   </div>
+        			</div>			  
+			   	<p>
+			   		<p align="left"><input type = "button" class="btn btn-default" id="buscar" value = "Buscar" ng-click="buscar()" >
+					<font> &nbsp;  &nbsp;  </font> 
+					<input type = "button"class="btn btn-default" id ="cancelar" value = "Cancelar"  ng-click="clear()" >
+					</p>
+				</p>
+			</form>
+			<font> &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp;  </font>
+		    			
+         	<p align="left">
+         		<p align="left">
+         			<div>
+         			<p align="right" id ="dwpdf" style="display: none;">
+         			<img src="../images/pdf2.jpg" width="40" height="40"><a href=""  class="text-danger" align="right" ng-click="generarReporte()">Descargar como PDF
+					</a></p>
+         			
+         			<div id="HTMLtoPDF"    class="table table-bordered" >
+		   				<IMG SRC="../images/situn2.png" WIDTH=70 HEIGHT=60>
+		 				 <h4 class="text-danger" align="center">Reporte de correspondencia SCC-SITUN </h4>
+		  				<p>
+		  					<p>
+		  						<table class="table" id="tabla_encabezado" >
+	      						</table>
+	      					</p>
+	      				</p>		
+						<p align="left">
+							<table class="table" id="tabla_busqueda" width="300%">
+								<thead> 
+									<tr class="danger">
+										<td>#Oficio</td>
+										<td>F.Oficio</td>
+										<td>F.Recibido</td>
+										<td>Asunto</td>
+										<td>Destino</td>
+										<td>Copia</td>
+										<td>Remitente</td>			
+										<td>Estado</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr  ng-repeat = "c in correspondencias">
+										<td id="tdid"> {{c.tc_3 }} </td>
+										<td> {{c.tc_4 | date:'dd/MM/yyyy'}} </td>
+										<td> {{c.tc_2 | date:'dd/MM/yyyy'}} </td>
+										<td> {{c.tc_8 }} </td>
+										<td> {{c.tc_5 }} </td>
+										<td> {{c.tc_6 }} </td>
+										<td> {{c.tc_7 }} </td>					
+										<td> {{c.tc_10 }} </td>
+									</tr>
+								</tbody>        
+							</table>
+							<footer id="footer" style="display: none;">
+    							<div style='text-align:center;'>Pagina 
+    								<span class="pageCounter"></span>/<span class="totalPages"></span>
+    							</div>
+							</footer>	
+               		</div>    
+               		</div>	   
+       		<div style="margin-top:100px; margin-left:60px; " >
+       			<label id="mensaje" class="text-danger"></label>
+       		</div>
+	   	</div>
        
 	   
 	   
@@ -236,8 +197,8 @@ function MR_01($scope)//ControllerAngular controller de todos los metodos
    
 	let fecha1 = $('#f1').val();
 	let fecha2 = $('#f2').val();
-	
-
+	let usuario = JSON.parse(localStorage.getItem('usuario'));
+	let fecha = new Date();
 	if(MR_05() == true )  {
 	
 	if(MR_06() == true )  {
@@ -265,6 +226,45 @@ function MR_01($scope)//ControllerAngular controller de todos los metodos
     let cell4 = row.insertCell(3);
     let element4 = document.createTextNode(fecha2);
      cell4.appendChild(element4);
+//--------------------------------------------------
+ 	rowCount = table.rows.length;
+    row = table.insertRow(rowCount);
+
+     let cell5 = row.insertCell(0);
+	let element5 = document.createTextNode("Creado por :");
+    cell5.appendChild(element5);
+	
+    let cell6 = row.insertCell(1);
+    let element6 = document.createTextNode(usuario.nombre+' '+usuario.apellido);
+     cell6.appendChild(element6);
+
+     let cell7 = row.insertCell(2);
+	let element7 = document.createTextNode("Identificacion :");
+    cell7.appendChild(element7);
+	
+    let cell8 = row.insertCell(3);
+    let element8 = document.createTextNode(usuario.Id);
+     cell8.appendChild(element8);
+
+     //--------------------------------------------------
+ 	rowCount = table.rows.length;
+    row = table.insertRow(rowCount);
+
+     let cell9 = row.insertCell(0);
+	let element9 = document.createTextNode("El dìa :");
+    cell9.appendChild(element9);
+	
+    let cell10 = row.insertCell(1);
+    let element10 = document.createTextNode(moment(fecha).format('DD/MM/YYYY'));//fecha.toString('dd-MM-yyyy');
+     cell10.appendChild(element10);
+
+     let cell11 = row.insertCell(2);
+	let element11 = document.createTextNode("A las :");
+    cell11.appendChild(element11);
+	
+    let cell12 = row.insertCell(3);
+    let element12 = document.createTextNode(moment(fecha).format('hh:mm:ss A'));
+     cell12.appendChild(element12);
 	
 
 	//Busca las correspondecias segun el rango de fechas
@@ -278,8 +278,10 @@ function MR_01($scope)//ControllerAngular controller de todos los metodos
       }
 	)	 
 	.then(res => res.json())
-	.then(obj => $scope.$apply( _=>
-	              $scope.updateCorrespondencias(obj.data) )  )
+	.then(obj => ($('#dwpdf').show(),
+					$scope.$apply( _=>
+	             	 $scope.updateCorrespondencias(obj.data) ))
+	)
 	.catch(err => console.log('Request failed', err));
     
 	 
@@ -300,13 +302,15 @@ function MR_03($scope){// limpia
 	$scope.correspondencias = new Array();
 	$("#tabla_encabezado tr").detach();
 	$("#mensaje").text(""); 
+	$("#dwpdf").hide();
+
 } 
 	
 
 function MR_04($scope){ //Metodo que genera el reporte
 
 if(MR_05()){
-let pdf = new jsPDF('p', 'pt', 'letter');
+let pdf = new jsPDF('l', 'pt', 'letter');
 let source =  $('#HTMLtoPDF')[0] ;
 specialElementHandlers = {
 	'#bypassme': function(element, renderer){
@@ -314,9 +318,9 @@ specialElementHandlers = {
 	}
 }
 margins = {
-    top: 120,
-    left: 100,
-    width: 545
+    top: 50,
+    left: 25,
+    width: 600
   };
   
 pdf.fromHTML(
@@ -328,6 +332,9 @@ pdf.fromHTML(
   		, 'elementHandlers': specialElementHandlers
   	},
   	function (dispose) {
+  		t ="{total_pages_count_string}";
+  		str = 'total pages: ' + t;
+  		//pdf.text(150,pdf.internal.pageSize.height, str);
         pdf.save('ReporteCorrespondencia.pdf');
       }
   )		
