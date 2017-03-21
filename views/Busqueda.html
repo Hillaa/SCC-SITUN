@@ -68,6 +68,14 @@
          <p align="left"><p align="left"><div class="table table-bordered" >
 	<p align="left"><table class="table" id="tabla_busqueda">
 		
+
+<style type="text/css">
+	a.disabled {
+    pointer-events: none;
+    font-color: gray;
+    opacity: 0.4;
+}
+</style>>		
 <!-- Tabla cargada al buscar correspondencias -->
 		<thead> 
 			<tr class="danger">
@@ -110,8 +118,8 @@
 						<button type="button" class="btn btn-danger" data-toggle="modal"  ng-click="Alarma(c)">Ajustar</button>
 					</td>
 					<td>
-					
-					<a ng-href="http://localhost:3000/Adjunto/{{c.tc_12}}" target="_blank">Ver</a>	<!-- TERMINAR	-->		
+						<a ng-href="http://localhost:3000/Adjunto/{{c.tc_12}}" target="_blank" ng-class="c.tc_12.length==0?'disabled':''">Ver</a>	<!-- TERMINAR	-->		
+										
 					</td>
 			</tr>
 		</tbody>        
@@ -305,7 +313,7 @@
       </div>
       <div class="modal-footer">
 	   <center>
-	  <button id="btnGd1" type="button" class="btn btn-default" ng-click = "actualizaAlarma(c)" >Guardar</button>
+	  <button id="btnGd1" type="button" class="btn btn-default"  >Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 		</center>     
 	 </div>
@@ -862,7 +870,7 @@ function cargaAlarma(data,corr){ //carga los datos de la alarma
     headers: {  
       "Content-type": "application/x-www-form-urlencoded"  
       } ,
-    body: "TA_1="+ data+"&TA_2="+ b3+"&TA_3="+ d3
+    body: "TA_1="+ data+"&TA_2="+ d3+"&TA_3="+ b3+"&TA_4=0"
       }
 	  )
   .then()
@@ -883,7 +891,7 @@ function newAlarm(data){//insercion de una nueva alarma a las correpondencia esc
 			headers: {  
 				"Content-type": "application/x-www-form-urlencoded"  
 			} ,
-			body: "TA_1="+ data+ "&TA_2="+ b5+ "&TA_3="+c5+"&TA_4="+ d5 
+			body: "TA_1="+ data+ "&TA_2="+ c5+ "&TA_3="+b5+"&TA_4="+ d5 
 		}
 	  )
 		.then(function(response) {

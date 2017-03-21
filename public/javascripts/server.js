@@ -14,7 +14,7 @@ var options = {
 var pgp = require('pg-promise')(options);
 
 //------ CONEXION A LA BASE DE DATOS ------------------
-var connectionString = "pg://postgres:postgres@localhost:5432/BD_SITUN"; // CAMBIAR POR CLAVE DEL POSTGRES DE USTEDES
+var connectionString = "pg://postgres:root@localhost:5432/BD_SITUN"; // CAMBIAR POR CLAVE DEL POSTGRES DE USTEDES
 var db = pgp(connectionString);
 
 
@@ -545,9 +545,9 @@ function updateTA(req, res, next) {
 function updateTAFechas(req, res, next) {
 	
 	req.body.TA_1 = parseInt(req.body.TA_1);
-	 //req.body.TA_4 = parseInt(req.body.TA_4);
+	 req.body.TA_4 = parseInt(req.body.TA_4);
 	 console.log("actualiza");
-  db.none('update TA set TA_2=${TA_2},TA_3=${TA_3}'+
+  db.none('update TA set TA_2=${TA_2},TA_3=${TA_3},TA_4=${TA_4}'+
           'where TA_1=${TA_1}',
     req.body)
     .then(function () {
