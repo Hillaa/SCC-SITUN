@@ -2,19 +2,12 @@
 
 <html>
 <head>
-<!--
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- -->
 
- <script src="\..\javascripts\new\jquery-1.12.2.js"></script>
-  <script src="\..\javascripts\new\jquery.validate.min.js"></script>
-
-<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
-
-<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
-
+	<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
+	<script src="\..\javascripts\new\jquery.validate.min.js"></script>
+	<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
+	<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
+	
 </head>
 <body background="../images/situn4.png">
 	<div class="container">
@@ -87,13 +80,10 @@ $(document).ready(function(){
             }
           },
           submitHandler: function(form) {
-              //alert("Submitted!");
-              //event.preventDefault();
-              var $form = $(form);
-              //$(form).submit();
-              //$form.submit();
+             var $form = $(form);
+             
               form.submit();
-              //$('#formu').ajaxSubmit();
+          
             }
         });
 });
