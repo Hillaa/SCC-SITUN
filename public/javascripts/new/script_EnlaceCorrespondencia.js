@@ -174,6 +174,8 @@ function tipoBusquedaBD($scope) //Toma el criterio de busqueda y devuelve la col
 	$("#E1").prop("disabled",false);
 	$("#E2").prop("disabled",false);
 	$("#mensaje").html('');
+	$("#E3").hide();
+	$("#E4").hide();
   
 	if(banderita == true)
 	{
