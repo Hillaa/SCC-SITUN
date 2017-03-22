@@ -293,7 +293,7 @@ function cambioClase1(op){//Realiza un cambio de clase a los campos de entrada d
 	switch(op){
 	case 1: $("#datetimepicker4").attr('class','input-append  form-group') ;
 	$("#IC1").attr('title','') ;
-	$(document).ready(function(){
+				$(document).ready(function(){
    $("[id='IC1']").tooltip('hide');
 });
 			break;
