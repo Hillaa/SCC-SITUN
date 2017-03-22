@@ -82,7 +82,7 @@
 								</div>
 								<div class="col-xs-12">
 									<input type="text" class = "form-control input-sm" id = "E1"  ng-model="doc1.tc_3" ng-Keypress = "buscar('E1', $event)" ng-click="setCurrent(1)"></input>
-									<input type ="button" class = "btn" id = "E3" value = "editar" ng-click="editar('E1')"></input>
+									<button class = "btn" id = "E3" value = "editar" ng-click="editar('E1')"><img src="../../../../images/quitar.png" width="20" height="20" /></button>
 								</div>
 							</div>
  
@@ -90,20 +90,18 @@
 								<label class="col-sm-8 control-label  text-danger">Documento 2</label>
 								<div class="col-sm-12">
 									<input type="text" class="form-control" id="E2"  ng-model = "doc2.tc_3" ng-Keypress = "buscar('E2', $event)" ng-click="setCurrent(2)">
-									<input type ="button" class = "btn" id = "E4" value = "editar" ng-click="editar('E2')"></input>
+									<button  class = "btn" id = "E4" ng-click="editar('E2')"> <img src="../../../../images/quitar.png" width="20" height="20" /></button>
 								</div>
 							</div>
+							
+							<center><div >
+							<button type = "button" class="btn btn-default" id ="guardar"  ng-click = "enlazar()">Realizar Enlace</button>
+						
+							<button type = "button" class="btn btn-default" id="cancelar"  onclick = "limpiaCampos()" >Cancelar</button>
+						</div></center>
 						</form>
           
-						<div class="col-sm-5">
-							<input type = "button" class="btn btn-default" id ="guardar" value = "Realizar Enlace" ng-click = "enlazar()">
-						</div>
-						<div class="col-sm-3">
-      
-						</div>
-						<div class="col-sm-2">
-							<input type = "button" class="btn btn-default" id="cancelar" value = "Cancelar" onclick = "limpiaCampos()" >
-						</div>	
+							
 						<div style="margin-top:100px; margin-left:60px; "><label id="mensaje" class="text-danger"></label></div>
 					</div>	
 						
