@@ -313,6 +313,7 @@ var u = localStorage.getItem('usuario');
 
     		console.log(req);
       	console.log("success!");
+        $("#menuDiv").load("/HTML/menu"); 
     	},  
     	complete: function() {  
       		console.log("complete!");  
@@ -321,7 +322,7 @@ var u = localStorage.getItem('usuario');
 	});
 }
 
-$("#menuDiv").load("/HTML/menu"); 
+
   
 
 });
