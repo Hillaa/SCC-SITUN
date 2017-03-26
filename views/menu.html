@@ -116,6 +116,13 @@
   </div><!-- /.container-fluid ->
 </nav>
 -->
+
+<style type="text/css">
+  /*CSS*/
+.activa{
+  background-color:lightblue;
+}
+</style>
 <script type="text/javascript">
   
 
@@ -175,7 +182,12 @@ $(document).ready(function() {
   '</div><!-- /.container-fluid -->'+
 '</nav>';
 
-
+$( document ).ready(function() {
+  $(".nav li").on("click", function(){
+    $(".nav").find(".activa").removeClass("activa");
+    $(this).addClass("activa");
+  });
+});
 
 
 $('#menu').html(enc);
