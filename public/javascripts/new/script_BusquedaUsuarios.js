@@ -11,17 +11,22 @@ function controllerAngular($scope)//ControllerAngular
 	$scope.actualiza =_ => actualizarInfo($scope);
 	$scope.usuario = JSON.parse(localStorage.getItem('usuario'));
 	$scope.esDisabled = id => id ===$scope.usuario.Id;//id.localeCompare($scope.usuario.Id) === 0;
-
   }
   
   
   function actualizarInfo($scope){ //Actualiza la informacion en la base de datos
-  console.log('validacion '+validar());
+  //console.log('validacion '+validar());
     if(validar()){
-	console.log('Entro despues de validacion'+validar()); // Quitar
+	//console.log('Entro despues de validacion'+validar()); // Quitar
 	actualizarPersona();
 	actualizarUsuario();
     busquedaUsuario($scope);
+    usr = JSON.parse(localStorage.getItem('usuario'));
+    id = $('#IU0').val().toUpperCase();
+    if(usr.Id === id)
+    {
+    	solicitarInformacionDeSesion();
+    }
 	$('#myModal').modal('hide'); 
 	}
   }

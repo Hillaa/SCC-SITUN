@@ -1,5 +1,5 @@
 
-function cargarMenu($scope)
+function cargarMenu()
 {
 
 	usr = JSON.parse(localStorage.getItem('usuario'));
@@ -60,20 +60,45 @@ function cargarMenu($scope)
 	//angular.element(el).append( $compile(html)($scope) )
 }
 
+function solicitarInformacionDeSesion()
+{
+	$.ajax({  
+      url: 'http://localhost:3000/sessionInfo',  
+      type: "GET",  
+      dataType: "json",  
+      success: function(req) {  
+        
+        localStorage.setItem('usuario', JSON.stringify(req));
+        var name = req.nombre + ' '+ req.apellido;
+        
+        $("#IC8").val(name);
+
+        //console.log(req);
+        //console.log("success!");
+        $('#userInfo').html(req.nombre + ' '+ req.apellido+'<span class="caret"></span>');
+        //$("#menuDiv").load("/HTML/menu"); 
+      },  
+      complete: function() {  
+          //console.log("complete!");  
+      }  
+
+  });
+
+}
 
 
 function editarPerfil()
 {
 	usuario = JSON.parse(localStorage.getItem('usuario'));
 	console.log("Sol edicion perfil");
-	asignarUsuario(usuario);
-	$("#myModal").modal('show'); 
+	asignarUsuarioP(usuario);
+	$("#myModalP").modal('show'); 
 
 }
 
-function asignarUsuario(cor)
- {	desactivar();
-   limpiarValores();
+function asignarUsuarioP(cor)
+ {	desactivarP();
+   limpiarValoresP();
    console.log(cor);
 	 fetch( 'http://localhost:3000/api/TPTU/B', {  
     method: 'POST', 
@@ -85,44 +110,45 @@ function asignarUsuario(cor)
       }
 	)	 
 	.then(res => res.json())
-	.then(obj => cargarDatos(obj.data[0])
+	.then(obj => cargarDatosUsuarioP(obj.data[0])
 			)
 	.catch(err => console.log('Request failed', err));
  }
 
 
-function cargarDatos(data){
+function cargarDatosUsuarioP(data){
   console.log(data);
-     $("#IU1").val(data.tp_1);
-     $("#IU2").val(data.tp_2);
-     $("#IU3").val(data.tp_3);
-	 $("#IU0").val(data.tu_1);
-	 $("#IU4").val(data.tu_2);
+     $("#IPU1").val(data.tp_1);
+     $("#IPU2").val(data.tp_2);
+     $("#IPU3").val(data.tp_3);
+	 $("#IPU0").val(data.tu_1);
+	 $("#IPU4").val(data.tu_2);
 	 if(data.tu_3 == 1)
-		$("#administrador_checkbox").prop("checked", "checked");
+		$("#administrador_checkboxP").prop("checked", "checked");
 	 
 	 else
-		$("#administrador_checkbox").prop("checked", "");
+		$("#administrador_checkboxP").prop("checked", "");
 
-	$("#administrador_checkbox").attr("disabled", true);
+	$("#administrador_checkboxP").attr("disabled", true);
  }
 
-  function actualizarInfo($scope){ //Actualiza la informacion en la base de datos
-  console.log('validacion '+validar());
-    if(validar()){
-	console.log('Entro despues de validacion'+validar()); // Quitar
-	actualizarPersona();
-	actualizarUsuario();
+  function actualizarInfoUsuarioP(){ //Actualiza la informacion en la base de datos
+  //console.log('validacion '+validarP());
+    if(validarP()){
+	//console.log('Entro despues de validacion'+validarP()); // Quitar
+	actualizarPersonaP();
+	actualizarUsuarioP();
     //busquedaUsuario($scope);
-	$('#myModal').modal('hide'); 
+    solicitarInformacionDeSesion();
+	$('#myModalP').modal('hide'); 
 	}
   }
   
-  function actualizarPersona(){ //actualiza la infromación del usuario en la tabla personas
-    let a = $('#IU0').val().toUpperCase();
-	let b = $('#IU1').val().toUpperCase();
-	let c = $('#IU2').val().toUpperCase(); 
-	let d = $('#IU3').val().toUpperCase(); 
+  function actualizarPersonaP(){ //actualiza la infromación del usuario en la tabla personas
+    let a = $('#IPU0').val().toUpperCase();
+	let b = $('#IPU1').val().toUpperCase();
+	let c = $('#IPU2').val().toUpperCase(); 
+	let d = $('#IPU3').val().toUpperCase(); 
  
    fetch( 'http://localhost:3000/api/TP/UD', {  
     method: 'POST', 
@@ -136,7 +162,7 @@ function cargarDatos(data){
 	  )
   .then(function(response) {
 		return response.text().then(function(res) {
-				console.log("Resultado: "+res);
+				//console.log("Resultado: "+res);
 					if(res.indexOf("error")==-1){
 						$("#mensaje").text("Acción realizada con exito");
 			}
@@ -148,12 +174,12 @@ function cargarDatos(data){
   }
   
   
-  function actualizarUsuario(){ //actualiza la informaciòn del usuario
-    let a = $('#IU0').val();
-	let b = $('#IU4').val();
+  function actualizarUsuarioP(){ //actualiza la informaciòn del usuario
+    let a = $('#IPU0').val();
+	let b = $('#IPU4').val();
 	
 	let c = 0;
-	if($("#administrador_checkbox").prop("checked"))
+	if($("#administrador_checkboxP").prop("checked"))
 		c = 1;
 		
 		
@@ -180,75 +206,75 @@ function cargarDatos(data){
   });
  
   }
-  function validar(){ //Valiad los campos de entrada
+  function validarP(){ //Valiad los campos de entrada
 	I2 = true;
 	I3 = true;
 	I4 = true;
 	I5 = true;
 	I6= true;
 
-	if($("#IU1").val().length == 0){
+	if($("#IPU1").val().length == 0){
 		$("#div1").attr('class','form-group has-error') ;
-		$("#IU1").attr('title','Campo Obligatorio') ;
+		$("#IPU1").attr('title','Campo Obligatorio') ;
 		I2 = false;
 	}
 	else{
-	  cambioClase1(1);
-	$("#IU1").attr('title','');
+	  cambioClase1P(1);
+	$("#IPU1").attr('title','');
 	}
-	if($("#IU2").val().length == 0){
+	if($("#IPU2").val().length == 0){
 		$("#div2").attr('class','form-group has-error') ;
-		$("#IU2").attr('title','Campo Obligatorio') ;
+		$("#IPU2").attr('title','Campo Obligatorio') ;
 		I3 = false;
 	}
 	else{
-	 cambioClase1(2);
-	$("#IU2").attr('title','');
+	 cambioClase1P(2);
+	$("#IPU2").attr('title','');
 	}
-	if($("#IU3").val().length == 0){
+	if($("#IPU3").val().length == 0){
 		$("#div3").attr('class','form-group has-error') ;
-		$("#IU3").attr('title','Campo Obligatorio') ;
+		$("#IPU3").attr('title','Campo Obligatorio') ;
 		I4 = false;
 	}
 	else{
-	 cambioClase1(3);
-	$("#IU3").attr('title','');
+	 cambioClase1P(3);
+	$("#IPU3").attr('title','');
 	}
-	if($("#IU4").val().length == 0){
+	if($("#IPU4").val().length == 0){
 		$("#div4").attr('class','form-group has-error') ;
-		$("#IU4").attr('title','Campo Obligatorio') ;
+		$("#IPU4").attr('title','Campo Obligatorio') ;
 		I5 = false;
 	}
 	else{
-	 cambioClase1(4);
-	$("#IU4").attr('title','');
+	 cambioClase1P(4);
+	$("#IPU4").attr('title','');
 	}
-	if($( "#IU4" ).prop("disabled")!=true){ 
-	if($("#IU5").val().length == 0){
+	if($( "#IPU4" ).prop("disabled")!=true){ 
+	if($("#IPU5").val().length == 0){
 		$("#div5").attr('class','form-group has-error') ;
-		$("#IU5").attr('title','Campo Obligatorio') ;
+		$("#IPU5").attr('title','Campo Obligatorio') ;
 		I6 = false;
 	}
 	else{
-	 cambioClase1(5);
-	$("#IU5").attr('title','');
+	 cambioClase1P(5);
+	$("#IPU5").attr('title','');
 	}
 	}
-	if($("#IU4").val()!=$("#IU5").val() && $( "#IU4" ).prop("disabled")!=true){
+	if($("#IPU4").val()!=$("#IPU5").val() && $( "#IPU4" ).prop("disabled")!=true){
 		$("#div4").attr('class','form-group has-error') ;
-		$("#IU4").attr('title','La contraseña no coincide') ;
+		$("#IPU4").attr('title','La contraseña no coincide') ;
 		$("#div5").attr('class','form-group has-error') ;
-		$("#IU5").attr('title','La contraseña no coincide') ;
-		$("#IU5").val("");
-		$("#IU4").val("");
+		$("#IPU5").attr('title','La contraseña no coincide') ;
+		$("#IPU5").val("");
+		$("#IPU4").val("");
 		I6 = false;
 	}
 	else{
 	if(I6&&I5){
-	 cambioClase1(4);
-	$("#IU4").attr('title','');
-	 cambioClase1(5);
-	$("#IU5").attr('title','');
+	 cambioClase1P(4);
+	$("#IPU4").attr('title','');
+	 cambioClase1P(5);
+	$("#IPU5").attr('title','');
 	}
 	}
 
@@ -257,17 +283,17 @@ function cargarDatos(data){
 
 
 
-function limpiarValores(){ //Limpia los valores de los campos de entrada
+function limpiarValoresP(){ //Limpia los valores de los campos de entrada
     $("#div5").attr('class','form-group') ;
-	$("#IU5").attr('title','');
-	$("#IU5").val("");
+	$("#IPU5").attr('title','');
+	$("#IPU5").val("");
 	let i =1;
 	for(i=1;i<6;i++){
-	   cambioClase1(i);
+	   cambioClase1P(i);
 	}
 }
   
-  function cambioClase1(op){ //Realiza el cambio de clase de has-error a form-group
+  function cambioClase1P(op){ //Realiza el cambio de clase de has-error a form-group
 	switch(op){
 		case 1:  $("#div1").attr('class','form-group'); break;
 		case 2:	 $("#div2").attr('class','form-group'); break;
@@ -277,16 +303,16 @@ function limpiarValores(){ //Limpia los valores de los campos de entrada
 	}
   }
   
-  function activar(){
-    $("#IU4").removeAttr("disabled");
-    $("#LIU5").show();
-    $("#IU5").show();	
+  function activarP(){
+    $("#IPU4").removeAttr("disabled");
+    $("#LIPU5").show();
+    $("#IPU5").show();	
     $("#btnCambiar").hide();
   }
   
-  function desactivar(){
-    $("#IU4").attr('disabled','disabled');
-    $("#LIU5").hide();
-    $("#IU5").hide();
+  function desactivarP(){
+    $("#IPU4").attr('disabled','disabled');
+    $("#LIPU5").hide();
+    $("#IPU5").hide();
 	$("#btnCambiar").show();
   }

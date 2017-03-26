@@ -14,7 +14,7 @@
 <!-- Modal -->
 <div class="col-md-1"></div>
      
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModalP" class="modal fade" role="dialog">
   <div class="modal-dialog">
    
     <!-- Modal content-->
@@ -28,45 +28,45 @@
                 <tbody>
         <tr>
                     <td><label class="text-danger">Identificación</label></td>
-          <td><div id="div0" class="form-group"><input id="IU0" type="text" class="form-control" disabled ></input></div></td>
+          <td><div id="div0" class="form-group"><input id="IPU0" type="text" class="form-control" disabled ></input></div></td>
         </tr>
         
         <tr>
                     <td><label class="text-danger">Nombre</label></td>
-          <td><div id="div1" class="form-group"><textarea id="IU1" type="text" class="form-control" onfocus="cambioClase1(1)"  ></textarea></div></td>
+          <td><div id="div1" class="form-group"><textarea id="IPU1" type="text" class="form-control" onfocus="cambioClase1(1)"  ></textarea></div></td>
         </tr>
         
         <tr>
                     <td> <label class="text-danger">Primer Apellido</label> </td> 
-          <td><div id="div2" class="form-group"><textarea id="IU2" type="text" class="form-control" onfocus="cambioClase1(2)"></textarea></div></td>         
+          <td><div id="div2" class="form-group"><textarea id="IPU2" type="text" class="form-control" onfocus="cambioClase1(2)"></textarea></div></td>         
         </tr>
         
                 <tr>
                     <td> <label class="text-danger">Segundo Apellido</label> </td>
-                   <td><div id="div3" class="form-group"><textarea id="IU3" type="text" class="form-control" onfocus="cambioClase1(3)"></textarea></div></td> 
+                   <td><div id="div3" class="form-group"><textarea id="IPU3" type="text" class="form-control" onfocus="cambioClase1(3)"></textarea></div></td> 
                 </tr>
         
                 <tr>
             <td><label class="text-danger" for="exampleInputPassword1" >Contraseña</label> </td> 
-                    <td><div id="div4" class="form-group"><input type="password" class="form-control" id="IU4" onfocus="cambioClase1(4)" disabled></input></div> </td>  
+                    <td><div id="div4" class="form-group"><input type="password" class="form-control" id="IPU4" onfocus="cambioClase1(4)" disabled></input></div> </td>  
           <td><button id="btnCambiar" type="button" class="btn btn-default"  onclick = "activar()" style= "margin-left:10px; margin-bottom:10px">Cambiar</button></td>
                 </tr>
         
         <tr>
-            <td><label class="text-danger" for="exampleInputPassword1" style="display:none" id="LIU5">Confirmar Contraseña</label> </td> 
-                    <td><div id="div5" class="form-group"><input type="password" class="form-control" id="IU5" style="display:none" onfocus="cambioClase1(5)"></input></div> </td>  
+            <td><label class="text-danger" for="exampleInputPassword1" style="display:none" id="LIPU5">Confirmar Contraseña</label> </td> 
+                    <td><div id="div5" class="form-group"><input type="password" class="form-control" id="IPU5" style="display:none" onfocus="cambioClase1(5)"></input></div> </td>  
           
          </tr>
         
         <tr>
                     <td> <label class="text-danger">Administrador </label></td>
-          <td> <label class="text-danger" style=""><input  type="checkbox" id="administrador_checkbox" value="enlace_checkbox"></label></td>
+          <td> <label class="text-danger" style=""><input  type="checkbox" id="administrador_checkboxP" value="enlace_checkbox"></label></td>
                 </tr>
                         </tbody> 
        </table>  </center>    
       </div>
       <div class="modal-footer">
-      <center><button type="button" class="btn btn-default" onclick = "actualizarInfo()">Guardar</button>
+      <center><button type="button" class="btn btn-default" onclick = "actualizarInfoUsuarioP()">Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center> 
       </div>
     </div>
@@ -124,7 +124,7 @@ $(document).ready(function() {
  // $("#ini").onclick(function(){console.log("Click ddesde onclick");});
   
     usr = JSON.parse(localStorage.getItem('usuario'));
-    console.log(usr);
+    //console.log(usr);
     var enc = '<nav class="navbar navbar-default" style="background-color:#60161E; ">'+
   '<div class="container-fluid">'+
    ' <!-- Brand and toggle get grouped for better mobile display -->'+
@@ -163,7 +163,7 @@ $(document).ready(function() {
 
         enc+='<li><a href="" data-toggle="modal" data-target="#myAyuda" id="ayuda" style="color:#FFFFFF;">Ayuda</a></li>'+
                    '<li class="dropdown col-md-offset-0.6" >'+
-            '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#FFFFFF;">'+usr.nombre+' '+usr.apellido +'<span class="caret"></span></a>'+
+            '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#FFFFFF;" id="userInfo">'+usr.nombre+' '+usr.apellido +'<span class="caret"></span></a>'+
             '<ul class="dropdown-menu" style="background-color:#60161E; ">'+
             '<li><a href="javascript:void(0)" style="color:#FFFFFF;" onclick="editarPerfil()">Editar Perfil</a></li>'+
             '<li><a href="../logout" style="color:#FFFFFF;">Cerrar sesion</a></li>'+
@@ -180,7 +180,7 @@ $(document).ready(function() {
 
 $('#menu').html(enc);
 
-
+solicitarInformacionDeSesion();
 
 });
 

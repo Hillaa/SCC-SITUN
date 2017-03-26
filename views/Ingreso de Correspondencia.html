@@ -294,12 +294,16 @@ let app = angular.module('app', []);
    app.controller('ControllerAngular', controllerAngular); 
   
  $( document ).ready(function() {
+
+$("#menuDiv").load("/HTML/menu"); 
+  
     // Solicita la informacion de la sesion si aun no existe en el storage
 	
-	
+	/*
 var u = localStorage.getItem('usuario');
 
 {
+  
 	 $.ajax({  
     	url: 'http://localhost:3000/sessionInfo',  
     	type: "GET",  
@@ -313,7 +317,7 @@ var u = localStorage.getItem('usuario');
 
     		console.log(req);
       	console.log("success!");
-        $("#menuDiv").load("/HTML/menu"); 
+        
     	},  
     	complete: function() {  
       		console.log("complete!");  
@@ -322,7 +326,7 @@ var u = localStorage.getItem('usuario');
 	});
 }
 
-
+*/
   
 
 });
