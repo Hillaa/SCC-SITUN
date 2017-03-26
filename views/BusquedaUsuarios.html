@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="../images/ico.ico" type="image/ico" />
         <title>Busqueda de Usuarios</title>
+        <script src="\..\javascripts\script_menu.js"></script>
    	<script type="text/javascript" src="\..\javascripts\script_BusquedaUsuarios.js"></script>
   	<script src="\..\javascripts\jquery-1.12.2.js"></script>
 	<script src="\..\javascripts\moment-2.15.1.js"></script>
@@ -202,8 +203,8 @@
 
 $(document).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
-	$("#menuDiv").load("/HTML/menu");
-
+	//$("#menuDiv").load("/HTML/menu");
+ solicitarInformacionDeSesion("#EUM");
 
 });
 
