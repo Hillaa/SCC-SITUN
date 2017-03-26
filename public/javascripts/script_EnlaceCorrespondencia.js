@@ -10,10 +10,10 @@ function recuperarCorrespondenciaLS(){  //metodo para recuperar el id de la corr
 	  banderita = obj.bandera;
 	  if ( banderita==true){
 	  $("#E2").val(obj.numOficio);
-	  $("#E2").prop("disabled", true );
-	  
+	  $("#E2").prop("disabled", true );	  
 	  }
-	  localStorage.clear();
+
+	  localStorage.removeItem('user');
 }
 
 

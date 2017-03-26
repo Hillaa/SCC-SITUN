@@ -60,7 +60,7 @@ function cargarMenu()
 	//angular.element(el).append( $compile(html)($scope) )
 }
 
-function solicitarInformacionDeSesion()
+function solicitarInformacionDeSesion(page)
 {
 	$.ajax({  
       url: 'http://localhost:3000/sessionInfo',  
@@ -76,7 +76,8 @@ function solicitarInformacionDeSesion()
         //console.log(req);
         //console.log("success!");
         
-        //$("#menuDiv").load("/HTML/menu"); 
+        $("#menuDiv").load("/HTML/menu", function(){$(page).addClass("activa");}); 
+
       },  
       complete: function() {  
           //console.log("complete!");  
