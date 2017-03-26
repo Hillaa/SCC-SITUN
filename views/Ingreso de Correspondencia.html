@@ -2,6 +2,7 @@
 <html ng-app = "app">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="../images/ico.ico" type="image/ico" />
         <title>Ingreso Correspondencia</title>
      
 
@@ -298,8 +299,10 @@ let app = angular.module('app', []);
   
  $( document ).ready(function() {
 
-$("#menuDiv").load("/HTML/menu"); 
-  
+$("#menuDiv").load("/HTML/menu", function(){$("#ICM").addClass("activa");}); 
+
+
+  //$(".nav li").addClass("activa");
     // Solicita la informacion de la sesion si aun no existe en el storage
 	
 	/*

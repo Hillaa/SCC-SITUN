@@ -5,6 +5,7 @@
 <html>
 <head>
 <script src="\..\javascripts\script_menu.js"></script>
+
 </head>
 <body  ng-app ng-controller="menuControllerAngular" data-ng-init="init()">
 
@@ -120,7 +121,7 @@
 <style type="text/css">
   /*CSS*/
 .activa{
-  background-color:lightblue;
+  background-color:#CB4335;
 }
 </style>
 <script type="text/javascript">
@@ -148,10 +149,10 @@ $(document).ready(function() {
     '<!-- Collect the nav links, forms, and other content for toggling -->'+
     '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left:70px">'+
      '<ul class="nav navbar-nav">'+
-      '<li ><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;">Ingreso de Correspondencia </a></li>'+
-      '<li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>'+
-        '<li><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>'+
-        '<li><a href="../HTML/Reportes"style="color:#FFFFFF;">Reportes</a></li>';
+      '<li id="ICM"><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;">Ingreso de Correspondencia </a></li>'+
+      '<li id="EDM"><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>'+
+        '<li id="BDM"><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>'+
+        '<li id="RDM"><a href="../HTML/Reportes"style="color:#FFFFFF;">Reportes</a></li>';
 
 
         if(usr.tipo === '1')
@@ -193,6 +194,7 @@ $( document ).ready(function() {
 $('#menu').html(enc);
 
 solicitarInformacionDeSesion();
+
 
 });
 
