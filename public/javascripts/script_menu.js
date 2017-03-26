@@ -70,12 +70,12 @@ function solicitarInformacionDeSesion()
         
         localStorage.setItem('usuario', JSON.stringify(req));
         var name = req.nombre + ' '+ req.apellido;
-        
+        $('#userInfo').html(name+'<span class="caret"></span>');
         $("#IC8").val(name);
 
         //console.log(req);
         //console.log("success!");
-        $('#userInfo').html(req.nombre + ' '+ req.apellido+'<span class="caret"></span>');
+        
         //$("#menuDiv").load("/HTML/menu"); 
       },  
       complete: function() {  
@@ -136,10 +136,12 @@ function cargarDatosUsuarioP(data){
   //console.log('validacion '+validarP());
     if(validarP()){
 	//console.log('Entro despues de validacion'+validarP()); // Quitar
-	actualizarPersonaP();
-	actualizarUsuarioP();
+	actualizarPersonaP()
+	.then(_=> actualizarUsuarioP()
+		.then(_=> solicitarInformacionDeSesion()));
+	
     //busquedaUsuario($scope);
-    solicitarInformacionDeSesion();
+    
 	$('#myModalP').modal('hide'); 
 	}
   }
@@ -150,7 +152,7 @@ function cargarDatosUsuarioP(data){
 	let c = $('#IPU2').val().toUpperCase(); 
 	let d = $('#IPU3').val().toUpperCase(); 
  
-   fetch( 'http://localhost:3000/api/TP/UD', {  
+   return fetch( 'http://localhost:3000/api/TP/UD', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -159,8 +161,8 @@ function cargarDatosUsuarioP(data){
     body: "TP_1="+ b+ "&TP_2="+c+
 	"&TP_3="+ d + "&TP_4="+ a 
       }
-	  )
-  .then(function(response) {
+	  );
+  /*.then(function(response) {
 		return response.text().then(function(res) {
 				//console.log("Resultado: "+res);
 					if(res.indexOf("error")==-1){
@@ -170,7 +172,7 @@ function cargarDatosUsuarioP(data){
 	})
   .catch(function(error) {  
    console.log('Request failed', error);  
-  });
+  });*/
   }
   
   
@@ -183,7 +185,7 @@ function cargarDatosUsuarioP(data){
 		c = 1;
 		
 		
-    fetch( 'http://localhost:3000/api/TU/UD', {  
+    return fetch( 'http://localhost:3000/api/TU/UD', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -193,7 +195,7 @@ function cargarDatosUsuarioP(data){
 	"&TU_3="+ c
       }
 	  )
-  .then(function(response) {
+  /*.then(function(response) {
 		return response.text().then(function(res) {
 				console.log("Resultado: "+res);
 					if(res.indexOf("error")==-1){
@@ -203,7 +205,7 @@ function cargarDatosUsuarioP(data){
 	})
   .catch(function(error) {  
    console.log('Request failed', error);  
-  });
+  });*/
  
   }
   function validarP(){ //Valiad los campos de entrada
