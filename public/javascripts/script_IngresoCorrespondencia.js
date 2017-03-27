@@ -1,7 +1,8 @@
 
 
 function dato_Adjunto(){
-$('#input_adjunto').val($('#adjun').val());
+adj= $('#adjun').prop('files');
+$('#input_adjunto').val(adj[0].name);
 }
 
 
@@ -105,17 +106,8 @@ function ingresoCorrespondencia($scope){ //Recoge los datos de los campos y real
 	let i3 = u.Id; 
 	let j3 = $('#IC9').val().toUpperCase();
     let k3 = $('#IC10').val().toUpperCase();
-	let doc;
-	let adj;
-	if( $('#adjun').val() == ''){
-		doc = '';
-		console.log("VACIO DOCUMENTO");
-	}
-    else{ 
-	    adj= $('#adjun').prop('files');
-	   doc = adj[0].name;
-  console.log("DOCUMENTO "+doc); // QUITAR
-  }
+	let doc = $('#input_adjunto').val();
+
   
   console.log("xxx "+b3);
  fetch( 'http://localhost:3000/api/TC/I', {  
