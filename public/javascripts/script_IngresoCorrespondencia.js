@@ -250,6 +250,8 @@ function validacionCampos(){	 //Valida todos los campos
 function botonCancelar(){//Metodo de cancelar
 	limpiarCampos();
 	limpiaDivMensaje();
+	  //$("[data-toggle='tooltip']")removeAttr("data-original-title");
+	
 	subePagina();//sube la pagina
 }
 function limpiarCampos(){//Limpia el valor de los campos de entrada
@@ -277,12 +279,21 @@ function limpiarCampos(){//Limpia el valor de los campos de entrada
 	}
 function limpiaDivMensaje(){//Limpia el div con el id=mensaje
 	$("#mensaje").text("");
+    $("#IC1").removeAttr("data-original-title");
+	$("#IC2").removeAttr("data-original-title");
+	$("#IC3").removeAttr("data-original-title");
+	$("#IC4").removeAttr("data-original-title");
+	$("#IC5").removeAttr("data-original-title");
+	$("#IC6").removeAttr("data-original-title");
+	$("#IC7").removeAttr("data-original-title");
+	$("#IC8").removeAttr("data-original-title");
+	$("#IC9").removeAttr("data-original-title");
 }
 function cambioClase1(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase has-error a from-group
 	switch(op){
 	case 1: $("#datetimepicker4").attr('class','input-append  form-group') ;
 	$("#IC1").attr('title','') ;
-	$(document).ready(function(){
+				$(document).ready(function(){
    $("[id='IC1']").tooltip('hide');
 });
 			break;

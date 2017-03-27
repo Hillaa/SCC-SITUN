@@ -1,15 +1,138 @@
+
+
 <!DOCTYPE html>
 
 <html>
 <head>
-</head>
-<body>
-<div id='menu'></div>
 
+
+</head>
+<body  ng-app ng-controller="menuControllerAngular" data-ng-init="init()">
+
+<div id='menu'></div>
+<div obj></div>
+  <!-- Trigger the modal with a button -->
+<!-- Modal -->
+<div class="col-md-1"></div>
+     
+<div id="myModalP" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+   
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="text-danger">Edición</h4>
+      </div>
+      <div class="modal-body">
+    <center><table  id ="tablaAU">
+                <tbody>
+        <tr>
+                    <td><label class="text-danger">Identificación</label></td>
+          <td><div id="div0" class="form-group"><input id="IPU0" type="text" class="form-control" disabled ></input></div></td>
+        </tr>
+        
+        <tr>
+                    <td><label class="text-danger">Nombre</label></td>
+          <td><div id="div1" class="form-group"><textarea id="IPU1" type="text" class="form-control" onfocus="cambioClase1(1)"  ></textarea></div></td>
+        </tr>
+        
+        <tr>
+                    <td> <label class="text-danger">Primer Apellido</label> </td> 
+          <td><div id="div2" class="form-group"><textarea id="IPU2" type="text" class="form-control" onfocus="cambioClase1(2)"></textarea></div></td>         
+        </tr>
+        
+                <tr>
+                    <td> <label class="text-danger">Segundo Apellido</label> </td>
+                   <td><div id="div3" class="form-group"><textarea id="IPU3" type="text" class="form-control" onfocus="cambioClase1(3)"></textarea></div></td> 
+                </tr>
+        
+                <tr>
+            <td><label class="text-danger" for="exampleInputPassword1" >Contraseña</label> </td> 
+                    <td><div id="div4" class="form-group"><input type="password" class="form-control" id="IPU4" onfocus="cambioClase1(4)" disabled></input></div> </td>  
+          <td><button id="btnCambiar" type="button" class="btn btn-default"  onclick = "activar()" style= "margin-left:10px; margin-bottom:10px">Cambiar</button></td>
+                </tr>
+        
+        <tr>
+            <td><label class="text-danger" for="exampleInputPassword1" style="display:none" id="LIPU5">Confirmar Contraseña</label> </td> 
+                    <td><div id="div5" class="form-group"><input type="password" class="form-control" id="IPU5" style="display:none" onfocus="cambioClase1(5)"></input></div> </td>  
+          
+         </tr>
+        
+        <tr>
+                    <td> <label class="text-danger">Administrador </label></td>
+          <td> <label class="text-danger" style=""><input  type="checkbox" id="administrador_checkboxP" value="enlace_checkbox"></label></td>
+                </tr>
+                        </tbody> 
+       </table>  </center>    
+      </div>
+      <div class="modal-footer">
+      <center><button type="button" class="btn btn-default" onclick = "actualizarInfoUsuarioP()">Guardar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center> 
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+
+<!--
+
+  <nav class="navbar navbar-default" style="background-color:#60161E; ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display ->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <IMG SRC="../images/situn2.png" WIDTH=90 HEIGHT=50  class="nav navbar-nav navbar-right" >
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling ->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left:70px">
+     <ul class="nav navbar-nav">
+      <li ><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;">Ingreso de Correspondencia </a></li>
+      <li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>
+        <li><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>
+        <li><a href="../HTML/Reportes"style="color:#FFFFFF;">Reportes</a></li>
+
+
+        
+
+        <li><a href="" data-toggle="modal" data-target="#myAyuda" id="ayuda" style="color:#FFFFFF;">Ayuda</a></li>
+                   <li class="dropdown col-md-offset-0.6" >
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#FFFFFF;">'+usr.nombre+' '+usr.apellido +'<span class="caret"></span></a>
+            <ul class="dropdown-menu" style="background-color:#60161E; ">
+            <li><a href="javascript:void(0)" style="color:#FFFFFF;" ng-click="editarPerfil()">Editar Perfil</a></li>
+            <button id="ini" ng-click="buscar()"> editar</button>
+            <li><a href="../logout" style="color:#FFFFFF;">Cerrar sesion</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div><!-- /.navbar-collapse ->
+  </div><!-- /.container-fluid ->
+</nav>
+-->
+
+<style type="text/css">
+  /*CSS*/
+.activa{
+  background-color:#CB4335;
+}
+</style>
 <script type="text/javascript">
   
+
 $(document).ready(function() {
+
+ // $("#ini").onclick(function(){console.log("Click ddesde onclick");});
+  
     usr = JSON.parse(localStorage.getItem('usuario'));
+    console.log('Recogido de localS');
     console.log(usr);
     var enc = '<nav class="navbar navbar-default" style="background-color:#60161E; ">'+
   '<div class="container-fluid">'+
@@ -27,15 +150,15 @@ $(document).ready(function() {
     '<!-- Collect the nav links, forms, and other content for toggling -->'+
     '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left:70px">'+
      '<ul class="nav navbar-nav">'+
-      '<li ><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;">Ingreso de Correspondencia </a></li>'+
-      '<li><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>'+
-        '<li><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>'+
-        '<li><a href="../HTML/Reportes"style="color:#FFFFFF;">Reportes</a></li>';
+      '<li id="ICM"><a href="../HTML/Ingreso de Correspondencia"style="color:#FFFFFF;">Ingreso de Correspondencia </a></li>'+
+      '<li id="EDM"><a href="../HTML/Enlace de Documentos"style="color:#FFFFFF;">Enlace Documentos</a></li>'+
+        '<li id="BDM"><a href="../HTML/Busqueda"style="color:#FFFFFF;">Búsqueda</a></li>'+
+        '<li id="RDM"><a href="../HTML/Reportes"style="color:#FFFFFF;">Reportes</a></li>';
 
 
         if(usr.tipo === '1')
           {
-            enc+= '<li class="dropdown" >'+
+            enc+= '<li id="EUM" class="dropdown" >'+
           '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#FFFFFF;">Usuarios <span class="caret"></span></a>'+
           '<ul class="dropdown-menu" style="background-color:#60161E; ">'+
             '<li><a href="../HTML/ingresaUser" style="color:#FFFFFF;">Agregar Usuario</a></li>'+
@@ -49,23 +172,38 @@ $(document).ready(function() {
 
         enc+='<li><a href="" data-toggle="modal" data-target="#myAyuda" id="ayuda" style="color:#FFFFFF;">Ayuda</a></li>'+
                    '<li class="dropdown col-md-offset-0.6" >'+
-            '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#FFFFFF;">'+usr.nombre+' '+usr.apellido +'<span class="caret"></span></a>'+
+            '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#FFFFFF;" id="userInfo">'+usr.nombre+' '+usr.apellido +'<span class="caret"></span></a>'+
             '<ul class="dropdown-menu" style="background-color:#60161E; ">'+
+            '<li><a href="javascript:void(0)" style="color:#FFFFFF;" onclick="editarPerfil()">Editar Perfil</a></li>'+
             '<li><a href="../logout" style="color:#FFFFFF;">Cerrar sesion</a></li>'+
           '</ul>'+
-        '</li>'
+        '</li>'+
 
-      '</ul>'
-    '</div><!-- /.navbar-collapse -->';
+      '</ul>'+
+    '</div><!-- /.navbar-collapse -->'+
   '</div><!-- /.container-fluid -->'+
 '</nav>';
 
+$( document ).ready(function() {
+  $(".nav li").on("click", function(){
+    $(".nav").find(".activa").removeClass("activa");
+    $(this).addClass("activa");
+  });
+});
 
 
 $('#menu').html(enc);
 
+//solicitarInformacionDeSesion();
+
+
 });
+
+
+
+
 </script>
+
 
 </body>
 

@@ -7,8 +7,6 @@ function MR_01($scope)//ControllerAngular controller de todos los metodos
 	$scope.buscar = _ => MR_02($scope);
 	$scope.clear = _ => MR_03($scope);
 	$scope.generarReporte = _ =>MR_04($scope);
-
-	
 	
   }
   

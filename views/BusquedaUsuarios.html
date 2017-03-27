@@ -2,15 +2,18 @@
 <html ng-app = "app">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="../images/ico.ico" type="image/ico" />
         <title>Busqueda de Usuarios</title>
-   	<script type="text/javascript" src="\..\javascripts\new\script_BusquedaUsuarios.js"></script>
-  	<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
-	<script src="\..\javascripts\new\moment-2.15.1.js"></script>
-	<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
-	<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
-	<script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
+        <script src="\..\javascripts\script_menu.js"></script>
+   	<script type="text/javascript" src="\..\javascripts\script_BusquedaUsuarios.js"></script>
+  	<script src="\..\javascripts\jquery-1.12.2.js"></script>
+	<script src="\..\javascripts\moment-2.15.1.js"></script>
+	<script src="\..\javascripts\bootstrap-3-3-7.min.js"></script>
+	<link rel="stylesheet" href="\..\stylesheets\bootstrap-3-3-7.min.css">
+	<script src="\..\javascripts\bootstrap-datetimepicker-4.7.14.js"></script>
 	<script src="\..\javascripts\angular.min.js"></script>
-	<link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
+	<link rel="stylesheet" href="\..\stylesheets\bootstrap-datetimepicker-4.7.14.css">
+	
     <body ng-app ng-controller = "ControllerAngular">
 
     <div id="menuDiv"></div>
@@ -200,8 +203,8 @@
 
 $(document).ready(function() {
     // Solicita la informacion de la sesion si aun no existe en el storage
-	$("#menuDiv").load("/HTML/menu");
-
+	//$("#menuDiv").load("/HTML/menu");
+ solicitarInformacionDeSesion("#EUM");
 
 });
 

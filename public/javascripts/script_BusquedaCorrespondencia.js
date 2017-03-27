@@ -407,8 +407,8 @@ function ajusteAlarma($scope ,cor)  //Metodo de ajuste de alarma
 function cargaAlarma(data,corr){ //carga los datos de la alarma para mostrar en pantalla
    if(data!=null){
   $("#myModal3").modal("show");
-      $("#IC14").val(data.ta_2.substr(8,2)+"-"+data.ta_2.substr(5,2)+"-"+data.ta_2.substr(0,4));
-	  $("#IC15").val(data.ta_3.substr(8,2)+"-"+data.ta_3.substr(5,2)+"-"+data.ta_3.substr(0,4));
+      $("#IC15").val(data.ta_2.substr(8,2)+"-"+data.ta_2.substr(5,2)+"-"+data.ta_2.substr(0,4));
+	  $("#IC14").val(data.ta_3.substr(8,2)+"-"+data.ta_3.substr(5,2)+"-"+data.ta_3.substr(0,4));
 	  $("#btnGd1").click(function(){
 		console.log("guarde2");
 		actualizarAlarma(corr);
@@ -427,15 +427,15 @@ function cargaAlarma(data,corr){ //carga los datos de la alarma para mostrar en 
  }
   
  function actualizarAlarma(data){ //Recoge los datos de los campos y realiza el fecth de actualizacion de alarma
-	let b3 = $("#IC15").val().substr(6,4)+"-"+$("#IC14").val().substr(3,2)+"-"+$("#IC14").val().substr(0,2);
-	let d3 = $("#IC14").val().substr(6,4)+"-"+$("#IC15").val().substr(3,2)+"-"+$("#IC15").val().substr(0,2);
+	let b3 = $("#IC15").val().substr(6,4)+"-"+$("#IC15").val().substr(3,2)+"-"+$("#IC15").val().substr(0,2);
+	let d3 = $("#IC14").val().substr(6,4)+"-"+$("#IC14").val().substr(3,2)+"-"+$("#IC14").val().substr(0,2);
 	fetch( 'http://localhost:3000/api/TA/UDF', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
       "Content-type": "application/x-www-form-urlencoded"  
       } ,
-    body: "TA_1="+ data+"&TA_2="+ d3+"&TA_3="+ b3+"&TA_4=0"
+    body: "TA_1="+ data+"&TA_2="+ b3+"&TA_3="+ d3+"&TA_4=0"
       }
 	  )
   .then()
