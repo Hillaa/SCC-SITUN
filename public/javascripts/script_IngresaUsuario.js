@@ -1,3 +1,4 @@
+
 function existeUsuario(){//Realiza la consulta si un usuario existe
  
 	let d = $('#IU4').val().toUpperCase();

@@ -1,5 +1,5 @@
 
-function cargarMenu()
+function cargarMenu() //CArga el menu del sistema
 {
 
 	usr = JSON.parse(localStorage.getItem('usuario'));
@@ -60,7 +60,8 @@ function cargarMenu()
 	//angular.element(el).append( $compile(html)($scope) )
 }
 
-function solicitarInformacionDeSesion(page)
+function solicitarInformacionDeSesion(page)//solicita los datos actualizados de la persona 
+			//que esta loggeada
 {
 	
 	$.ajax({  
@@ -90,7 +91,7 @@ function solicitarInformacionDeSesion(page)
 }
 
 
-function editarPerfil()
+function editarPerfil() 
 {
 	usuario = JSON.parse(localStorage.getItem('usuario'));
 	console.log("Sol edicion perfil");
