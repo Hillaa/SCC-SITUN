@@ -1,6 +1,6 @@
 
 
-function dato_Adjunto(){
+function dato_Adjunto(){ //
 adj= $('#adjun').prop('files');
 $('#input_adjunto').val(adj[0].name);
 }
@@ -77,7 +77,7 @@ if($("#IC12").is(':checked')){
 	}
 }
 
-function checkCampoCopia(){ //Cambia el valor del campo referente al numero de oficio si la opcion SIN OFICIO esta marcada
+function checkCampoCopia(){ //Cambia el valor del campo COPIA por la opción SIN COPIA
 if($("#check_SinCopia").is(':checked')){
 	$("#IC5").val("SIN COPIA");
 	$("#IC5").prop("disabled",true);	
@@ -284,16 +284,16 @@ function limpiaDivMensaje(){//Limpia el div con el id=mensaje
 function cambioClase1(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase has-error a from-group
 	switch(op){
 	case 1: $("#datetimepicker4").attr('class','input-append  form-group') ;
-	$("#IC1").attr('title','') ;
+				$("#IC1").attr('title','') ;
 				$(document).ready(function(){
-   $("[id='IC1']").tooltip('hide');
-});
+				$("[id='IC1']").tooltip('hide');
+			});
 			break;
 	case 2: $("#div2").attr('class','input-append  form-group') ;
-$("#IC2").attr('title','') ;
-						$(document).ready(function(){
-   $("[id='IC2']").tooltip('hide');
-});
+				$("#IC2").attr('title','') ;
+				$(document).ready(function(){
+				$("[id='IC2']").tooltip('hide');
+			});
 			break;
 	case 3: $("#datetimepicker3").attr('class','input-append  form-group') ;
 	$("#IC3").attr('title','') ;
