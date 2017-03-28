@@ -142,10 +142,16 @@
 	
 	
 	   <div style="margin-left:30px">
-           <span class="text-danger" style="margin-left:30px">
+	   
+	    <div class="panel panel-danger" style="max-width: 96.5%; margin-left:15px" >
+		 <div class="text-danger" style="margin-left:25px">
 		 <h2 >Busqueda de Usuarios</h2> 
+		 </div>
+		</div>
+		<div class="text-danger" style="margin-left:20px">
 		 <h4 >Tipo de Busqueda</h4>
-		 </span>
+		 </div>
+     
            <form class="navbar-form navbar-left">         
         
             <div   class="form-group ">
@@ -162,8 +168,7 @@
 				<input type = "button"class="btn btn-default" id ="cancelar" value = "Cancelar"  ng-click="clear()" >
             
 			</div>
-         <p align="left">
-		 <div class="table table-bordered" >
+		 <div  align="left" class="table table-bordered"  style="max-width: 1300px; max-height:390px; margin-top:10px; border: hidden; overflow-y:auto;">
 	    <table class="table" id="tabla_busqueda">
 
 		<thead> 
@@ -178,21 +183,21 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat = "c in usuarios">
-					<td> {{c.tp_4 }} </td>
-					<td> {{c.tp_1 }} </td>
-					<td> {{c.tp_2 }} </td>
-					<td> {{c.tp_3 }} </td>
-					<td> 
+					<td style="max-width: 287px;"> {{c.tp_4 }} </td>
+					<td style="max-width: 287px;"> {{c.tp_1 }} </td>
+					<td style="max-width: 287px;"> {{c.tp_2 }} </td>
+					<td style="max-width: 287px;"> {{c.tp_3 }} </td>
+					<td style="max-width: 75px;"> 
 						<button   type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" ng-click="obtenerUsuario(c)"><img src="../../../../images/editar-usuario.png" width="20" height="20" /></button>
 					</td>
-					<td> 
+					<td style="max-width: 75px;"> 
 						<button type="button" id="btnEliminar" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" ng-click="obtenerUsuarios(c)" ng-disabled = "esDisabled(c.tp_4)"><img src="../../../../images/eliminar.png" width="20" height="20" /></button>
 					</td>
 			</tr>
 		</tbody>       
 	</table>
 
-               </div></p>
+               </div>
       </form>
            
    
