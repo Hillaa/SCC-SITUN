@@ -55,8 +55,28 @@ router.get('/logout',function(req, res){
 
 router.get('/sessionInfo',function(req, res, next){
 	console.log("Solicitud de info de sesson... ");
-	res.json(req.session.usuario);
+	updateSessionInfo(req)
+	.then(_ => res.json(req.session.usuario));
+	
 });
+
+function updateSessionInfo(req)
+{
+	console.log("actualizando info...");
+	return db.getUSR({TU_1:req.session.usuario.Id})
+	.then(function(data){
+		usr = data[0];
+		console.log("nuevos datos....");
+
+		req.session.usuario = {
+						nombre: usr.tp_1,
+						apellido: usr.tp_2,
+						tipo: usr.tu_3,
+						Id: usr.tu_1
+					};
+		console.log(req.session.usuario);
+	});
+}
 
 router.get('/HTML/*', function(req, res, next) {
   console.log("Ingresando al Buscar desde " + req.url); 

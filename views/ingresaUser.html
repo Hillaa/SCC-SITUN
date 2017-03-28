@@ -2,21 +2,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="../images/ico.ico" type="image/ico" />
         <title>Ingresar Usuario</title>
         
+<script src="\..\javascripts\script_menu.js"></script>
+	<script type="text/javascript" src="\..\javascripts\script_IngresaUsuario.js"></script>
+	<script src="\..\javascripts\jquery-1.12.2.js"></script>
+<script src="\..\javascripts\moment-2.15.1.js"></script>
 
-	<script type="text/javascript" src="\..\javascripts\new\script_IngresaUsuario.js"></script>
-	<script src="\..\javascripts\new\jquery-1.12.2.js"></script>
-<script src="\..\javascripts\new\moment-2.15.1.js"></script>
+<script src="\..\javascripts\bootstrap-3-3-7.min.js"></script>
 
-<script src="\..\javascripts\new\bootstrap-3-3-7.min.js"></script>
-
-<link rel="stylesheet" href="\..\javascripts\new\bootstrap-3-3-7.min.css">
+<link rel="stylesheet" href="\..\stylesheets\bootstrap-3-3-7.min.css">
 
 
-<script src="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.js"></script>
+<script src="\..\javascripts\bootstrap-datetimepicker-4.7.14.js"></script>
 
-<link rel="stylesheet" href="\..\javascripts\new\bootstrap-datetimepicker-4.7.14.css">
+<link rel="stylesheet" href="\..\stylesheets\bootstrap-datetimepicker-4.7.14.css">
     <!-- Angular--> 
 	
 	
@@ -29,7 +30,7 @@
 <!-- Modal -->
 	  
 <div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:325px;">
-  <div class="modal-dialog">
+  <div class="well">
    
     <!-- Modal content-->
    <div class="modal-content">
@@ -127,8 +128,8 @@
   
   $(document).ready(function () { //Metodo del calendario
 
-  		$("#menuDiv").load("/HTML/menu");
-                
+  		//$("#menuDiv").load("/HTML/menu");
+        solicitarInformacionDeSesion("#EUM");
                 $('.date').datepicker({         
             });
 			$('#ayuda').click(

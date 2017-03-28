@@ -1,7 +1,8 @@
 
 
-function dato_Adjunto(){
-$('#input_adjunto').val($('#adjun').val());
+function dato_Adjunto(){ //
+adj= $('#adjun').prop('files');
+$('#input_adjunto').val(adj[0].name);
 }
 
 
@@ -76,7 +77,7 @@ if($("#IC12").is(':checked')){
 	}
 }
 
-function checkCampoCopia(){ //Cambia el valor del campo referente al numero de oficio si la opcion SIN OFICIO esta marcada
+function checkCampoCopia(){ //Cambia el valor del campo COPIA por la opción SIN COPIA
 if($("#check_SinCopia").is(':checked')){
 	$("#IC5").val("SIN COPIA");
 	$("#IC5").prop("disabled",true);	
@@ -105,17 +106,8 @@ function ingresoCorrespondencia($scope){ //Recoge los datos de los campos y real
 	let i3 = u.Id; 
 	let j3 = $('#IC9').val().toUpperCase();
     let k3 = $('#IC10').val().toUpperCase();
-	let doc;
-	let adj;
-	if( $('#adjun').val() == ''){
-		doc = '';
-		console.log("VACIO DOCUMENTO");
-	}
-    else{ 
-	    adj= $('#adjun').prop('files');
-	   doc = adj[0].name;
-  console.log("DOCUMENTO "+doc); // QUITAR
-  }
+	let doc = $('#input_adjunto').val();
+
   
   console.log("xxx "+b3);
  fetch( 'http://localhost:3000/api/TC/I', {  
@@ -250,6 +242,8 @@ function validacionCampos(){	 //Valida todos los campos
 function botonCancelar(){//Metodo de cancelar
 	limpiarCampos();
 	limpiaDivMensaje();
+	  //$("[data-toggle='tooltip']")removeAttr("data-original-title");
+	
 	subePagina();//sube la pagina
 }
 function limpiarCampos(){//Limpia el valor de los campos de entrada
@@ -277,20 +271,29 @@ function limpiarCampos(){//Limpia el valor de los campos de entrada
 	}
 function limpiaDivMensaje(){//Limpia el div con el id=mensaje
 	$("#mensaje").text("");
+    $("#IC1").removeAttr("data-original-title");
+	$("#IC2").removeAttr("data-original-title");
+	$("#IC3").removeAttr("data-original-title");
+	$("#IC4").removeAttr("data-original-title");
+	$("#IC5").removeAttr("data-original-title");
+	$("#IC6").removeAttr("data-original-title");
+	$("#IC7").removeAttr("data-original-title");
+	$("#IC8").removeAttr("data-original-title");
+	$("#IC9").removeAttr("data-original-title");
 }
 function cambioClase1(op){//Realiza un cambio de clase a los campos de entrada del formulario de la clase has-error a from-group
 	switch(op){
 	case 1: $("#datetimepicker4").attr('class','input-append  form-group') ;
-	$("#IC1").attr('title','') ;
-	$(document).ready(function(){
-   $("[id='IC1']").tooltip('hide');
-});
+				$("#IC1").attr('title','') ;
+				$(document).ready(function(){
+				$("[id='IC1']").tooltip('hide');
+			});
 			break;
 	case 2: $("#div2").attr('class','input-append  form-group') ;
-$("#IC2").attr('title','') ;
-						$(document).ready(function(){
-   $("[id='IC2']").tooltip('hide');
-});
+				$("#IC2").attr('title','') ;
+				$(document).ready(function(){
+				$("[id='IC2']").tooltip('hide');
+			});
 			break;
 	case 3: $("#datetimepicker3").attr('class','input-append  form-group') ;
 	$("#IC3").attr('title','') ;
