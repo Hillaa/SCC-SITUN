@@ -226,6 +226,15 @@ function cargarDatosUsuarioP(data){
   });*/
  
   }
+
+  function activar(){//Tiene la función del botón cambiar contraseña para habilitarlo
+    $("#IPU4").removeAttr("disabled");
+    $("#LIPU5").show();
+    $("#IPU5").show();	
+    $("#btnCambiar").hide();
+  }
+
+
   function validarP(){ //Valiad los campos de entrada
 	I2 = true;
 	I3 = true;
