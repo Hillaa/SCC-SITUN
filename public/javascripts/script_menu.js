@@ -136,9 +136,9 @@ function cargarDatosUsuarioP(data){
  }
 
   function actualizarInfoUsuarioP(){ //Actualiza la informacion en la base de datos
-  //console.log('validacion '+validarP());
+  console.log('validacion '+validarP());
     if(validarP()){
-	//console.log('Entro despues de validacion'+validarP()); // Quitar
+	console.log('Entro despues de validacion'+validarP()); // Quitar
 
 	
 	//$("#myModalP .close").click() 
@@ -227,7 +227,7 @@ function cargarDatosUsuarioP(data){
  
   }
 
-  function activar(){//Tiene la función del botón cambiar contraseña para habilitarlo
+  function activarP(){//Tiene la función del botón cambiar contraseña para habilitarlo
     $("#IPU4").removeAttr("disabled");
     $("#LIPU5").show();
     $("#IPU5").show();	
@@ -243,7 +243,7 @@ function cargarDatosUsuarioP(data){
 	I6= true;
 
 	if($("#IPU1").val().length == 0){
-		$("#div1").attr('class','form-group has-error') ;
+		$("#divP1").attr('class','form-group has-error') ;
 		$("#IPU1").attr('title','Campo Obligatorio') ;
 		I2 = false;
 	}
@@ -252,7 +252,7 @@ function cargarDatosUsuarioP(data){
 	$("#IPU1").attr('title','');
 	}
 	if($("#IPU2").val().length == 0){
-		$("#div2").attr('class','form-group has-error') ;
+		$("#divP2").attr('class','form-group has-error') ;
 		$("#IPU2").attr('title','Campo Obligatorio') ;
 		I3 = false;
 	}
@@ -261,7 +261,7 @@ function cargarDatosUsuarioP(data){
 	$("#IPU2").attr('title','');
 	}
 	if($("#IPU3").val().length == 0){
-		$("#div3").attr('class','form-group has-error') ;
+		$("#divP3").attr('class','form-group has-error') ;
 		$("#IPU3").attr('title','Campo Obligatorio') ;
 		I4 = false;
 	}
@@ -270,7 +270,7 @@ function cargarDatosUsuarioP(data){
 	$("#IPU3").attr('title','');
 	}
 	if($("#IPU4").val().length == 0){
-		$("#div4").attr('class','form-group has-error') ;
+		$("#divP4").attr('class','form-group has-error') ;
 		$("#IPU4").attr('title','Campo Obligatorio') ;
 		I5 = false;
 	}
@@ -280,7 +280,7 @@ function cargarDatosUsuarioP(data){
 	}
 	if($( "#IPU4" ).prop("disabled")!=true){ 
 	if($("#IPU5").val().length == 0){
-		$("#div5").attr('class','form-group has-error') ;
+		$("#divP5").attr('class','form-group has-error') ;
 		$("#IPU5").attr('title','Campo Obligatorio') ;
 		I6 = false;
 	}
@@ -290,9 +290,9 @@ function cargarDatosUsuarioP(data){
 	}
 	}
 	if($("#IPU4").val()!=$("#IPU5").val() && $( "#IPU4" ).prop("disabled")!=true){
-		$("#div4").attr('class','form-group has-error') ;
+		$("#divP4").attr('class','form-group has-error') ;
 		$("#IPU4").attr('title','La contraseña no coincide') ;
-		$("#div5").attr('class','form-group has-error') ;
+		$("#divP5").attr('class','form-group has-error') ;
 		$("#IPU5").attr('title','La contraseña no coincide') ;
 		$("#IPU5").val("");
 		$("#IPU4").val("");
