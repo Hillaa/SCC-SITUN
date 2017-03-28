@@ -10,14 +10,13 @@
 <body  ng-app ng-controller="menuControllerAngular" data-ng-init="init()">
 
 <div id='menu'></div>
-<div obj></div>
   <!-- Trigger the modal with a button -->
 <!-- Modal -->
 <div class="col-md-1"></div>
      
 <div id="myModalP" class="modal fade" role="dialog">
   <div class="modal-dialog">
-   
+   hola
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -67,7 +66,7 @@
        </table>  </center>    
       </div>
       <div class="modal-footer">
-      <center><button type="button" class="btn btn-default" onclick = "actualizarInfoUsuarioP()">Guardar</button>
+      <center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalP" data-backdrop="static" data-keyboard="false" onclick = "actualizarInfoUsuarioP()">Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center> 
       </div>
     </div>
@@ -170,12 +169,12 @@ $(document).ready(function() {
             
           }  
 
-        enc+='<li><a href="" data-toggle="modal" data-target="#myAyuda" id="ayuda" style="color:#FFFFFF;">Ayuda</a></li>'+
-                   '<li class="dropdown col-md-offset-0.6" >'+
+        enc+='<li id="AYP" ><a href="" data-toggle="modal" data-target="#myAyuda" id="ayuda" style="color:#FFFFFF;">Ayuda</a></li>'+
+                   '<li  id="OPC" class="dropdown col-md-offset-0.6" >'+
             '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#FFFFFF;" id="userInfo">'+usr.nombre+' '+usr.apellido +'<span class="caret"></span></a>'+
             '<ul class="dropdown-menu" style="background-color:#60161E; ">'+
-            '<li><a href="javascript:void(0)" style="color:#FFFFFF;" onclick="editarPerfil()">Editar Perfil</a></li>'+
-            '<li><a href="../logout" style="color:#FFFFFF;">Cerrar sesion</a></li>'+
+            '<li id="EPP"><a href="javascript:void(0)" style="color:#FFFFFF;" onclick="editarPerfil()">Editar Perfil</a></li>'+
+            '<li id ="LOP"><a href="../logout" style="color:#FFFFFF;">Cerrar sesion</a></li>'+
           '</ul>'+
         '</li>'+
 
@@ -186,8 +185,14 @@ $(document).ready(function() {
 
 $( document ).ready(function() {
   $(".nav li").on("click", function(){
-    $(".nav").find(".activa").removeClass("activa");
-    $(this).addClass("activa");
+    console.log($(this).attr('id'));
+    if('OPC' != $(this).attr('id') && 'AYP' != $(this).attr('id')
+    &&'EPP' != $(this).attr('id') && 'LOP' != $(this).attr('id') )
+    {
+        $(".nav").find(".activa").removeClass("activa");
+        $(this).addClass("activa");
+    }
+    
   });
 });
 
