@@ -55,25 +55,32 @@
 	  
 	<!---Cuerpo-->
 	<body background="../images/situn4.png">
-	<div class="col-md-8" style="margin-left:20px">
-           <span class="text-danger" style="margin-left:30px">
+
+      <div class="panel panel-danger" style="max-width: 96.5%; margin-left:15px" >
+		 <div class="text-danger" style="margin-left:25px">
 		 <h2 >Busqueda de Correspondencia</h2> 
+		 </div>
+		</div>
+		 <div class="text-danger" style="margin-left:20px">
 		 <h4 >Tipo de Busqueda</h4>
-		 </span>
+		 </div>
+		 	
 			<form class="navbar-form navbar-left">         
             <div   class="form-group ">
-				<select class="form-control input-sm" id="opBusqueda" ng-model = "criterio">
+				<select class="form-control" id="opBusqueda" ng-model = "criterio">
 					<option value="Nº oficio">Nº Oficio
 					<option value="Destinatorio">Destinatorio                                            
 					<option value="Remitente">Remitente                                          
 					<option value="Asunto">Asunto                                      
 				</select> 
-				<input type="text" class="form45" id="buscar"  >
-				<input type = "button" class="btn btn-default" id="buscar" value = "Buscar" ng-click="buscar()" >
-				<input type = "button"class="btn btn-default" id ="cancelar" value = "Cancelar"  ng-click="clear()" >
+				<input type="text" class="form-control" id="buscar" ng-keyup= "($event.which == 13)?buscar():0" />
+				<input type = "button" class="btn btn-default" id="buscar" value = "Buscar" ng-click="buscar()" />
+				<input type = "button"class="btn btn-default" id ="cancelar" value = "Cancelar"  ng-click="clear()" />
 			</div>
-         <p align="left"><p align="left"><div class="table table-bordered" >
-	<p align="left"><table class="table" id="tabla_busqueda">
+    
+	
+	<div  align="left" class="table table-bordered"  style="max-width: 1300px; max-height:390px; margin-top:10px; border: hidden;  overflow-y:auto;">
+	<table class="table" id="tabla_busqueda">
 		
 
 <style type="text/css">
@@ -103,39 +110,39 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat = "c in correspondencias">
-					<td> {{c.tc_3 }} </td>
-					<td> {{c.tc_4 | date:'dd/MM/yyyy'}} </td>
-					<td> {{c.tc_2 | date:'dd/MM/yyyy'}} </td>
-					<td> {{c.tc_8 }} </td>
-					<td> {{c.tc_5 }} </td>
-					<td> {{c.tc_6 }} </td>
-					<td> {{c.tc_7 }} </td>					
-					<td> {{c.tc_9 }} </td>
-					<td> {{c.tc_10 }} </td>
-						<td> 
+					<td style="max-width: 125px;"> {{c.tc_3 }} </td>
+					<td style="max-width: 100px;"> {{c.tc_4 | date:'dd/MM/yyyy'}} </td>
+					<td style="max-width: 100px;"> {{c.tc_2 | date:'dd/MM/yyyy'}} </td>
+					<td style="max-width: 125px;"> {{c.tc_8 }} </td>
+					<td style="max-width: 125px;"> {{c.tc_5 }} </td>
+					<td style="max-width: 125px;"> {{c.tc_6 }} </td>
+					<td style="max-width: 125px;"> {{c.tc_7 }} </td>					
+					<td style="max-width: 125px;"> {{c.tc_9 }} </td>
+					<td style="max-width: 125px;"> {{c.tc_10 }} </td>
+						<td style="max-width: 75px;"> 
 						<!-- Trigger the modal with a button -->
 						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" ng-click="obtenerEnlaces(c)"><img src="../../../../images/enlace.png" width="20" height="20" /></button>
 					</td>
-					<td> 
+					<td style="max-width: 75px;"> 
 						<!-- Trigger the modal with a button -->
 						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" ng-click="obtenerInformacion(c)"><img src="../../../../images/editar.png" width="20" height="20" /></button>
 						
 						
 					</td>
-					<td> 
+					<td style="max-width: 75px;"> 
 						<!-- Trigger the modal with a button -->
 						<button type="button" class="btn btn-danger" data-toggle="modal"  ng-click="Alarma(c)"><img src="../../../../images/alarma.png" width="20" height="20" /></button>
 					</td>
-					<td>
+					<td style="max-width: 75px;">
 						<center><a ng-href="http://localhost:3000/Adjunto/{{c.tc_12}}" target="_blank" ng-class="c.tc_12.length==0?'disabled':''"><img src="../../../../images/documento.png" width="32" height="32" /></a>	</center><!-- TERMINAR	-->		
 										
 					</td>
 			</tr>
 		</tbody>        
 	</table>
-               </div></p>
+               </div>
       </form>
-	   </div> 
+	  
 	  <!-- popup editar correspondencia-->
 	<!-- Trigger the modal with a button -->
 <!-- Modal -->
