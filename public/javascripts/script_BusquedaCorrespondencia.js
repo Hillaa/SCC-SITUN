@@ -98,7 +98,7 @@ function controllerAngular($scope)//ControllerAngular
 	.catch(err => console.log('Request failed', err));
  }
 
-  function cargarRecibido(data,op){
+  function cargarRecibido(data,op){ //Carga la información de la persona que en el input IC8 o retorna la persona
 	if(op)
       $("#IC8").val(data.tp_1+" "+data.tp_2+" "+data.tp_3);
 	  else
@@ -445,7 +445,7 @@ function cargaAlarma(data,corr){ //carga los datos de la alarma para mostrar en 
  $("[data-dismiss=modal]").trigger({ type: "click" });
 }
 
-function nuevaAlarma(data){//insercion de una nueva alarma a las correpondencia escogida
+function nuevaAlarma(data){//Insercion de una nueva alarma a las correpondencia escogida
 		let b5 = $("#IC16").val().substr(6,4)+"-"+$("#IC16").val().substr(3,2)+"-"+$("#IC16").val().substr(0,2);	
 	    let c5 = $("#IC17").val().substr(6,4)+"-"+$("#IC17").val().substr(3,2)+"-"+$("#IC17").val().substr(0,2);
 		let d5 = 0;

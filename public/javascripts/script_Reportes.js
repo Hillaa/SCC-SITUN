@@ -70,7 +70,7 @@ function MR_01($scope)//ControllerAngular controller de todos los metodos
     row = table.insertRow(rowCount);
 
      let cell9 = row.insertCell(0);
-	let element9 = document.createTextNode("El dìa :");
+	let element9 = document.createTextNode("Fecha :");
     cell9.appendChild(element9);
 	
     let cell10 = row.insertCell(1);
@@ -78,7 +78,7 @@ function MR_01($scope)//ControllerAngular controller de todos los metodos
      cell10.appendChild(element10);
 
      let cell11 = row.insertCell(2);
-	let element11 = document.createTextNode("A las :");
+	let element11 = document.createTextNode("Hora :");
     cell11.appendChild(element11);
 	
     let cell12 = row.insertCell(3);
@@ -131,6 +131,7 @@ function MR_04($scope){ //Metodo que genera el reporte
 if(MR_05()){
 let pdf = new jsPDF('l', 'pt', 'letter');
 let source =  $('#HTMLtoPDF')[0] ;
+pdf.setFontSize(15);
 specialElementHandlers = {
 	'#bypassme': function(element, renderer){
 		return true

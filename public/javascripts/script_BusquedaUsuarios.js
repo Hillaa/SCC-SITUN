@@ -189,21 +189,22 @@ function limpiarValores(){ //Limpia los valores de los campos de entrada
 	}
   }
   
-  function activar(){
+  function activar(){//Tiene la función del botón cambiar contraseña para habilitarlo
     $("#IU4").removeAttr("disabled");
     $("#LIU5").show();
     $("#IU5").show();	
     $("#btnCambiar").hide();
   }
   
-  function desactivar(){
+  function desactivar(){ //Tiene la función del botón cambiar contraseña para deshabilitarlo 
     $("#IU4").attr('disabled','disabled');
     $("#LIU5").hide();
     $("#IU5").hide();
 	$("#btnCambiar").show();
   }
  
- function asignarUsuario($scope, cor)
+ function asignarUsuario($scope, cor)//Busca en la tabla de usuarios y en la de personas  
+							//al usuario q se va a editar  y lo cargar
  {	desactivar();
    limpiarValores();
    console.log("entran  asigna");
@@ -222,14 +223,15 @@ function limpiarValores(){ //Limpia los valores de los campos de entrada
 	.catch(err => console.log('Request failed', err));
  }
  
-  function asignarUsuario2($scope, cor)
+  function asignarUsuario2($scope, cor)//Muestra la información del usuario que se va 
+									//a eliminar en el mensaje de confirmación
  {	
  $("#labelEliminar").text(cor.tp_4+" ");
  $("#labelEliminar2").text(cor.tp_1+" ");
  $("#labelEliminar3").text(cor.tp_2+" ");
  $("#labelEliminar4").text(cor.tp_3+"?");
  }
-  function cargarDatos(data){
+  function cargarDatos(data){ //Muestra los datos del usuario a la hora de editar en pantalla
   console.log(data);
      $("#IU1").val(data.tp_1);
      $("#IU2").val(data.tp_2);
@@ -315,7 +317,7 @@ function limpiaDivMensaje($scope){// limpia el div con el id de buscar
  $('#myModal2').modal('hide'); // NUEVO
  }
  
- 	function eliminaTU($scope, cor){
+ 	function eliminaTU($scope, cor){ //Elimina un usuario de la tabla de usuarios en la base de datos
 	let d = $("#labelEliminar").text();//$('#IU4').val();
 	console.log("valor de D "+d);
 	return fetch('http://localhost:3000/api/TU/D?TU_1=' + d, {  
