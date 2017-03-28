@@ -63,6 +63,7 @@ function cargarMenu() //CArga el menu del sistema
 function solicitarInformacionDeSesion(page)//solicita los datos actualizados de la persona 
 			//que esta loggeada
 {
+	
 	$.ajax({  
       url: 'http://localhost:3000/sessionInfo',  
       type: "GET",  
@@ -76,12 +77,13 @@ function solicitarInformacionDeSesion(page)//solicita los datos actualizados de 
 
         //console.log(req);
         //console.log("success!");
-        
+        //$('#myModalP').modal('hide')
         $("#menuDiv").load("/HTML/menu", function(){$(page).addClass("activa");}); 
 
       },  
       complete: function() {  
           //console.log("complete!");  
+
       }  
 
   });
@@ -94,8 +96,7 @@ function editarPerfil()
 	usuario = JSON.parse(localStorage.getItem('usuario'));
 	console.log("Sol edicion perfil");
 	asignarUsuarioP(usuario);
-	$("#myModalP").modal('show'); 
-
+	$("#myModalP").modal('show');
 }
 
 function asignarUsuarioP(cor)
@@ -138,15 +139,30 @@ function cargarDatosUsuarioP(data){
   //console.log('validacion '+validarP());
     if(validarP()){
 	//console.log('Entro despues de validacion'+validarP()); // Quitar
-	actualizarPersonaP()
-	.then(_=> actualizarUsuarioP()
-		.then(_=> solicitarInformacionDeSesion()));
+
 	
+	//$("#myModalP .close").click() 
+	//$('#myModalP').fadeOut(600);
+	var cod='No Definido';
+	 actualizarPersonaP()
+	.then( _=> actualizarUsuarioP()
+		.then( _=> (
+				$("ul.nav").children().each( (a,b) => cod= (cod =='No Definido' &&  b.className==='activa')?b.id:cod),
+				//$('#myModalP').modal('hide'),
+				solicitarInformacionDeSesion('#'+cod)
+				
+				)
+		));
     //busquedaUsuario($scope);
     
-	$('#myModalP').modal('hide'); 
+	//$('#myModalP').modal('hide');
+	//$('#myModalP').hide();
+	$('#myModalP').hide();
+    $('.modal-backdrop').hide();
 	}
   }
+
+ 
   
   function actualizarPersonaP(){ //actualiza la infromación del usuario en la tabla personas
     let a = $('#IPU0').val().toUpperCase();
