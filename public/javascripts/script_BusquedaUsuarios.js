@@ -51,7 +51,7 @@ function controllerAngular($scope)//ControllerAngular
 		return response.text().then(function(res) {
 				console.log("Resultado: "+res);
 					if(res.indexOf("error")==-1){
-						$("#mensaje").text("Acción realizada con exito");
+						$("#mensaje").text("Acción realizada con éxito");
 			}
 				});
 	})
@@ -84,7 +84,7 @@ function controllerAngular($scope)//ControllerAngular
 		return response.text().then(function(res) {
 				console.log("Resultado: "+res);
 					if(res.indexOf("error")==-1){
-						$("#mensaje").text("Acción realizada con exito");
+						$("#mensaje").text("Acción realizada con éxito");
 			}
 				});
 	})
