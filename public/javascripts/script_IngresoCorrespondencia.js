@@ -127,7 +127,7 @@ function ingresoCorrespondencia($scope){ //Recoge los datos de los campos y real
 		return response.text().then(function(res) {
 				console.log("Resultado: "+res);
 					if(res.indexOf("error")==-1){
-						$("#mensaje").text("Acción realizada con exito");
+						$("#mensaje").text("Acción realizada con éxito");
 							programaAlarma($scope); 
 							console.log($("#enlace_checkbox").is(':checked'));
 							if($("#enlace_checkbox").is(':checked'))

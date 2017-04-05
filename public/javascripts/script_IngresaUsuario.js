@@ -14,7 +14,7 @@ function existeUsuario(){//Realiza la consulta si un usuario existe
      	
 		.then(obj =>{
 		if(obj.data[0]==null){
-		setTimeout('botonCancelar()', 2000);
+		//setTimeout('botonCancelar()', 2000);
 		ingresaInformacion();
 		}
 		else	
@@ -52,7 +52,7 @@ function ingresaInformacion($scope){ //Recoge los datos de los campos y realiza 
 	j3='0';
 	ingresaPersona(e3,f3,g3,h3);
 	ingresaUsuario(h3,o3,j3);
-	$("#mensaje").text("Acción realiza con exito");
+	$("#mensaje").text("Acción realiza con éxito");
  
 }
 
