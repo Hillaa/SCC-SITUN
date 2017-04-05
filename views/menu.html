@@ -16,7 +16,6 @@
      
 <div id="myModalP" class="modal fade" role="dialog">
   <div class="modal-dialog">
-   hola
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -28,33 +27,33 @@
                 <tbody>
         <tr>
                     <td><label class="text-danger">Identificación</label></td>
-          <td><div id="div0" class="form-group"><input id="IPU0" type="text" class="form-control" disabled ></input></div></td>
+          <td><div id="divP0" class="form-group"><input id="IPU0" type="text" class="form-control" disabled ></input></div></td>
         </tr>
         
         <tr>
                     <td><label class="text-danger">Nombre</label></td>
-          <td><div id="div1" class="form-group"><textarea id="IPU1" type="text" class="form-control" onfocus="cambioClase1(1)"  ></textarea></div></td>
+          <td><div id="divP1" class="form-group"><textarea id="IPU1" type="text" class="form-control" onfocus="cambioClase1P(1)"  ></textarea></div></td>
         </tr>
         
         <tr>
                     <td> <label class="text-danger">Primer Apellido</label> </td> 
-          <td><div id="div2" class="form-group"><textarea id="IPU2" type="text" class="form-control" onfocus="cambioClase1(2)"></textarea></div></td>         
+          <td><div id="divP2" class="form-group"><textarea id="IPU2" type="text" class="form-control" onfocus="cambioClase1P(2)"></textarea></div></td>         
         </tr>
         
                 <tr>
                     <td> <label class="text-danger">Segundo Apellido</label> </td>
-                   <td><div id="div3" class="form-group"><textarea id="IPU3" type="text" class="form-control" onfocus="cambioClase1(3)"></textarea></div></td> 
+                   <td><div id="divP3" class="form-group"><textarea id="IPU3" type="text" class="form-control" onfocus="cambioClase1P(3)"></textarea></div></td> 
                 </tr>
         
                 <tr>
             <td><label class="text-danger" for="exampleInputPassword1" >Contraseña</label> </td> 
-                    <td><div id="div4" class="form-group"><input type="password" class="form-control" id="IPU4" onfocus="cambioClase1(4)" disabled></input></div> </td>  
-          <td><button id="btnCambiar" type="button" class="btn btn-default"  onclick = "activar()" style= "margin-left:10px; margin-bottom:10px">Cambiar</button></td>
+                    <td><div id="divP4" class="form-group"><input type="password" class="form-control" id="IPU4" onfocus="cambioClase1P(4)" disabled></input></div> </td>  
+          <td><button id="btnCambiar" type="button" class="btn btn-default"  onclick = "activarP()" style= "margin-left:10px; margin-bottom:10px">Cambiar</button></td>
                 </tr>
         
         <tr>
             <td><label class="text-danger" for="exampleInputPassword1" style="display:none" id="LIPU5">Confirmar Contraseña</label> </td> 
-                    <td><div id="div5" class="form-group"><input type="password" class="form-control" id="IPU5" style="display:none" onfocus="cambioClase1(5)"></input></div> </td>  
+                    <td><div id="divP5" class="form-group"><input type="password" class="form-control" id="IPU5" style="display:none" onfocus="cambioClase1P(5)"></input></div> </td>  
           
          </tr>
         
@@ -66,7 +65,7 @@
        </table>  </center>    
       </div>
       <div class="modal-footer">
-      <center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalP" data-backdrop="static" data-keyboard="false" onclick = "actualizarInfoUsuarioP()">Guardar</button>
+      <center><button type="button" class="btn btn-default"  onclick = "actualizarInfoUsuarioP()">Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center> 
       </div>
     </div>
