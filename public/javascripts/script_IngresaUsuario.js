@@ -14,7 +14,7 @@ function existeUsuario(){//Realiza la consulta si un usuario existe
      	
 		.then(obj =>{
 		if(obj.data[0]==null){
-		//setTimeout('botonCancelar()', 2000);
+		setTimeout('botonCancelar(false)', 2000);
 		ingresaInformacion();
 		}
 		else	
@@ -225,9 +225,15 @@ function cambioClase1(op){//Realiza un cambio de clase a los campos de entrada d
 	}
 }	
 	
-function botonCancelar(){//Metodo del boton cancelar 
+function botonCancelar(valor){//Metodo del boton cancelar 
+if(valor==true){
 limpiaCampos();
 limpiaDivMensaje();
+	}
+else
+{limpiaCampos();}
+if($("#IU7").is(':checked'))
+	$("#IU7").prop("checked",false);
 }
 
 function limpiaDivMensaje(){//Limpia el div con el id=mensaje 
