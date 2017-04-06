@@ -2,7 +2,7 @@
 function existeUsuario(){//Realiza la consulta si un usuario existe
  
 	let d = $('#IU4').val().toUpperCase();
-	 fetch( 'http://localhost:3000/api/TP/B', {  
+	 fetch( 'http://' + ip + ':'+ puerto +'/api/TP/B', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -59,7 +59,7 @@ function ingresaInformacion($scope){ //Recoge los datos de los campos y realiza 
 
 function ingresaPersona(a,b,c,d){// Realiza la inserción de una persona a la base de datos
 
- fetch( 'http://localhost:3000/api/TP/I', {  
+ fetch( 'http://' + ip + ':'+ puerto +'/api/TP/I', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -82,7 +82,7 @@ function ingresaPersona(a,b,c,d){// Realiza la inserción de una persona a la ba
 	
 	function ingresaUsuario(a2,b2,c2){//Realiza la inserciónde un usuario a la base de datos
 
-	fetch( 'http://localhost:3000/api/TU/I', {  
+	fetch( 'http://' + ip + ':'+ puerto +'/api/TU/I', {  
     method: 'POST', 
     datatype:'json',
     headers: {  

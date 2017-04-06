@@ -55,8 +55,10 @@ router.get('/logout',function(req, res){
 
 router.get('/sessionInfo',function(req, res, next){
 	console.log("Solicitud de info de sesson... ");
+
 	updateSessionInfo(req)
-	.then(_ => res.json(req.session.usuario));
+	.then(_ => res.json(req.session.usuario))
+	.catch(e => console.log("Error en seeesion info"));
 	
 });
 

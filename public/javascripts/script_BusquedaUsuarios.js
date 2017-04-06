@@ -37,7 +37,7 @@ function controllerAngular($scope)//ControllerAngular
 	let c = $('#IU2').val().toUpperCase(); 
 	let d = $('#IU3').val().toUpperCase(); 
  
-   fetch( 'http://localhost:3000/api/TP/UD', {  
+   fetch( 'http://' + ip + ':'+ puerto +'/api/TP/UD', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -70,7 +70,7 @@ function controllerAngular($scope)//ControllerAngular
 		c = 1;
 		
 		
-    fetch( 'http://localhost:3000/api/TU/UD', {  
+    fetch( 'http://' + ip + ':'+ puerto +'/api/TU/UD', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -208,7 +208,7 @@ function limpiarValores(){ //Limpia los valores de los campos de entrada
  {	desactivar();
    limpiarValores();
    console.log("entran  asigna");
-	 fetch( 'http://localhost:3000/api/TPTU/B', {  
+	 fetch( 'http://' + ip + ':'+ puerto +'/api/TPTU/B', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -251,7 +251,7 @@ function limpiarValores(){ //Limpia los valores de los campos de entrada
  console.log("Retornado de url > " + tipoBusqueda($scope));
 	let h3 = document.getElementById('buscar').value;
 	
-	 fetch( 'http://localhost:3000/api/TP/'+tipoBusqueda($scope), {  
+	 fetch( 'http://' + ip + ':'+ puerto +'/api/TP/'+tipoBusqueda($scope), {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -320,7 +320,7 @@ function limpiaDivMensaje($scope){// limpia el div con el id de buscar
  	function eliminaTU($scope, cor){ //Elimina un usuario de la tabla de usuarios en la base de datos
 	let d = $("#labelEliminar").text();//$('#IU4').val();
 	console.log("valor de D "+d);
-	return fetch('http://localhost:3000/api/TU/D?TU_1=' + d, {  
+	return fetch('http://' + ip + ':'+ puerto +'/api/TU/D?TU_1=' + d, {  
      method: 'get', 
      mode:'no-cors',
      datatype:'html',
@@ -337,7 +337,7 @@ function limpiaDivMensaje($scope){// limpia el div con el id de buscar
 		function eliminaTP($scope, cor){
 	let d = $("#labelEliminar").text();//$('#IU4').val();
 	console.log(d);
-	return fetch('http://localhost:3000/api/TP/D?TP_4=' + d, {  
+	return fetch('http://' + ip + ':'+ puerto +'/api/TP/D?TP_4=' + d, {  
      method: 'get', 
      mode:'no-cors',
      datatype:'html',

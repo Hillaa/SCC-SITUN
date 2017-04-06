@@ -1,4 +1,11 @@
 
+var ip = 'localhost';
+var puerto = 3000;
+
+
+
+
+
 function cargarMenu() //CArga el menu del sistema
 {
 
@@ -65,8 +72,9 @@ function solicitarInformacionDeSesion(page)//solicita los datos actualizados de 
 {
 	
 	$.ajax({  
-      url: 'http://localhost:3000/sessionInfo',  
+      url: 'http://' + ip +':' + puerto + '/sessionInfo',  
       type: "GET",  
+      mode:'no-cors',
       dataType: "json",  
       success: function(req) {  
         
@@ -103,7 +111,7 @@ function asignarUsuarioP(cor)
  {	desactivarP();
    limpiarValoresP();
    console.log(cor);
-	 fetch( 'http://localhost:3000/api/TPTU/B', {  
+	 fetch( 'http://' + ip +':'+ puerto +'/api/TPTU/B', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -170,7 +178,7 @@ function cargarDatosUsuarioP(data){
 	let c = $('#IPU2').val().toUpperCase(); 
 	let d = $('#IPU3').val().toUpperCase(); 
  
-   return fetch( 'http://localhost:3000/api/TP/UD', {  
+   return fetch( 'http://' + ip +':'+ puerto + '/api/TP/UD', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -203,7 +211,7 @@ function cargarDatosUsuarioP(data){
 		c = 1;
 		
 		
-    return fetch( 'http://localhost:3000/api/TU/UD', {  
+    return fetch( 'http://' + ip +':'+ puerto +'/api/TU/UD', {  
     method: 'POST', 
     datatype:'json',
     headers: {  

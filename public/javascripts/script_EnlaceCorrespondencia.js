@@ -68,7 +68,7 @@ function controllerAngular($scope)//ControllerAngular
 		let criterio = ((keycode != 8)?(h3 + String.fromCharCode(keycode)) : h3.substr(0,h3.length-1)).toUpperCase();
 
 	
-		fetch( 'http://localhost:3000/api/TC/' + tipoBusqueda($scope), {  
+		fetch( 'http://' + ip + ':'+ puerto +'/api/TC/' + tipoBusqueda($scope), {  
 			method: 'POST', 
 			datatype:'json',
 			headers: {  
@@ -142,7 +142,7 @@ function tipoBusquedaBD($scope) //Toma el criterio de busqueda y devuelve la col
 		
 		}
 		else{
-		fetch( 'http://localhost:3000/api/TE/I', {  
+		fetch( 'http://' + ip + ':'+ puerto +'/api/TE/I', {  
 			method: 'POST', 
 			datatype:'json',
 			headers: {  
@@ -180,6 +180,6 @@ function tipoBusquedaBD($scope) //Toma el criterio de busqueda y devuelve la col
 	if(banderita == true)
 	{
 		localStorage.clear();
-		window.location.href ='http://localhost:3000/HTML/Ingreso%20de%20Correspondencia'
+		window.location.href ='http://' + ip + ':'+ puerto +'/HTML/Ingreso%20de%20Correspondencia'
 	}
   }

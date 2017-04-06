@@ -18,7 +18,7 @@ function controllerAngular($scope)//ControllerAngular
  
  function buscaEnlaces($scope, cor) //Muestra todos los enlaces relacionados con una correspondencia especifica
  {	
-	 fetch( 'http://localhost:3000/api/ALL/ENLACES', {  
+	 fetch( 'http://' + ip + ':'+ puerto +'/api/ALL/ENLACES', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -41,7 +41,7 @@ function controllerAngular($scope)//ControllerAngular
   function asignarInformacion($scope, cor){ //Busca la correspondencia y muestra la informacion de esta
    conditional=cor.tc_1;
    console.log("asigna"+cor.tc_1);
-	 fetch( 'http://localhost:3000/api/TC/BC', {  
+	 fetch( 'http://' + ip + ':'+ puerto +'/api/TC/BC', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -83,7 +83,7 @@ function controllerAngular($scope)//ControllerAngular
 {								//y lo cambia por el id de la persona
  	
     console.log("Person"+person);
-	fetch( 'http://localhost:3000/api/TP/B', {  
+	fetch( 'http://' + ip + ':'+ puerto +'/api/TP/B', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -109,7 +109,7 @@ function controllerAngular($scope)//ControllerAngular
  {
  	console.log("Retornado de url > " + tipoBusqueda($scope));
 	let h3 = document.getElementById('buscar').value;
-	 fetch( 'http://localhost:3000/api/TC/'+tipoBusqueda($scope), {  
+	 fetch( 'http://' + ip + ':'+ puerto +'/api/TC/'+tipoBusqueda($scope), {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -361,7 +361,7 @@ function actualizarCorrespondencia($scope,cor){ //Recoge los datos de los campos
 	let j3 = $('#IC9').val().toUpperCase();
     let k3 = $('#IC10').val().toUpperCase();
 
- fetch( 'http://localhost:3000/api/TC/UD', {  
+ fetch( 'http://' + ip + ':'+ puerto +'/api/TC/UD', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -390,7 +390,7 @@ function ajusteAlarma($scope ,cor)  //Metodo de ajuste de alarma
  {   let corr=cor.tc_1;
  	console.log("Retornado de url > " + "Alarmas");
 	console.log( cor.tc_1);
-	fetch( 'http://localhost:3000/api/TA/ALL_TA', {  
+	fetch( 'http://' + ip + ':'+ puerto +'/api/TA/ALL_TA', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -429,7 +429,7 @@ function cargaAlarma(data,corr){ //carga los datos de la alarma para mostrar en 
  function actualizarAlarma(data){ //Recoge los datos de los campos y realiza el fecth de actualizacion de alarma
 	let b3 = $("#IC15").val().substr(6,4)+"-"+$("#IC15").val().substr(3,2)+"-"+$("#IC15").val().substr(0,2);
 	let d3 = $("#IC14").val().substr(6,4)+"-"+$("#IC14").val().substr(3,2)+"-"+$("#IC14").val().substr(0,2);
-	fetch( 'http://localhost:3000/api/TA/UDF', {  
+	fetch( 'http://' + ip + ':'+ puerto +'/api/TA/UDF', {  
     method: 'POST', 
     datatype:'json',
     headers: {  
@@ -450,7 +450,7 @@ function nuevaAlarma(data){//Insercion de una nueva alarma a las correpondencia 
 	    let c5 = $("#IC17").val().substr(6,4)+"-"+$("#IC17").val().substr(3,2)+"-"+$("#IC17").val().substr(0,2);
 		let d5 = 0;
 		if(b5!= "" && c5!=""){ 
-		fetch( 'http://localhost:3000/api/TA/I', {  
+		fetch( 'http://' + ip + ':'+ puerto +'/api/TA/I', {  
 			method: 'POST', 
 			datatype:'json',
 			headers: {  
