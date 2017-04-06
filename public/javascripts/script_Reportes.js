@@ -87,7 +87,7 @@ function MR_01($scope)//ControllerAngular controller de todos los metodos
 	
 
 	//Busca las correspondecias segun el rango de fechas
-    fetch( 'http://localhost:3000/api/TC/BF', {   //Envia la ruta del servidor (rutas.js) y el sufijo Correspondiente
+    fetch( 'http://' + ip + ':'+ puerto +'/api/TC/BF', {   //Envia la ruta del servidor (rutas.js) y el sufijo Correspondiente
     method: 'POST',  
     datatype:'json',   
     headers: {  
@@ -258,7 +258,7 @@ if(fecha2.length < 1 ){
 	
 function MR_06(){ //Metodo para validar rango de fechas
 
-fetch( 'http://localhost:3000/api/TC/FR', {   //Envia la ruta del servidor (rutas.js) y el sufijo Correspondiente
+fetch( 'http://' + ip + ':'+ puerto +'/api/TC/FR', {   //Envia la ruta del servidor (rutas.js) y el sufijo Correspondiente
     method: 'POST',  
     datatype:'json',   
     headers: {  

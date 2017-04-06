@@ -3,6 +3,7 @@
 <html>
 <head>
 <link rel="shortcut icon" href="../images/ico.ico" type="image/ico" />
+ <script src="\..\javascripts\script_menu.js"></script>
 	<script src="\..\javascripts\jquery-1.12.2.js"></script>
 	<script src="\..\javascripts\jquery.validate.min.js"></script>
 	<script src="\..\javascripts\bootstrap-3-3-7.min.js"></script>
@@ -27,7 +28,7 @@
         <% if (error) { %> 
           <div class="alert alert-danger" id= "mensaje"><STRONG>Error: </STRONG> <%= mensaje %></div>
         <% } %>
-          <form role="form" id="formu" action="http://localhost:3000/login" method="POST">
+          <form role="form" id="formu"  method="POST">
             <div class="form-group">
               <label for="usrname" id="hty"><span class="glyphicon glyphicon-user"></span> Username</label>
               <input type="text" class="form-control" name = "username" id="usrname" placeholder="Ingrese su usuario" autofocus="">
@@ -81,7 +82,7 @@ $(document).ready(function(){
           },
           submitHandler: function(form) {
              var $form = $(form);
-             
+             form.action='http://' + ip + ':' + puerto + '/login';
               form.submit();
           
             }
