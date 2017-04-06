@@ -58,7 +58,7 @@ function MR_01($scope)//ControllerAngular controller de todos los metodos
      cell6.appendChild(element6);
 
      let cell7 = row.insertCell(2);
-	let element7 = document.createTextNode("Identificacion :");
+	let element7 = document.createTextNode("Identificación :");
     cell7.appendChild(element7);
 	
     let cell8 = row.insertCell(3);

@@ -155,7 +155,7 @@ function tipoBusquedaBD($scope) //Toma el criterio de busqueda y devuelve la col
 			return response.text().then(function(res) {
 					if(res.indexOf("error")==-1){
 						console.log(res);
-						$("#mensaje").html('Acción realizada con exito');
+						$("#mensaje").html('Acción realizada con éxito');
 						setTimeout(limpiaCampos, 2000);
 					}
 					else
