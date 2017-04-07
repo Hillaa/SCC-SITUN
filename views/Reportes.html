@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html ng-app = "app">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="../images/ico.ico" type="image/ico" />
+        <title>Reportes</title>
+        <script src="\..\javascripts\script_menu.js"></script>
+   	<script type="text/javascript" src="\..\javascripts\script_Reportes.js"></script>
+  <script src="\..\javascripts\jquery-1.12.2.js"></script>
+<script src="\..\javascripts\moment-2.15.1.js"></script>
+<script src="\..\javascripts\bootstrap-3-3-7.min.js"></script>
+<link rel="stylesheet" href="\..\stylesheets\bootstrap-3-3-7.min.css">
+<script src="\..\javascripts\bootstrap-datetimepicker-4.7.14.js"></script>
+<link rel="stylesheet" href="\..\stylesheets\bootstrap-datetimepicker-4.7.14.css">
+
+
+	<!-- Angular--> 
+	<script src="\..\javascripts\angular.min.js"></script>	
+    </head>	
+
+    <body ng-app ng-controller = "ControllerAngular">
+    <div id="menuDiv"></div>
+
+	  <!-- Trigger the modal with a button -->
+<!-- Modal -->
+
+<div id="myAyuda" class="modal fade" role="dialog" style="margin: 0 auto; width:675px; height:500px;">
+  <div class="well">
+   
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="text-danger">Ayuda</h4>
+      </div>
+      <div class="modal-body">
+		<right>
+                <tbody>
+				 Generar Reportes:<p>
+					Para generar  reportes de correspondencia lo primero que debe hacer
+					es seleccionar el rango de fechas de recibido del cual desea generar el
+					reporte, para realizar esto debe selecionar las fechas en los calendarios que
+					se encuentran junto a las etiquetas "Desde" y "Hasta" respectivamente, luego 
+					debe dar click en el botón buscar, seguidamente aparecerá una lista en el cuadro 
+					que se muestra en la página con los reportes de correspondencia que se ubican 
+					en el rango de fechas que fue seleccionado.Finalmente debe dar click en el enlace 
+					"Generar reporte de correspondencia" junto a el botón Cancelar.<p>
+				</tbody> 
+	       </right>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></center>	
+      </div>
+    </div>
+
+  </div>
+  </div>  <!-- fin del popup de ayuda --> 
+
+
+	   <!---Cuerpo-->
+	   <body background="../images/situn4.png">
+	   
+
+	
+	
+	   <div  style="margin-left:20px" width="95%">
+
+           <form class="navbar-form navbar-left">       
+            	<div   class="form-group ">
+                  <span class="text-danger"><h2>Reportes  de Correspondencia </h2>
+                  </span>
+				   	<label class="text-danger">Desde &nbsp; </label>
+				  	<div class='input-group date' id='datetimepicker1'>
+          				<input type='text' class="form-control" id="f1"/>
+          					<span class="input-group-addon" id="c1"  >
+            					<span class="glyphicon glyphicon-calendar" ></span>
+          					</span>
+        			</div>			          
+					<label class="text-danger">Hasta &nbsp; </label>
+                    <div class='input-group date' id='datetimepicker2'>
+          				<input type='text' class="form-control" id="f2"/>
+          					<span class="input-group-addon" id="c2"   >
+            					<span class="glyphicon glyphicon-calendar" ></span>
+          					</span>
+        			</div>			  
+			   	<p>
+			   		<p align="left"><input type = "button" class="btn btn-default" id="buscar" value = "Buscar" ng-click="buscar()" >
+					<font> &nbsp;  &nbsp;  </font> 
+					<input type = "button"class="btn btn-default" id ="cancelar" value = "Limpiar"  ng-click="clear()" >
+					</p>
+				</p>
+			</form>
+			<font> &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp;  </font>
+		    			
+         	<p align="left">
+         		<p align="left">
+         			<div>
+         			<p align="right" id ="dwpdf" style="display: none;">
+         			<img src="../images/pdf2.jpg" width="40" height="40"><a href=""  class="text-danger" align="right" ng-click="generarReporte()">Descargar como PDF
+					</a></p>
+         			
+         			<div id="HTMLtoPDF"    class="table table-bordered" >
+		   				<IMG SRC="../images/situn2.png" WIDTH=70 HEIGHT=60>
+		 				 <h4 class="text-danger" align="center">Reporte de correspondencia SCC-SITUN </h4>
+		  				<p>
+		  					<p>
+		  						<table class="table" id="tabla_encabezado" >
+	      						</table>
+	      					</p>
+	      				</p>		
+						<p align="left">
+							<table class="table" id="tabla_busqueda" width="300%">
+								<thead> 
+									<tr class="danger">
+										<td>#Oficio</td>
+										<td>F.Oficio</td>
+										<td>F.Recibido</td>
+										<td>Asunto</td>
+										<td>Destino</td>
+										<td>Copia</td>
+										<td>Remitente</td>			
+										<td>Estado</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr  ng-repeat = "c in correspondencias">
+										<td id="tdid"> {{c.tc_3 }} </td>
+										<td> {{c.tc_4 | date:'dd/MM/yyyy'}} </td>
+										<td> {{c.tc_2 | date:'dd/MM/yyyy'}} </td>
+										<td> {{c.tc_8 }} </td>
+										<td> {{c.tc_5 }} </td>
+										<td> {{c.tc_6 }} </td>
+										<td> {{c.tc_7 }} </td>					
+										<td> {{c.tc_10 }} </td>
+									</tr>
+								</tbody>        
+							</table>
+							<footer id="footer" style="display: none;">
+    							<div style='text-align:center;'>Página 
+    								<span class="pageCounter"></span>/<span class="totalPages"></span>
+    							</div>
+							</footer>	
+               		</div>    
+               		</div>	   
+       		<div style="margin-top:100px; margin-left:60px; " >
+       			<label id="mensaje" class="text-danger"></label>
+       		</div>
+	   	</div>
+       
+	   
+	   
+	   <script src="\..\javascripts\jspdf.js"></script>
+
+
+	   
+<script type="text/javascript">
+  
+$(document).ready(function() {
+    // Solicita la informacion de la sesion si aun no existe en el storage
+	$("#menuDiv").load("/HTML/menu", function(){$("#RDM").addClass("activa");}); 
+		$("#ayuda").click(
+	function(){
+		$("#miAyuda").show();
+	});
+	
+	$('#f1').val("");
+	$('#f2').val("");
+
+});
+
+
+
+
+
+
+let app = angular.module('app', []);
+
+
+  
+   app.controller('ControllerAngular', MR_01); 
+
+
+$('#datetimepicker1').datetimepicker({
+   		format: 'DD-MM-YYYY', 
+   		showClear:true,
+   		defaultDate: new Date()
+	});
+
+$('#datetimepicker2').datetimepicker({
+   		format: 'DD-MM-YYYY', 
+   		showClear:true,
+   		defaultDate: new Date()
+	});
+
+
+
+	
+</script>
+	
+    </body>
+</html>
